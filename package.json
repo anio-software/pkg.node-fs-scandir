@@ -10,7 +10,7 @@
     "url": "git+https://github.com/anio-node-foundation/fs-scandir.git"
   },
   "devDependencies": {
-    "@anio-node-foundation/fs-api": "^2.0.1",
+    "@anio-node-foundation/fs-api": "^2.1.0",
     "@anio-software/npm-package-bundler": "^1.0.0"
   },
   "scripts": {
