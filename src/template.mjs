@@ -36,15 +36,12 @@ async function scandir(fs_object, root_dir, relative_entry_dir, options) {
 			await scandir(fs_object, root_dir, relative_path, options)
 		}
 
-		if (options.reverse) {
-			await recurse()
-		}
+		if (options.reverse === true) await recurse()
 
 		await handle_current_entry()
 
-		if (!options.reverse) {
-			await recurse()
-		}
+		// written this way so "if statement" has same length as options.reverse === true
+		if (options.reverse !== true) await recurse()
 	}
 }
 

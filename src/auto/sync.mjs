@@ -36,15 +36,12 @@ function scandir(fs_object, root_dir, relative_entry_dir, options) {
 			scandir(fs_object, root_dir, relative_path, options)
 		}
 
-		if (options.reverse) {
-			recurse()
-		}
+		if (options.reverse === true) recurse()
 
 		handle_current_entry()
 
-		if (!options.reverse) {
-			recurse()
-		}
+		// written this way so "if statement" has same length as options.reverse === true
+		if (options.reverse !== true) recurse()
 	}
 }
 
