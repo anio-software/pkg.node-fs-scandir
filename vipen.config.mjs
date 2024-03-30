@@ -5,6 +5,7 @@ const asyncToSync = {
 	"await fs_object.readdir": "fs_object.readdir",
 	"await fs_object.lstat": "fs_object.lstat",
 	"const handle_current_entry = async () => {": "const handle_current_entry = () => {",
+	"await options.filter(data)": "options.filter(data)",
 	"await options.callback(data)": "options.callback(data)",
 	"const recurse = async () => {": "const recurse = () => {",
 	"await scandir(": "scandir(",

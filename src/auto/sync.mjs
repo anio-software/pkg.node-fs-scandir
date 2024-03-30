@@ -21,6 +21,12 @@ function scandir(fs_object, root_dir, relative_entry_dir, options) {
 		const handle_current_entry = () => {
 			const data = {type, relative_path, absolute_path}
 
+			if (typeof options.filter === "function") {
+				const keep = options.filter(data)
+
+				if (keep !== true) return
+			}
+
 			if (typeof options.callback === "function") {
 				options.callback(data)
 
@@ -47,10 +53,11 @@ function scandir(fs_object, root_dir, relative_entry_dir, options) {
 
 export default function(fs_object, root_dir, {
 	callback = null,
-	reverse = false
+	reverse = false,
+	filter = null
 } = {}) {
 	let entries = []
-	const options = {callback, reverse, entries}
+	const options = {callback, reverse, filter, entries}
 	const resolved_root_path = fs_object.realpath(root_dir)
 
 	scandir(fs_object, resolved_root_path, ".", options)

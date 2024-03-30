@@ -21,6 +21,12 @@ async function scandir(fs_object, root_dir, relative_entry_dir, options) {
 		const handle_current_entry = async () => {
 			const data = {type, relative_path, absolute_path}
 
+			if (typeof options.filter === "function") {
+				const keep = await options.filter(data)
+
+				if (keep !== true) return
+			}
+
 			if (typeof options.callback === "function") {
 				await options.callback(data)
 
@@ -47,10 +53,11 @@ async function scandir(fs_object, root_dir, relative_entry_dir, options) {
 
 export default async function(fs_object, root_dir, {
 	callback = null,
-	reverse = false
+	reverse = false,
+	filter = null
 } = {}) {
 	let entries = []
-	const options = {callback, reverse, entries}
+	const options = {callback, reverse, filter, entries}
 	const resolved_root_path = await fs_object.realpath(root_dir)
 
 	await scandir(fs_object, resolved_root_path, ".", options)
