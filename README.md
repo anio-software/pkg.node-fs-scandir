@@ -1,9 +1,9 @@
-# @anio-node-foundation/fs-scandir
+# @anio-fs/scandir
 
 Read a directory recursively.
 
 ```js
-import nodeFsScandir from "@anio-node-foundation/fs-scandir"
+import {scandir, scandirSync} from "@anio-fs/scandir"
 
 /*
   {
@@ -14,10 +14,10 @@ import nodeFsScandir from "@anio-node-foundation/fs-scandir"
 */
 
 console.log(
-	await nodeFsScandir("examples")
+	await scandir("examples")
 )
 
 console.log(
-	nodeFsScandir.sync("examples")
+	scandirSync("examples")
 )
 ```
