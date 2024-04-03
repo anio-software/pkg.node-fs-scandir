@@ -3,6 +3,7 @@
   "version": "3.1.0",
   "description": "Read a directory recursively.",
   "main": "./dist/package.min.mjs",
+  "typings": "./dist/index.d.ts",
   "author": "Anio Software <info@anio.software>",
   "license": "MIT",
   "repository": {
