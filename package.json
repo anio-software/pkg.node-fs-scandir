@@ -1,5 +1,5 @@
 {
-  "name": "@anio-node-foundation/fs-scandir",
+  "name": "@anio-fs/scandir",
   "version": "4.0.0",
   "description": "Read a directory recursively.",
   "main": "./dist/package.min.mjs",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anio-node-foundation/fs-scandir.git"
+    "url": "git+https://github.com/anio-fs-org/scandir.git"
   },
   "devDependencies": {
     "@anio-node-foundation/fs-api": "^3.0.0",
