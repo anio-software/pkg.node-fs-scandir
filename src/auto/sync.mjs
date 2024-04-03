@@ -54,6 +54,7 @@ function scandir(fs_object, root_dir, relative_entry_dir, options) {
 export default function(fs_object, root_dir, {
 	callback = null,
 	reverse = false,
+	sorted = false,
 	filter = null
 } = {}) {
 	let entries = []
@@ -61,6 +62,12 @@ export default function(fs_object, root_dir, {
 	const resolved_root_path = fs_object.realpath(root_dir)
 
 	scandir(fs_object, resolved_root_path, ".", options)
+
+	if (sorted) {
+		entries.sort((a, b) => {
+			return a.relative_path.localeCompare(b.relative_path, "en")
+		})
+	}
 
 	return typeof callback === "function" ? null : entries
 }
