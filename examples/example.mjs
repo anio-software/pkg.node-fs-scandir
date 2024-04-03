@@ -1,4 +1,4 @@
-import nodeFsScandir from "../src/index.mjs"
+import {scandir, scandirSync} from "../src/index.mjs"
 
 /*
   {
@@ -9,9 +9,9 @@ import nodeFsScandir from "../src/index.mjs"
 */
 
 console.log(
-	await nodeFsScandir("examples")
+	await scandir("examples")
 )
 
 console.log(
-	nodeFsScandir.sync("examples")
+	scandirSync("examples")
 )
