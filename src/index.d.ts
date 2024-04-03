@@ -76,8 +76,8 @@ declare type ScandirOptions = {
  * @return
  * Array of entries or `null` if `callback` option was provided.
  */
-export function scandir(path : string, options : ScandirOptions) : Promise<Array<ScandirEntry>>
-export function scandir(path : string, options : ScandirOptions) : null
+export function scandir(path : string, options : ScandirOptions) : Promise<ScandirEntry[]>
+export function scandir(path : string, options : ScandirOptions) : Promise<null>
 
 /**
  * @brief Synchronously scan a directory.
@@ -107,5 +107,5 @@ export function scandir(path : string, options : ScandirOptions) : null
  * @return
  * Array of entries or `null` if `callback` option was provided.
  */
-export function scandirSync(path : string, options : ScandirOptions) : Array<ScandirEntry>
+export function scandirSync(path : string, options : ScandirOptions) : ScandirEntry[]
 export function scandirSync(path : string, options : ScandirOptions) : null
