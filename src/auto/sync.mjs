@@ -33,7 +33,13 @@ function scandir(fs_object, root_dir, relative_entry_dir, options) {
 				return
 			}
 
-			options.entries.push(data)
+			if (typeof options.map === "function") {
+				const {map} = options
+
+				options.entries.push(map(data))
+			} else {
+				options.entries.push(data)
+			}
 		}
 
 		const recurse = () => {
@@ -55,10 +61,11 @@ export default function(fs_object, root_dir, {
 	callback = null,
 	reverse = false,
 	sorted = false,
-	filter = null
+	filter = null,
+	map = null
 } = {}) {
 	let entries = []
-	const options = {callback, reverse, filter, entries}
+	const options = {callback, reverse, filter, map, entries}
 	const resolved_root_path = fs_object.realpath(root_dir)
 
 	scandir(fs_object, resolved_root_path, ".", options)

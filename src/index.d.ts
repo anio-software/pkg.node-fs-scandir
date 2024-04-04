@@ -33,6 +33,13 @@ declare type ScandirOptions = {
 
 	/**
 	 * @description
+	 * This option can be used to map entries.
+	 */
+	map(entry : ScandirEntry) : any;
+	map(entry : ScandirEntry) : Promise<any>;
+
+	/**
+	 * @description
 	 * This flag controls whether to first report directories (default)
 	 * or files.
 	 */
@@ -65,6 +72,10 @@ declare type ScandirOptions = {
  * on the return value of the function provided.
  * Note: the specified function can be asynchronous.
  * 
+ * "map"
+ * If this property is set, maps the entries with the provided function.
+ * Note: the specified function can be asynchronous.
+ * 
  * "reverse"
  * Sets the order in which scandir reports entries.
  * `true` means report directories before reporting files.
@@ -95,6 +106,9 @@ export function scandir(path : string, options : ScandirOptions) : Promise<null>
  * "filter"
  * If this property is set, instructs scandir to filter entries based
  * on the return value of the function provided.
+ * 
+ * "map"
+ * If this property is set, maps the entries with the provided function.
  * 
  * "reverse"
  * Sets the order in which scandir reports entries.

@@ -7,6 +7,7 @@ const asyncToSync = {
 	"const handle_current_entry = async () => {": "const handle_current_entry = () => {",
 	"await options.filter(data)": "options.filter(data)",
 	"await options.callback(data)": "options.callback(data)",
+	"await map(data)": "map(data)",
 	"const recurse = async () => {": "const recurse = () => {",
 	"await scandir(": "scandir(",
 	"await recurse()": "recurse()",
