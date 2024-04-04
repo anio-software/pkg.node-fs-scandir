@@ -28,8 +28,8 @@ declare type ScandirOptions = {
 	 * @description
 	 * This option can be set to filter entries.
 	 */
-	filter(entry : ScandirEntry) : bool;
-	filter(entry : ScandirEntry) : Promise<bool>;
+	filter(entry : ScandirEntry) : boolean;
+	filter(entry : ScandirEntry) : Promise<boolean>;
 
 	/**
 	 * @description
