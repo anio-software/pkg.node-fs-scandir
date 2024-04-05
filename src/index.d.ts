@@ -1,6 +1,6 @@
-declare type ScandirEntryType = "dir" | "file" | "link"
+export type ScandirEntryType = "dir" | "file" | "link"
 
-declare type ScandirEntry = {
+export type ScandirEntry = {
 	/**
 	 * @brief The type of the entry, can be "dir", "file" or "link".
 	 */
@@ -15,7 +15,7 @@ declare type ScandirEntry = {
 	relative_path : string;
 }
 
-declare type ScandirOptions = {
+export type ScandirOptions = {
 	/**
 	 * @description
 	 * If this option is set, instead of returning all entries as
