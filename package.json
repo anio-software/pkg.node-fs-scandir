@@ -11,8 +11,8 @@
     "url": "git+https://github.com/anio-fs-org/scandir.git"
   },
   "devDependencies": {
-    "@anio-fs/api": "^4.0.0",
-    "@vipen/target-js": "^0.14.0",
+    "@anio-fs/api": "^5.0.2",
+    "@vipen/target-js": "^0.17.0",
     "vipen": "^0.2.1"
   },
   "scripts": {
