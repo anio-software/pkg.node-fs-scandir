@@ -1,6 +1,6 @@
 {
   "name": "@anio-fs/scandir",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "Read a directory recursively.",
   "main": "./dist/package.min.mjs",
   "typings": "./dist/index.d.ts",
