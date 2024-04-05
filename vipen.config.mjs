@@ -1,9 +1,10 @@
 import {generateFromTemplate} from "vipen/autogenerate"
 
 const asyncToSync = {
+	"import {readdir, lstat, realpath} from \"@anio-fs/api/async\"": "import {readdir, lstat, realpath} from \"@anio-fs/api/sync\"",
 	"async function scandir": "function scandir",
-	"await fs_object.readdir": "fs_object.readdir",
-	"await fs_object.lstat": "fs_object.lstat",
+	"await readdir": "readdir",
+	"await lstat": "lstat",
 	"const handle_current_entry = async () => {": "const handle_current_entry = () => {",
 	"await options.filter(data)": "options.filter(data)",
 	"await options.callback(data)": "options.callback(data)",
@@ -13,7 +14,7 @@ const asyncToSync = {
 	"await recurse()": "recurse()",
 	"await handle_current_entry()": "handle_current_entry()",
 	"export default async function": "export default function",
-	"await fs_object.realpath(": "fs_object.realpath("
+	"await realpath(": "realpath("
 }
 
 export default {

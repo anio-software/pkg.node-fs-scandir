@@ -1,14 +1,15 @@
+import {readdir, lstat, realpath} from "@anio-fs/api/sync"
 import path from "node:path"
 
-function scandir(fs_object, root_dir, relative_entry_dir, options) {
-	const entries = fs_object.readdir(
+function scandir(root_dir, relative_entry_dir, options) {
+	const entries = readdir(
 		path.join(root_dir, relative_entry_dir)
 	)
 
 	for (const entry of entries) {
 		const absolute_path = path.join(root_dir, relative_entry_dir, entry)
 		const relative_path = path.join(relative_entry_dir, entry)
-		const stats = fs_object.lstat(absolute_path)
+		const stats = lstat(absolute_path)
 
 		let type = "file"
 
@@ -45,7 +46,7 @@ function scandir(fs_object, root_dir, relative_entry_dir, options) {
 		const recurse = () => {
 			if (type !== "dir") return
 
-			scandir(fs_object, root_dir, relative_path, options)
+			scandir(root_dir, relative_path, options)
 		}
 
 		if (options.reverse === true) recurse()
@@ -57,7 +58,7 @@ function scandir(fs_object, root_dir, relative_entry_dir, options) {
 	}
 }
 
-export default function(fs_object, root_dir, {
+export default function(root_dir, {
 	callback = null,
 	reverse = false,
 	sorted = false,
@@ -66,9 +67,9 @@ export default function(fs_object, root_dir, {
 } = {}) {
 	let entries = []
 	const options = {callback, reverse, filter, map, entries}
-	const resolved_root_path = fs_object.realpath(root_dir)
+	const resolved_root_path = realpath(root_dir)
 
-	scandir(fs_object, resolved_root_path, ".", options)
+	scandir(resolved_root_path, ".", options)
 
 	if (sorted) {
 		entries.sort((a, b) => {
