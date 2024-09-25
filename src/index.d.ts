@@ -13,6 +13,10 @@ export type ScandirEntry = {
 	 * @brief Relative path to the entry.
 	 */
 	relative_path : string;
+	/**
+	 * @brief Basename of the entry.
+	 */
+	basename : string;
 }
 
 export type ScandirOptions = {

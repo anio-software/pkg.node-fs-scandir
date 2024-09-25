@@ -20,7 +20,12 @@ function scandir(root_dir, relative_entry_dir, options) {
 		}
 
 		const handle_current_entry = () => {
-			const data = {type, relative_path, absolute_path}
+			const data = {
+				type,
+				relative_path,
+				absolute_path,
+				basename: entry
+			}
 
 			if (typeof options.filter === "function") {
 				const keep = options.filter(data)
