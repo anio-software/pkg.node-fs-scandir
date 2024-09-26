@@ -22,9 +22,9 @@ function scandir(root_dir, relative_entry_dir, options) {
 		const handle_current_entry = () => {
 			const data = {
 				type,
+				name: entry,
 				relative_path,
-				absolute_path,
-				name: entry
+				absolute_path
 			}
 
 			if (typeof options.filter === "function") {
