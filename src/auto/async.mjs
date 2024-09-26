@@ -35,6 +35,9 @@ async function scandir(root_dir, relative_entry_dir, options) {
 				type,
 				parents: parents(relative_path),
 				name: entry,
+				path: path.join(
+					options.n_root_dir, relative_path
+				),
 				relative_path,
 				absolute_path
 			}
@@ -98,6 +101,7 @@ export default async function(root_dir, {
 	let entries = []
 
 	const options = {
+		n_root_dir: path.normalize(root_dir),
 		callback,
 		reverse,
 		filter,

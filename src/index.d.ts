@@ -6,6 +6,10 @@ export type ScandirEntry = {
 	 */
 	type : ScandirEntryType;
 	/**
+	 * @brief Relative path (including the initial root directory) to the entry.
+	 */
+	path : string;
+	/**
 	 * @brief Absolute path to the entry.
 	 */
 	absolute_path : string;
