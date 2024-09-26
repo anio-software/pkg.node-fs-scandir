@@ -16,7 +16,7 @@ export type ScandirEntry = {
 	/**
 	 * @brief Basename of the entry.
 	 */
-	basename : string;
+	name : string;
 }
 
 export type ScandirOptions = {

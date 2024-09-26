@@ -24,7 +24,7 @@ async function scandir(root_dir, relative_entry_dir, options) {
 				type,
 				relative_path,
 				absolute_path,
-				basename: entry
+				name: entry
 			}
 
 			if (typeof options.filter === "function") {
