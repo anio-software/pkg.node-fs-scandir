@@ -6,7 +6,7 @@ export type ScandirEntry = {
 	 */
 	type : ScandirEntryType;
 	/**
-	 * @brief Relative path (including the initial root directory) to the entry.
+	 * @brief Normalized relative path to the entry joined with the initial root directory.
 	 */
 	path : string;
 	/**
