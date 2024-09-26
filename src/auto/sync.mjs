@@ -96,7 +96,15 @@ export default function(root_dir, {
 	}
 
 	let entries = []
-	const options = {callback, reverse, filter, map, entries}
+
+	const options = {
+		callback,
+		reverse,
+		filter,
+		map,
+		entries
+	}
+
 	const resolved_root_path = realpath(root_dir)
 
 	scandir(resolved_root_path, ".", options)

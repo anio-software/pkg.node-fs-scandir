@@ -96,7 +96,15 @@ export default async function(root_dir, {
 	}
 
 	let entries = []
-	const options = {callback, reverse, filter, map, entries}
+
+	const options = {
+		callback,
+		reverse,
+		filter,
+		map,
+		entries
+	}
+
 	const resolved_root_path = await realpath(root_dir)
 
 	await scandir(resolved_root_path, ".", options)
