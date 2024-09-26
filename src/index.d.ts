@@ -17,6 +17,10 @@ export type ScandirEntry = {
 	 * @brief Basename of the entry.
 	 */
 	name : string;
+	/**
+	 * @brief Parent directories.
+	 */
+	parents: Array<string>;
 }
 
 export type ScandirOptions = {

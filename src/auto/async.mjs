@@ -1,6 +1,16 @@
 import {readdir, lstat, realpath} from "@anio-fs/api/async"
 import path from "node:path"
 
+function parents(relative_path) {
+	let parents = path.dirname(relative_path).split(path.sep)
+
+	if (parents.length === 1 && parents[0] === ".") {
+		return []
+	}
+
+	return parents
+}
+
 async function scandir(root_dir, relative_entry_dir, options) {
 	const entries = await readdir(
 		path.join(root_dir, relative_entry_dir)
@@ -22,6 +32,7 @@ async function scandir(root_dir, relative_entry_dir, options) {
 		const handle_current_entry = async () => {
 			const data = {
 				type,
+				parents: parents(relative_path),
 				name: entry,
 				relative_path,
 				absolute_path
