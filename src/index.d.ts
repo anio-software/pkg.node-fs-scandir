@@ -92,6 +92,10 @@ export type ScandirOptions = {
  * If set, sorts entries with `localCompare`.
  * This option has no effect if `callback` was specified.
  * 
+ * "allow_missing_dir"
+ * Allow entry directory path to not exist. Paths that are
+ * broken symlinks or non directories (like files) don't count.
+ * 
  * @return
  * Array of entries or `null` if `callback` option was provided.
  */
@@ -125,6 +129,10 @@ export function scandir(path : string, options : ScandirOptions) : Promise<null>
  * "sorted"
  * If set, sorts entries with `localCompare`.
  * This option has no effect if `callback` was specified.
+ * 
+ * "allow_missing_dir"
+ * Allow entry directory path to not exist. Paths that are
+ * broken symlinks or non directories (like files) don't count.
  * 
  * @return
  * Array of entries or `null` if `callback` option was provided.

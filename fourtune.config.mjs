@@ -2,6 +2,7 @@ import {generateFromTemplate} from "fourtune/autogenerate"
 
 const asyncToSync = {
 	"import {readdir, lstat, realpath} from \"@anio-fs/api/async\"": "import {readdir, lstat, realpath} from \"@anio-fs/api/sync\"",
+	"import {getTypeOfPath} from \"@anio-fs/path-type\"": "import {getTypeOfPathSync} from \"@anio-fs/path-type\"",
 	"async function scandir": "function scandir",
 	"await readdir": "readdir",
 	"await lstat": "lstat",
@@ -14,7 +15,8 @@ const asyncToSync = {
 	"await recurse()": "recurse()",
 	"await handle_current_entry()": "handle_current_entry()",
 	"export default async function": "export default function",
-	"await realpath(": "realpath("
+	"await realpath(": "realpath(",
+	"const path_type = await getTypeOfPath(root_dir)": "const path_type = getTypeOfPathSync(root_dir)"
 }
 
 export default {

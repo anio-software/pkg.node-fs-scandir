@@ -1,4 +1,5 @@
 import {readdir, lstat, realpath} from "@anio-fs/api/async"
+import {getTypeOfPath} from "@anio-fs/path-type"
 import path from "node:path"
 
 function parents(relative_path) {
@@ -75,12 +76,25 @@ async function scandir(root_dir, relative_entry_dir, options) {
 }
 
 export default async function(root_dir, {
+	allow_missing_dir = false,
 	callback = null,
 	reverse = false,
 	sorted = false,
 	filter = null,
 	map = null
 } = {}) {
+	//
+	// if this flag is set, we don't care if the
+	// folder "root_dir" does not exist.
+	//
+	if (allow_missing_dir === true) {
+		const path_type = await getTypeOfPath(root_dir)
+
+		if (path_type === false) {
+			return typeof callback === "function" ? null : []
+		}
+	}
+
 	let entries = []
 	const options = {callback, reverse, filter, map, entries}
 	const resolved_root_path = await realpath(root_dir)
