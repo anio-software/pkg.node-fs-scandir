@@ -27,7 +27,7 @@ export default {
 	type: "package",
 
 	autogenerate: {
-		"sync.mjs": generateFromTemplate("src/template.mjs", asyncToSync),
-		"async.mjs": generateFromTemplate("src/template.mjs", {})
+		"sync.mjs": generateFromTemplate("src/scandirFactory.mjs", asyncToSync),
+		"async.mjs": generateFromTemplate("src/scandirFactory.mjs", {})
 	}
 }
