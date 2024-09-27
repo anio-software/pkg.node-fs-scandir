@@ -22,12 +22,25 @@ const asyncToSync = {
 	"return await scandirFrontend(": "return scandirFrontend("
 }
 
+const syncTypes = {
+	"$$<verb>": "Synchronously",
+	"$<<note>>": ""
+}
+
+const asyncTypes = {
+	"$$<verb>": "Asynchronously",
+	"$<<note>>": "\n * Note: the specified function can be asynchronous."
+}
+
 export default {
 	realm: "js",
 	type: "package",
 
 	autogenerate: {
 		"export/scandirFactory.mjs": generateFromTemplate("src/scandirFactory.mjs", {}),
-		"export/scandirSyncFactory.mjs": generateFromTemplate("src/scandirFactory.mjs", asyncToSync)
+		"export/scandirSyncFactory.mjs": generateFromTemplate("src/scandirFactory.mjs", asyncToSync),
+
+		"export/scandir.d.ts": generateFromTemplate("src/scandir.d.ts", asyncTypes),
+		"export/scandirSync.d.ts": generateFromTemplate("src/scandir.d.ts", syncTypes)
 	}
 }
