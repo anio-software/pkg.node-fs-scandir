@@ -86,8 +86,12 @@ function scandirFrontend(root_dir, {
 	sorted = false,
 	filter = null,
 	map = null
-} = {}) {
+} = {}, context) {
 	const return_entries = typeof callback !== "function"
+
+	context.log.trace(
+		`Request scandir of path '${root_dir}'.`
+	)
 
 	//
 	// if this flag is set, we don't care if the
@@ -97,6 +101,10 @@ function scandirFrontend(root_dir, {
 		const path_type = getTypeOfPathSync(root_dir)
 
 		if (path_type === false) {
+			context.log.debug(
+				`Scandir cant' find '${root_dir}', ignoring error since allow_missing_dir was set to 'true'.`
+			)
+
 			return return_entries ? [] : null
 		}
 	}
