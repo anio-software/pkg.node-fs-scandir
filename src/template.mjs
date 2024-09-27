@@ -86,6 +86,8 @@ export default async function(root_dir, {
 	filter = null,
 	map = null
 } = {}) {
+	const return_entries = typeof callback !== "function"
+
 	//
 	// if this flag is set, we don't care if the
 	// folder "root_dir" does not exist.
@@ -94,7 +96,7 @@ export default async function(root_dir, {
 		const path_type = await getTypeOfPath(root_dir)
 
 		if (path_type === false) {
-			return typeof callback === "function" ? null : []
+			return return_entries ? [] : null
 		}
 	}
 
@@ -119,5 +121,5 @@ export default async function(root_dir, {
 		})
 	}
 
-	return typeof callback === "function" ? null : entries
+	return return_entries ? entries : []
 }
