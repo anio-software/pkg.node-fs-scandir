@@ -14,9 +14,12 @@ const asyncToSync = {
 	"await scandirImplementation(": "scandirImplementation(",
 	"await recurse()": "recurse()",
 	"await handle_current_entry()": "handle_current_entry()",
-	"export default async function": "export default function",
+	"async function scandirFrontend(": "function scandirFrontend(",
 	"await realpath(": "realpath(",
-	"const path_type = await getTypeOfPath(root_dir)": "const path_type = getTypeOfPathSync(root_dir)"
+	"const path_type = await getTypeOfPath(root_dir)": "const path_type = getTypeOfPathSync(root_dir)",
+	"export default function scandirFactory(": "export default function scandirSyncFactory(",
+	"return async function scandir(": "return function scandirSync(",
+	"return await scandirFrontend(": "return scandirFrontend("
 }
 
 export default {

@@ -78,7 +78,7 @@ function scandirImplementation(root_dir, relative_entry_dir, options) {
 	}
 }
 
-export default function(root_dir, {
+function scandirFrontend(root_dir, {
 	allow_missing_dir = false,
 	callback = null,
 	reverse = false,
@@ -122,4 +122,10 @@ export default function(root_dir, {
 	}
 
 	return return_entries ? entries : []
+}
+
+export default function scandirSyncFactory(context = {}) {
+	return function scandirSync(root_dir, options = {}) {
+		return scandirFrontend(root_dir, options, context)
+	}
 }

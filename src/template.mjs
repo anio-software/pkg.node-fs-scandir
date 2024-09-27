@@ -78,7 +78,7 @@ async function scandirImplementation(root_dir, relative_entry_dir, options) {
 	}
 }
 
-export default async function(root_dir, {
+async function scandirFrontend(root_dir, {
 	allow_missing_dir = false,
 	callback = null,
 	reverse = false,
@@ -122,4 +122,10 @@ export default async function(root_dir, {
 	}
 
 	return return_entries ? entries : []
+}
+
+export default function scandirFactory(context = {}) {
+	return async function scandir(root_dir, options = {}) {
+		return await scandirFrontend(root_dir, options, context)
+	}
 }
