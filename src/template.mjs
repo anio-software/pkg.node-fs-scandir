@@ -12,7 +12,7 @@ function parents(relative_path) {
 	return parents
 }
 
-async function scandir(root_dir, relative_entry_dir, options) {
+async function scandirImplementation(root_dir, relative_entry_dir, options) {
 	const entries = await readdir(
 		path.join(root_dir, relative_entry_dir)
 	)
@@ -66,7 +66,7 @@ async function scandir(root_dir, relative_entry_dir, options) {
 		const recurse = async () => {
 			if (type !== "dir") return
 
-			await scandir(root_dir, relative_path, options)
+			await scandirImplementation(root_dir, relative_path, options)
 		}
 
 		if (options.reverse === true) await recurse()
@@ -111,7 +111,7 @@ export default async function(root_dir, {
 
 	const resolved_root_path = await realpath(root_dir)
 
-	await scandir(resolved_root_path, ".", options)
+	await scandirImplementation(resolved_root_path, ".", options)
 
 	if (sorted) {
 		entries.sort((a, b) => {
