@@ -8,6 +8,9 @@ import {scandir, scandirSync} from "@anio-fs/scandir"
 /*
   {
     type: 'file',
+    parents: [],
+    name: 'example.mjs',
+    path: 'examples/example.mjs',
     relative_path: 'example.mjs',
     absolute_path: '/some/path/example.mjs'
   }
