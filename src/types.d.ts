@@ -63,4 +63,11 @@ export type ScandirOptions = {
 	 * The default is `false`.
 	 */
 	sorted : boolean;
+
+	/**
+	 * @description
+	 * Specifies whether the entry path can be missing.
+	 * The default is `false`.
+	 */
+	allow_missing_dir : boolean;
 }
