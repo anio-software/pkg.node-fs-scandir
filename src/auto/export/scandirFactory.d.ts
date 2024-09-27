@@ -1,6 +1,6 @@
-import type {DefaultContextObject} from "@fourtune/realm-js"
+import type {DefaultContextObjectPlugs} from "@fourtune/realm-js"
 import scandir from "./scandir.d.ts"
 
 export default function(
-	context : DefaultContextObject
+	plugs : DefaultContextObjectPlugs
 ) : typeof scandir
