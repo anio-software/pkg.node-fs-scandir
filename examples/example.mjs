@@ -1,4 +1,8 @@
-import {scandir, scandirSync} from "../src/index.mjs"
+import scandirFactory from "../src/auto/export/scandirFactory.mjs"
+import scandirSyncFactory from "../src/auto/export/scandirSyncFactory.mjs"
+
+const scandir = scandirFactory()
+const scandirSync = scandirSyncFactory()
 
 /*
   {
