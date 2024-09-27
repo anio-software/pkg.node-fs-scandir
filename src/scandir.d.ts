@@ -38,5 +38,5 @@ import type {
  * @return
  * Array of entries or `null` if `callback` option was provided.
  */
-export default function(path : string, options : ScandirOptions) : Promise<ScandirEntry[]>
-export default function(path : string, options : ScandirOptions) : Promise<null>
+export default function(path : string, options : ScandirOptions) : $<<ret1>>
+export default function(path : string, options : ScandirOptions) : $<<ret2>>

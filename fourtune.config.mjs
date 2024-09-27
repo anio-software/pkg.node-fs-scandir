@@ -24,12 +24,16 @@ const asyncToSync = {
 
 const syncTypes = {
 	"$$<verb>": "Synchronously",
-	"$<<note>>": ""
+	"$<<note>>": "",
+	"$<<ret1>>": "ScandirEntry[]",
+	"$<<ret2>>": "null"
 }
 
 const asyncTypes = {
 	"$$<verb>": "Asynchronously",
-	"$<<note>>": "\n * Note: the specified function can be asynchronous."
+	"$<<note>>": "\n * Note: the specified function can be asynchronous.",
+	"$<<ret1>>": "Promise<ScandirEntry[]>",
+	"$<<ret2>>": "Promise<null>"
 }
 
 export default {
