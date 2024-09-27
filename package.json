@@ -2,8 +2,8 @@
   "name": "@anio-fs/scandir",
   "version": "5.2.0",
   "description": "Read a directory recursively.",
-  "main": "./dist/package.min.mjs",
-  "typings": "./dist/index.d.ts",
+  "main": "./dist/default/index.min.mjs",
+  "typings": "./dist/default/index.d.ts",
   "author": "Anio Software <info@anio.software>",
   "license": "MIT",
   "repository": {
