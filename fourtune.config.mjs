@@ -41,6 +41,13 @@ export default {
 		"export/scandirSyncFactory.mjs": generateFromTemplate("src/scandirFactory.mjs", asyncToSync),
 
 		"export/scandir.d.ts": generateFromTemplate("src/scandir.d.ts", asyncTypes),
-		"export/scandirSync.d.ts": generateFromTemplate("src/scandir.d.ts", syncTypes)
+		"export/scandirSync.d.ts": generateFromTemplate("src/scandir.d.ts", syncTypes),
+
+		"export/scandirFactory.d.ts": generateFromTemplate("src/scandirFactory.d.ts", {
+			"scandir$Sync": "scandir"
+		}),
+		"export/scandirSyncFactory.d.ts": generateFromTemplate("src/scandirFactory.d.ts", {
+			"scandir$Sync": "scandirSync"
+		})
 	}
 }
