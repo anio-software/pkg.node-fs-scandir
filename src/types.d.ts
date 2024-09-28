@@ -33,41 +33,41 @@ export type ScandirOptions = {
 	 * If this option is set, instead of returning all entries as
 	 * an array, "callback" is called for every entry.
 	 */
-	callback(entry : ScandirEntry) : void;
-	callback(entry : ScandirEntry) : Promise<void>;
+	callback?(entry : ScandirEntry) : void;
+	callback?(entry : ScandirEntry) : Promise<void>;
 
 	/**
 	 * @description
 	 * This option can be set to filter entries.
 	 */
-	filter(entry : ScandirEntry) : boolean;
-	filter(entry : ScandirEntry) : Promise<boolean>;
+	filter?(entry : ScandirEntry) : boolean;
+	filter?(entry : ScandirEntry) : Promise<boolean>;
 
 	/**
 	 * @description
 	 * This option can be used to map entries.
 	 */
-	map(entry : ScandirEntry) : any;
-	map(entry : ScandirEntry) : Promise<any>;
+	map?(entry : ScandirEntry) : any;
+	map?(entry : ScandirEntry) : Promise<any>;
 
 	/**
 	 * @description
 	 * This flag controls whether to first report directories (default)
 	 * or files.
 	 */
-	reverse : boolean;
+	reverse? : boolean;
 
 	/**
 	 * @description
 	 * Specifies whether returned array of entries should be sorted or not.
 	 * The default is `false`.
 	 */
-	sorted : boolean;
+	sorted? : boolean;
 
 	/**
 	 * @description
 	 * Specifies whether the entry path can be missing.
 	 * The default is `false`.
 	 */
-	allow_missing_dir : boolean;
+	allow_missing_dir? : boolean;
 }
