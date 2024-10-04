@@ -1,7 +1,7 @@
 import type {
 	ScandirEntry,
 	ScandirOptions
-} from "../../types.d.ts"
+} from "../../types.d.mts"
 
 /**
  * @brief Synchronously scan a directory.
