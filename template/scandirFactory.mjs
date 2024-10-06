@@ -1,6 +1,6 @@
 import {readdir, lstat, realpath} from "@anio-fs/api/async"
 import {getTypeOfPath} from "@anio-fs/path-type"
-import {createDefaultContext} from "@fourtune/realm-js"
+import {useContext} from "@fourtune/realm-js"
 import path from "node:path"
 
 function parents(relative_path) {
@@ -133,8 +133,8 @@ async function scandirFrontend(root_dir, {
 	return return_entries ? entries : []
 }
 
-export default function scandirFactory(stubs = {}) {
-	const context = createDefaultContext(stubs)
+export default function scandirFactory(context_or_options = {}) {
+	const context = useContext(context_or_options)
 
 	return async function scandir(root_dir, options = {}) {
 		return await scandirFrontend(root_dir, options, context)
