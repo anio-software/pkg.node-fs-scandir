@@ -79,6 +79,9 @@ function scandirImplementation(root_dir, relative_entry_dir, options) {
 	}
 }
 
+/**
+ * @param {import("@fourtune/realm-js").ContextInstanceType} context
+ */
 function scandirFrontend(root_dir, {
 	allow_missing_dir = false,
 	callback = null,
