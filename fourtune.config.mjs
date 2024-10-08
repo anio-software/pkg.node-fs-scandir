@@ -5,7 +5,7 @@ export default {
 	type: "package",
 
 	autogenerate: {
-		"export/scandirFactory.mjs": generateFromTemplate("template/scandirFactory.mjs", {}),
-		"export/scandirSyncFactory.mjs": generateFromTemplate("template/scandirFactory.mjs", {})
+		"export/scandirFactory.mts": generateFromTemplate("template/scandirFactory.mts", {}),
+		"export/scandirSyncFactory.mts": generateFromTemplate("template/scandirFactory.mts", {})
 	}
 }
