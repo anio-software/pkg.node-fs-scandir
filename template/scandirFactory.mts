@@ -1,9 +1,12 @@
 import {readdir, lstat, realpath} from "@anio-fs/api/async"
 import {getTypeOfPath} from "@anio-fs/path-type"
 import {useContext} from "@fourtune/realm-js"
+import type {ContextInstanceType} from "@fourtune/realm-js"
 import path from "node:path"
+import {PathType} from "@anio-fs/path-type"
+import type {ScandirEntry} from "../../types.d.mts"
 
-function parents(relative_path) {
+function parents(relative_path : string) : string[] {
 	let parents = path.dirname(relative_path).split(path.sep)
 
 	if (parents.length === 1 && parents[0] === ".") {
@@ -13,7 +16,11 @@ function parents(relative_path) {
 	return parents
 }
 
-async function scandirImplementation(root_dir, relative_entry_dir, options) {
+async function scandirImplementation(
+	root_dir : string,
+	relative_entry_dir : string,
+	options : any
+) : Promise<void> {
 	const entries = await readdir(
 		path.join(root_dir, relative_entry_dir)
 	)
@@ -23,17 +30,11 @@ async function scandirImplementation(root_dir, relative_entry_dir, options) {
 		const relative_path = path.join(relative_entry_dir, entry)
 		const stats = await lstat(absolute_path)
 
-		let type = "file"
-
-		if (stats.isSymbolicLink()) {
-			type = "link"
-		} else if (stats.isDirectory()) {
-			type = "dir"
-		}
+		const path_type = await getTypeOfPath(absolute_path)
 
 		const handle_current_entry = async () => {
-			const data = {
-				type,
+			const data : ScandirEntry = {
+				type: path_type,
 				parents: parents(relative_path),
 				name: entry,
 				path: path.join(
@@ -65,7 +66,7 @@ async function scandirImplementation(root_dir, relative_entry_dir, options) {
 		}
 
 		const recurse = async () => {
-			if (type !== "dir") return
+			if (path_type !== PathType.regularDir) return
 
 			await scandirImplementation(root_dir, relative_path, options)
 		}
@@ -79,17 +80,14 @@ async function scandirImplementation(root_dir, relative_entry_dir, options) {
 	}
 }
 
-/**
- * @param {import("@fourtune/realm-js").ContextInstanceType} context
- */
-async function scandirFrontend(root_dir, {
+async function scandirFrontend(root_dir : string, {
 	allow_missing_dir = false,
 	callback = null,
 	reverse = false,
 	sorted = false,
 	filter = null,
 	map = null
-} = {}, context) {
+} = {}, context : ContextInstanceType) : Promise<ScandirEntry[]|null> {
 	const return_entries = typeof callback !== "function"
 
 	context.log.trace(
@@ -103,7 +101,7 @@ async function scandirFrontend(root_dir, {
 	if (allow_missing_dir === true) {
 		const path_type = await getTypeOfPath(root_dir)
 
-		if (path_type === false) {
+		if (path_type === PathType.nonExisting) {
 			context.log.debug(
 				`Scandir cant' find '${root_dir}', ignoring error since allow_missing_dir was set to 'true'.`
 			)
@@ -112,7 +110,7 @@ async function scandirFrontend(root_dir, {
 		}
 	}
 
-	let entries = []
+	let entries : ScandirEntry[] = []
 
 	const options = {
 		n_root_dir: path.normalize(root_dir),
@@ -139,7 +137,7 @@ async function scandirFrontend(root_dir, {
 export default function scandirFactory(context_or_options = {}) {
 	const context = useContext(context_or_options)
 
-	return async function scandir(root_dir, options = {}) {
+	return async function scandir(root_dir : string, options = {}) {
 		return await scandirFrontend(root_dir, options, context)
 	}
 }

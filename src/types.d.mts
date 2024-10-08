@@ -1,10 +1,10 @@
-export type ScandirEntryType = "dir" | "file" | "link"
+import type {PathType} from "@anio-fs/path-type"
 
 export type ScandirEntry = {
 	/**
-	 * @brief The type of the entry, can be "dir", "file" or "link".
+	 * @brief The type of the entry.
 	 */
-	type : ScandirEntryType;
+	type : PathType;
 	/**
 	 * @brief Normalized relative path to the entry joined with the initial root directory.
 	 */
