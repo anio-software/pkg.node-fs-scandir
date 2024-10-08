@@ -1,5 +1,5 @@
-import {readdir, lstat, realpath} from "@anio-fs/api/sync"
-import {getTypeOfPathSync} from "@anio-fs/path-type"
+import {readdir, lstat, realpath} from "@anio-fs/api/async"
+import {getTypeOfPath} from "@anio-fs/path-type"
 import {useContext} from "@fourtune/realm-js"
 import path from "node:path"
 
@@ -13,15 +13,15 @@ function parents(relative_path) {
 	return parents
 }
 
-function scandirImplementation(root_dir, relative_entry_dir, options) {
-	const entries = readdir(
+async function scandirImplementation(root_dir, relative_entry_dir, options) {
+	const entries = await readdir(
 		path.join(root_dir, relative_entry_dir)
 	)
 
 	for (const entry of entries) {
 		const absolute_path = path.join(root_dir, relative_entry_dir, entry)
 		const relative_path = path.join(relative_entry_dir, entry)
-		const stats = lstat(absolute_path)
+		const stats = await lstat(absolute_path)
 
 		let type = "file"
 
@@ -31,7 +31,7 @@ function scandirImplementation(root_dir, relative_entry_dir, options) {
 			type = "dir"
 		}
 
-		const handle_current_entry = () => {
+		const handle_current_entry = async () => {
 			const data = {
 				type,
 				parents: parents(relative_path),
@@ -44,13 +44,13 @@ function scandirImplementation(root_dir, relative_entry_dir, options) {
 			}
 
 			if (typeof options.filter === "function") {
-				const keep = options.filter(data)
+				const keep = await options.filter(data)
 
 				if (keep !== true) return
 			}
 
 			if (typeof options.callback === "function") {
-				options.callback(data)
+				await options.callback(data)
 
 				return
 			}
@@ -58,31 +58,31 @@ function scandirImplementation(root_dir, relative_entry_dir, options) {
 			if (typeof options.map === "function") {
 				const {map} = options
 
-				options.entries.push(map(data))
+				options.entries.push(await map(data))
 			} else {
 				options.entries.push(data)
 			}
 		}
 
-		const recurse = () => {
+		const recurse = async () => {
 			if (type !== "dir") return
 
-			scandirImplementation(root_dir, relative_path, options)
+			await scandirImplementation(root_dir, relative_path, options)
 		}
 
-		if (options.reverse === true) recurse()
+		if (options.reverse === true) await recurse()
 
-		handle_current_entry()
+		await handle_current_entry()
 
 		// written this way so "if statement" has same length as options.reverse === true
-		if (options.reverse !== true) recurse()
+		if (options.reverse !== true) await recurse()
 	}
 }
 
 /**
  * @param {import("@fourtune/realm-js").ContextInstanceType} context
  */
-function scandirFrontend(root_dir, {
+async function scandirFrontend(root_dir, {
 	allow_missing_dir = false,
 	callback = null,
 	reverse = false,
@@ -101,7 +101,7 @@ function scandirFrontend(root_dir, {
 	// folder "root_dir" does not exist.
 	//
 	if (allow_missing_dir === true) {
-		const path_type = getTypeOfPathSync(root_dir)
+		const path_type = await getTypeOfPath(root_dir)
 
 		if (path_type === false) {
 			context.log.debug(
@@ -123,9 +123,9 @@ function scandirFrontend(root_dir, {
 		entries
 	}
 
-	const resolved_root_path = realpath(root_dir)
+	const resolved_root_path = await realpath(root_dir)
 
-	scandirImplementation(resolved_root_path, ".", options)
+	await scandirImplementation(resolved_root_path, ".", options)
 
 	if (sorted) {
 		entries.sort((a, b) => {
@@ -136,10 +136,10 @@ function scandirFrontend(root_dir, {
 	return return_entries ? entries : []
 }
 
-export default function scandirSyncFactory(context_or_options = {}) {
+export default function scandirFactory(context_or_options = {}) {
 	const context = useContext(context_or_options)
 
-	return function scandirSync(root_dir, options = {}) {
-		return scandirFrontend(root_dir, options, context)
+	return async function scandir(root_dir, options = {}) {
+		return await scandirFrontend(root_dir, options, context)
 	}
 }
