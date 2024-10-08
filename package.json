@@ -1,5 +1,6 @@
 {
   "name": "@anio-fs/scandir",
+  "type": "module",
   "version": "5.2.0",
   "description": "Read a directory recursively.",
   "author": "Anio Software <info@anio.software>",
