@@ -1,4 +1,4 @@
-import {readdir, lstat, realpath} from "@anio-fs/api/async"
+import {readdir, realpath} from "@anio-fs/api/async"
 import {getTypeOfPath} from "@anio-fs/path-type"
 import {useContext} from "@fourtune/realm-js"
 import type {ContextInstanceType} from "@fourtune/realm-js"
@@ -28,7 +28,6 @@ async function scandirImplementation(
 	for (const entry of entries) {
 		const absolute_path = path.join(root_dir, relative_entry_dir, entry)
 		const relative_path = path.join(relative_entry_dir, entry)
-		const stats = await lstat(absolute_path)
 
 		const path_type = await getTypeOfPath(absolute_path)
 
