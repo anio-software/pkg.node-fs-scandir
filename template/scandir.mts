@@ -45,8 +45,8 @@ const fn = factory()
  * @return
  * Array of entries or `null` if `callback` option was provided.
  */
-export default async function(path : string, options : ScandirOptions) : Promise<ScandirEntry[]|null> {
-//export default function(path : string, options : ScandirOptions) : ScandirEntry[]|null {
+export default async function(path : string, options? : ScandirOptions) : Promise<ScandirEntry[]|null> {
+//export default function(path : string, options? : ScandirOptions) : ScandirEntry[]|null {
 	return await fn(path, options)
 //	return fn(path, options)
 }

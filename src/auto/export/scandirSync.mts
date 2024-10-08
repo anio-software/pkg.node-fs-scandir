@@ -42,6 +42,6 @@ const fn = factory()
  * @return
  * Array of entries or `null` if `callback` option was provided.
  */
-export default function(path : string, options : ScandirOptions) : ScandirEntry[]|null {
+export default function(path : string, options? : ScandirOptions) : ScandirEntry[]|null {
 	return fn(path, options)
 }
