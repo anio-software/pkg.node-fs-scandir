@@ -1,5 +1,5 @@
 import {readdir, realpath} from "@anio-fs/api/async"
-import {getTypeOfPath} from "@anio-fs/path-type"
+import {getTypeOfPathFactory} from "@anio-fs/path-type"
 import {useContext} from "@fourtune/realm-js"
 import type {UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
 import path from "node:path"
@@ -20,8 +20,10 @@ function parents(relative_path : string) : string[] {
 async function scandirImplementation(
 	root_dir : string,
 	relative_entry_dir : string,
-	options : any
+	options : any,
+	dependencies : any
 ) : Promise<void> {
+	const {getTypeOfPath} = dependencies
 	const entries = await readdir(
 		path.join(root_dir, relative_entry_dir)
 	)
@@ -68,7 +70,7 @@ async function scandirImplementation(
 		const recurse = async () => {
 			if (path_type !== PathType.regularDir) return
 
-			await scandirImplementation(root_dir, relative_path, options)
+			await scandirImplementation(root_dir, relative_path, options, dependencies)
 		}
 
 		if (options.reverse === true) await recurse()
@@ -87,7 +89,9 @@ async function scandirFrontend(root_dir : string, {
 	sorted = false,
 	filter = null,
 	map = null
-} : ScandirOptions = {}, context : ContextInstanceType) : Promise<ScandirEntry[]|null> {
+} : ScandirOptions = {}, context : ContextInstanceType, dependencies : any) : Promise<ScandirEntry[]|null> {
+	const {getTypeOfPath} = dependencies
+
 	const return_entries = typeof callback !== "function"
 
 	context.log.trace(
@@ -123,7 +127,7 @@ async function scandirFrontend(root_dir : string, {
 
 	const resolved_root_path = await realpath(root_dir)
 
-	await scandirImplementation(resolved_root_path, ".", options)
+	await scandirImplementation(resolved_root_path, ".", options, dependencies)
 
 	if (sorted) {
 		entries.sort((a, b) => {
@@ -137,7 +141,11 @@ async function scandirFrontend(root_dir : string, {
 export default function(context_or_options : UsableContextType = {}) : typeof fn {
 	const context = useContext(context_or_options)
 
+	const dependencies = {
+		getTypeOfPath: getTypeOfPathFactory(context_or_options)
+	}
+
 	return async function scandir(root_dir : string, options : ScandirOptions = {}) : ReturnType<typeof fn> {
-		return await scandirFrontend(root_dir, options, context)
+		return await scandirFrontend(root_dir, options, context, dependencies)
 	}
 }

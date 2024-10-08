@@ -1,5 +1,5 @@
 import {readdir, realpath} from "@anio-fs/api/sync"
-import {getTypeOfPathSync as getTypeOfPath} from "@anio-fs/path-type"
+import {getTypeOfPathSyncFactory as getTypeOfPathFactory} from "@anio-fs/path-type"
 import {useContext} from "@fourtune/realm-js"
 import type {UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
 import path from "node:path"
@@ -20,8 +20,10 @@ function parents(relative_path : string) : string[] {
 function scandirImplementation(
 	root_dir : string,
 	relative_entry_dir : string,
-	options : any
+	options : any,
+	dependencies : any
 ) : void {
+	const {getTypeOfPath} = dependencies
 	const entries = readdir(
 		path.join(root_dir, relative_entry_dir)
 	)
@@ -68,7 +70,7 @@ function scandirImplementation(
 		const recurse = () => {
 			if (path_type !== PathType.regularDir) return
 
-			scandirImplementation(root_dir, relative_path, options)
+			scandirImplementation(root_dir, relative_path, options, dependencies)
 		}
 
 		if (options.reverse === true) recurse()
@@ -87,7 +89,9 @@ function scandirFrontend(root_dir : string, {
 	sorted = false,
 	filter = null,
 	map = null
-} : ScandirOptions = {}, context : ContextInstanceType) : ScandirEntry[]|null {
+} : ScandirOptions = {}, context : ContextInstanceType, dependencies : any) : ScandirEntry[]|null {
+	const {getTypeOfPath} = dependencies
+
 	const return_entries = typeof callback !== "function"
 
 	context.log.trace(
@@ -123,7 +127,7 @@ function scandirFrontend(root_dir : string, {
 
 	const resolved_root_path = realpath(root_dir)
 
-	scandirImplementation(resolved_root_path, ".", options)
+	scandirImplementation(resolved_root_path, ".", options, dependencies)
 
 	if (sorted) {
 		entries.sort((a, b) => {
@@ -137,7 +141,11 @@ function scandirFrontend(root_dir : string, {
 export default function(context_or_options : UsableContextType = {}) : typeof fn {
 	const context = useContext(context_or_options)
 
+	const dependencies = {
+		getTypeOfPath: getTypeOfPathFactory(context_or_options)
+	}
+
 	return function scandirSync(root_dir : string, options : ScandirOptions = {}) : ReturnType<typeof fn> {
-		return scandirFrontend(root_dir, options, context)
+		return scandirFrontend(root_dir, options, context, dependencies)
 	}
 }
