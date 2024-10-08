@@ -134,7 +134,7 @@ function scandirFrontend(root_dir : string, {
 	return return_entries ? entries : []
 }
 
-export default function scandirFactory(context_or_options : UsableContextType = {}) : typeof fn {
+export default function(context_or_options : UsableContextType = {}) : typeof fn {
 	const context = useContext(context_or_options)
 
 	return function scandirSync(root_dir : string, options : ScandirOptions = {}) {
