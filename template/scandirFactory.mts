@@ -3,12 +3,16 @@ import {readdir, realpath} from "@anio-fs/api/async"
 import {getTypeOfPathFactory} from "@anio-fs/path-type"
 //import {getTypeOfPathSyncFactory as getTypeOfPathFactory} from "@anio-fs/path-type"
 import {useContext} from "@fourtune/realm-js"
-import type {UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
+import type {FunctionTypeFromFactoryType, UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
 import path from "node:path"
 import {PathType} from "@anio-fs/path-type"
 import type {ScandirEntry, ScandirOptions} from "../../types.d.mts"
 import fn from "./scandir.mts"
 //import fn from "./scandirSync.mts"
+
+interface Dependencies {
+	getTypeOfPath: FunctionTypeFromFactoryType<typeof getTypeOfPathFactory>
+}
 
 function parents(relative_path : string) : string[] {
 	let parents = path.dirname(relative_path).split(path.sep)
@@ -25,7 +29,7 @@ async function scandirImplementation(
 	root_dir : string,
 	relative_entry_dir : string,
 	options : any,
-	dependencies : any
+	dependencies : Dependencies
 ) : Promise<void> {
 //) : void {
 	const {getTypeOfPath} = dependencies
@@ -105,8 +109,8 @@ async function scandirFrontend(root_dir : string, {
 	sorted = false,
 	filter = null,
 	map = null
-} : ScandirOptions = {}, context : ContextInstanceType, dependencies : any) : Promise<ScandirEntry[]|null> {
-//} : ScandirOptions = {}, context : ContextInstanceType, dependencies : any) : ScandirEntry[]|null {
+} : ScandirOptions = {}, context : ContextInstanceType, dependencies : Dependencies) : Promise<ScandirEntry[]|null> {
+//} : ScandirOptions = {}, context : ContextInstanceType, dependencies : Dependencies) : ScandirEntry[]|null {
 	const {getTypeOfPath} = dependencies
 
 	const return_entries = typeof callback !== "function"
@@ -161,7 +165,7 @@ async function scandirFrontend(root_dir : string, {
 export default function(context_or_options : UsableContextType = {}) : typeof fn {
 	const context = useContext(context_or_options)
 
-	const dependencies = {
+	const dependencies : Dependencies = {
 		getTypeOfPath: getTypeOfPathFactory(context_or_options)
 	}
 
