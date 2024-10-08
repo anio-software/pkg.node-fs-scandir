@@ -157,8 +157,8 @@ async function scandirFrontend(root_dir : string, {
 export default function(context_or_options : UsableContextType = {}) : typeof fn {
 	const context = useContext(context_or_options)
 
-	return async function scandir(root_dir : string, options : ScandirOptions = {}) {
-//	return function scandirSync(root_dir : string, options : ScandirOptions = {}) {
+	return async function scandir(root_dir : string, options : ScandirOptions = {}) : ReturnType<typeof fn> {
+//	return function scandirSync(root_dir : string, options : ScandirOptions = {}) : ReturnType<typeof fn> {
 		return await scandirFrontend(root_dir, options, context)
 //		return scandirFrontend(root_dir, options, context)
 	}
