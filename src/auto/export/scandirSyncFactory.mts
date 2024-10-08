@@ -4,7 +4,7 @@ import {useContext} from "@fourtune/realm-js"
 import type {UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
 import path from "node:path"
 import {PathType} from "@anio-fs/path-type"
-import type {ScandirEntry} from "../../types.d.mts"
+import type {ScandirEntry, ScandirOptions} from "../../types.d.mts"
 
 function parents(relative_path : string) : string[] {
 	let parents = path.dirname(relative_path).split(path.sep)
@@ -86,7 +86,7 @@ function scandirFrontend(root_dir : string, {
 	sorted = false,
 	filter = null,
 	map = null
-} = {}, context : ContextInstanceType) : ScandirEntry[]|null {
+} : ScandirOptions = {}, context : ContextInstanceType) : ScandirEntry[]|null {
 	const return_entries = typeof callback !== "function"
 
 	context.log.trace(
@@ -136,7 +136,7 @@ function scandirFrontend(root_dir : string, {
 export default function scandirFactory(context_or_options : UsableContextType = {}) {
 	const context = useContext(context_or_options)
 
-	return function scandirSync(root_dir : string, options = {}) {
+	return function scandirSync(root_dir : string, options : ScandirOptions = {}) {
 		return scandirFrontend(root_dir, options, context)
 	}
 }
