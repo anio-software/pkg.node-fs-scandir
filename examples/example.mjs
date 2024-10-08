@@ -1,8 +1,16 @@
-import scandirFactory from "../src/auto/export/scandirFactory.mjs"
-import scandirSyncFactory from "../src/auto/export/scandirSyncFactory.mjs"
+import {
+	scandirFactory,
+	scandirSyncFactory
+} from "../dist/default/index.mjs"
 
-const scandir = scandirFactory()
-const scandirSync = scandirSyncFactory()
+const options = {
+	shouldLog() {
+		return true
+	}
+}
+
+const scandir = scandirFactory(options)
+const scandirSync = scandirSyncFactory(options)
 
 /*
   {
