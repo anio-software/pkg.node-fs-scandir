@@ -1,7 +1,7 @@
 import {readdir, realpath} from "@anio-fs/api/async"
 import {getTypeOfPath} from "@anio-fs/path-type"
 import {useContext} from "@fourtune/realm-js"
-import type {ContextInstanceType} from "@fourtune/realm-js"
+import type {UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
 import path from "node:path"
 import {PathType} from "@anio-fs/path-type"
 import type {ScandirEntry} from "../../types.d.mts"
@@ -133,7 +133,7 @@ async function scandirFrontend(root_dir : string, {
 	return return_entries ? entries : []
 }
 
-export default function scandirFactory(context_or_options = {}) {
+export default function scandirFactory(context_or_options : UsableContextType = {}) {
 	const context = useContext(context_or_options)
 
 	return async function scandir(root_dir : string, options = {}) {
