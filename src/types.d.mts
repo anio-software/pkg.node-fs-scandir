@@ -27,28 +27,40 @@ export type ScandirEntry = {
 	parents: Array<string>;
 }
 
+interface CallbackType {
+	(entry : ScandirEntry) : void;
+	(entry : ScandirEntry) : Promise<void>;
+}
+
+interface FilterType {
+	(entry : ScandirEntry) : boolean;
+	(entry : ScandirEntry) : Promise<boolean>;
+}
+
+interface MapType {
+	(entry : ScandirEntry) : any;
+	(entry : ScandirEntry) : Promise<any>;
+}
+
 export type ScandirOptions = {
 	/**
 	 * @description
 	 * If this option is set, instead of returning all entries as
 	 * an array, "callback" is called for every entry.
 	 */
-	callback?(entry : ScandirEntry) : void;
-	callback?(entry : ScandirEntry) : Promise<void>;
+	callback? : CallbackType | null
 
 	/**
 	 * @description
 	 * This option can be set to filter entries.
 	 */
-	filter?(entry : ScandirEntry) : boolean;
-	filter?(entry : ScandirEntry) : Promise<boolean>;
+	filter? : FilterType | null
 
 	/**
 	 * @description
 	 * This option can be used to map entries.
 	 */
-	map?(entry : ScandirEntry) : any;
-	map?(entry : ScandirEntry) : Promise<any>;
+	map? : MapType | null
 
 	/**
 	 * @description
