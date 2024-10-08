@@ -1,10 +1,12 @@
+import type {ScandirEntry} from "../../ScandirEntry.d.mts"
+
 import {readdir, realpath} from "@anio-fs/api/async"
 import {getTypeOfPathFactory} from "@anio-fs/path-type"
 import {useContext} from "@fourtune/realm-js"
 import type {FunctionTypeFromFactoryType, UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
 import path from "node:path"
 import {PathType} from "@anio-fs/path-type"
-import type {ScandirEntry, ScandirOptions} from "../../types.d.mts"
+import type {ScandirOptions} from "../../types.d.mts"
 import fn from "./scandir.mts"
 
 interface Dependencies {
