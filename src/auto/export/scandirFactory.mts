@@ -6,7 +6,7 @@ import {useContext} from "@fourtune/realm-js"
 import type {FunctionTypeFromFactoryType, UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
 import path from "node:path"
 import {PathType} from "@anio-fs/path-type"
-import type {ScandirOptions} from "../../types.d.mts"
+import type {ScandirOptions} from "../ScandirOptions.d.mts"
 import fn from "./scandir.mts"
 
 interface Dependencies {
