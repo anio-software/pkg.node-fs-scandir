@@ -1,4 +1,4 @@
-import type ScandirEntry from "../../export/ScandirEntry.d.mts"
+import type {ScandirEntry} from "../../export/ScandirEntry.d.mts"
 
 import {readdir, realpath} from "@anio-fs/api/async"
 import {getTypeOfPathFactory} from "@anio-fs/path-type"
@@ -7,7 +7,7 @@ import type {FunctionTypeFromFactoryType, UsableContextType, ContextInstanceType
 import path from "node:path"
 import {PathType} from "@anio-fs/path-type"
 import type {ScandirOptions} from "../ScandirOptions.d.mts"
-import fn from "./scandir.mts"
+import {scandir as fn} from "./scandir.mts"
 
 interface Dependencies {
 	getTypeOfPath: FunctionTypeFromFactoryType<typeof getTypeOfPathFactory>
@@ -144,7 +144,7 @@ async function scandirFrontend(root_dir : string, {
 	return return_entries ? entries : []
 }
 
-export default function(context_or_options : UsableContextType = {}) : typeof fn {
+export function scandirFactory(context_or_options : UsableContextType = {}) : typeof fn {
 	const context = useContext(context_or_options)
 
 	const dependencies : Dependencies = {

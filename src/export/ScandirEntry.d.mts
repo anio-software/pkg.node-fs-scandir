@@ -1,6 +1,6 @@
 import type {PathType} from "@anio-fs/path-type"
 
-type ScandirEntry = {
+export type ScandirEntry = {
 	/**
 	 * @brief The type of the entry.
 	 */
@@ -26,5 +26,3 @@ type ScandirEntry = {
 	 */
 	parents: Array<string>;
 }
-
-export default ScandirEntry
