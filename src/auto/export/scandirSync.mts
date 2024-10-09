@@ -1,5 +1,5 @@
 import type {ScandirEntryType} from "../../export/ScandirEntryType.d.mts"
-import type {ScandirOptionsType} from "../ScandirSyncOptionsType.d.mts"
+import type {ScandirSyncOptionsType} from "./ScandirSyncOptionsType.d.mts"
 
 import {scandirSyncFactory as factory} from "./scandirSyncFactory.mts"
 
@@ -40,6 +40,6 @@ const fn = factory()
  * @return
  * Array of entries or `null` if `callback` option was provided.
  */
-export function scandirSync(path : string, options? : ScandirOptionsType) : ScandirEntryType[]|null {
+export function scandirSync(path : string, options? : ScandirSyncOptionsType) : ScandirEntryType[]|null {
 	return fn(path, options)
 }

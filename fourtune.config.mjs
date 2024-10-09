@@ -11,7 +11,7 @@ export default {
 		"export/scandir.mts": generateSyncAsyncVariant("template/scandir.mts", "async"),
 		"export/scandirSync.mts": generateSyncAsyncVariant("template/scandir.mts", "sync"),
 
-		"ScandirOptionsType.d.mts": generateSyncAsyncVariant("template/ScandirOptionsType.d.mts", "async"),
-		"ScandirSyncOptionsType.d.mts": generateSyncAsyncVariant("template/ScandirOptionsType.d.mts", "sync"),
+		"export/ScandirOptionsType.d.mts": generateSyncAsyncVariant("template/ScandirOptionsType.d.mts", "async"),
+		"export/ScandirSyncOptionsType.d.mts": generateSyncAsyncVariant("template/ScandirOptionsType.d.mts", "sync"),
 	}
 }

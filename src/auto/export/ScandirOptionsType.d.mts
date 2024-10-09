@@ -1,4 +1,4 @@
-import type {ScandirEntryType} from "../export/ScandirEntryType.d.mts";
+import type {ScandirEntryType} from "../../export/ScandirEntryType.d.mts";
 
 interface CallbackType {
 	(entry : ScandirEntryType) : Promise<void>;

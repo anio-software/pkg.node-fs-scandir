@@ -1,4 +1,4 @@
-import type {ScandirEntryType} from "../export/ScandirEntryType.d.mts";
+import type {ScandirEntryType} from "../../export/ScandirEntryType.d.mts";
 
 interface CallbackType {
 	(entry : ScandirEntryType) : Promise<void>;
@@ -16,6 +16,7 @@ interface MapType {
 }
 
 export type ScandirOptionsType = {
+//export type ScandirSyncOptionsType = {
 	/**
 	 * @description
 	 * If this option is set, instead of returning all entries as

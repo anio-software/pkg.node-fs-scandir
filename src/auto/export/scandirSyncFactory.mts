@@ -6,7 +6,7 @@ import {useContext} from "@fourtune/realm-js"
 import type {FunctionTypeFromFactoryType, UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
 import path from "node:path"
 import {PathType} from "@anio-fs/path-type"
-import type {ScandirOptionsType} from "../ScandirSyncOptionsType.d.mts"
+import type {ScandirSyncOptionsType} from "./ScandirSyncOptionsType.d.mts"
 import {scandirSync as fn} from "./scandirSync.mts"
 
 interface Dependencies {
@@ -95,7 +95,7 @@ function scandirFrontend(root_dir : string, {
 	sorted = false,
 	filter = null,
 	map = null
-} : ScandirOptionsType = {}, context : ContextInstanceType, dependencies : Dependencies) : ScandirEntryType[]|null {
+} : ScandirSyncOptionsType = {}, context : ContextInstanceType, dependencies : Dependencies) : ScandirEntryType[]|null {
 	const {getTypeOfPath} = dependencies
 
 	const return_entries = typeof callback !== "function"
@@ -151,7 +151,7 @@ export function scandirSyncFactory(context_or_options : UsableContextType = {}) 
 		getTypeOfPath: getTypeOfPathFactory(context_or_options)
 	}
 
-	return function scandirSync(root_dir : string, options : ScandirOptionsType = {}) : ReturnType<typeof fn> {
+	return function scandirSync(root_dir : string, options : ScandirSyncOptionsType = {}) : ReturnType<typeof fn> {
 		return scandirFrontend(root_dir, options, context, dependencies)
 	}
 }
