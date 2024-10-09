@@ -1,18 +1,18 @@
-import type {ScandirEntry} from "../export/ScandirEntry.d.mts";
+import type {ScandirEntryType} from "../export/ScandirEntryType.d.mts";
 
 interface CallbackType {
-	(entry : ScandirEntry) : void;
+	(entry : ScandirEntryType) : Promise<void>;
 }
 
 interface FilterType {
-	(entry : ScandirEntry) : boolean;
+	(entry : ScandirEntryType) : Promise<boolean>;
 }
 
 interface MapType {
-	(entry : ScandirEntry) : any;
+	(entry : ScandirEntryType) : Promise<any>;
 }
 
-export type ScandirOptions = {
+export type ScandirOptionsType = {
 	/**
 	 * @description
 	 * If this option is set, instead of returning all entries as

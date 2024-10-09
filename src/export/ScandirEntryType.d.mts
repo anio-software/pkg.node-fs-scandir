@@ -1,6 +1,6 @@
 import type {PathType} from "@anio-fs/path-type"
 
-export type ScandirEntry = {
+export type ScandirEntryType = {
 	/**
 	 * @brief The type of the entry.
 	 */

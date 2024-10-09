@@ -1,4 +1,4 @@
-import type {ScandirEntry} from "../../export/ScandirEntry.d.mts"
+import type {ScandirEntryType} from "../../export/ScandirEntryType.d.mts"
 
 import {readdir, realpath} from "@anio-fs/api/sync"
 import {getTypeOfPathSyncFactory as getTypeOfPathFactory} from "@anio-fs/path-type"
@@ -6,7 +6,7 @@ import {useContext} from "@fourtune/realm-js"
 import type {FunctionTypeFromFactoryType, UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
 import path from "node:path"
 import {PathType} from "@anio-fs/path-type"
-import type {ScandirOptions} from "../ScandirSyncOptions.d.mts"
+import type {ScandirOptionsType} from "../ScandirSyncOptionsType.d.mts"
 import {scandirSync as fn} from "./scandirSync.mts"
 
 interface Dependencies {
@@ -41,7 +41,7 @@ function scandirImplementation(
 		const path_type = getTypeOfPath(absolute_path)
 
 		const handle_current_entry = async () => {
-			const data : ScandirEntry = {
+			const data : ScandirEntryType = {
 				type: path_type,
 				parents: parents(relative_path),
 				name: entry,
@@ -95,7 +95,7 @@ function scandirFrontend(root_dir : string, {
 	sorted = false,
 	filter = null,
 	map = null
-} : ScandirOptions = {}, context : ContextInstanceType, dependencies : Dependencies) : ScandirEntry[]|null {
+} : ScandirOptionsType = {}, context : ContextInstanceType, dependencies : Dependencies) : ScandirEntryType[]|null {
 	const {getTypeOfPath} = dependencies
 
 	const return_entries = typeof callback !== "function"
@@ -120,7 +120,7 @@ function scandirFrontend(root_dir : string, {
 		}
 	}
 
-	let entries : ScandirEntry[] = []
+	let entries : ScandirEntryType[] = []
 
 	const options = {
 		n_root_dir: path.normalize(root_dir),
@@ -151,7 +151,7 @@ export function scandirSyncFactory(context_or_options : UsableContextType = {}) 
 		getTypeOfPath: getTypeOfPathFactory(context_or_options)
 	}
 
-	return function scandirSync(root_dir : string, options : ScandirOptions = {}) : ReturnType<typeof fn> {
+	return function scandirSync(root_dir : string, options : ScandirOptionsType = {}) : ReturnType<typeof fn> {
 		return scandirFrontend(root_dir, options, context, dependencies)
 	}
 }
