@@ -1,4 +1,4 @@
-import type {ScandirEntry} from "../../ScandirEntry.d.mts"
+import type ScandirEntry from "../../export/ScandirEntry.d.mts"
 import type {ScandirOptions} from "../ScandirOptions.d.mts"
 
 import factory from "./scandirFactory.mts"

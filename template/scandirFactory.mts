@@ -1,4 +1,4 @@
-import type {ScandirEntry} from "../../ScandirEntry.d.mts"
+import type ScandirEntry from "../../export/ScandirEntry.d.mts"
 
 import {readdir, realpath} from "@anio-fs/api/async"
 //import {readdir, realpath} from "@anio-fs/api/sync"
