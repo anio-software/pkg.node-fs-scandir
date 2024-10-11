@@ -1,10 +1,20 @@
 import {ContextInstanceType} from "@fourtune/realm-js"
-import type {DependenciesType} from "./_DependenciesType.d.mts"
+import type {DependenciesType} from "#/auto/export/_DependenciesType.d.mts"
 
-import type {ScandirOptionsType} from "./ScandirOptionsType.d.mts"
+/* ############################################## */
+/* >>> import your standard dependencies here     */
+import type {ScandirOptionsType} from "#/auto/export/ScandirOptionsType.d.mts"
 
-import type {ScandirEntryType} from "../../export/ScandirEntryType.d.mts"
+import type {ScandirEntryType} from "#/export/ScandirEntryType.d.mts"
 
+import path from "node:path"
+import {PathType} from "@anio-fs/path-type"
+
+import {readdir, realpath} from "@anio-fs/api/async"
+/* ############################################## */
+
+/* ############################################## */
+/* >>> define and describe your function api here */
 export type ImplementationDocType = {
 	/**
 	 * @brief Asynchronously scan a directory.
@@ -43,11 +53,7 @@ export type ImplementationDocType = {
 	 */
 	(path : string, options? : ScandirOptionsType) : Promise<ScandirEntryType[]|null>
 }
-
-import path from "node:path"
-import {PathType} from "@anio-fs/path-type"
-
-import {readdir, realpath} from "@anio-fs/api/async"
+/* ############################################## */
 
 function parents(relative_path : string) : string[] {
 	let parents = path.dirname(relative_path).split(path.sep)
@@ -180,8 +186,20 @@ async function scandirFrontend(root_dir : string, {
 	return return_entries ? entries : null
 }
 
-export default async function(context : ContextInstanceType, dependencies : DependenciesType, path : string, options : ScandirOptionsType = {}) : Promise<ScandirEntryType[]|null> {
+export default async function(
+	context : ContextInstanceType,
+	dependencies : DependenciesType,
+	/* ############################################## */
+	/* >>> add additional parameters here             */
+	path : string,
+	options : ScandirOptionsType = {}
+	/* ############################################## */
+) : ReturnType<ImplementationDocType> {
 
+	/* ############################################## */
+	/* >>> implement your function here               */
 	return await scandirFrontend(path, options, context, dependencies)
+
+	/* ############################################## */
 
 }
