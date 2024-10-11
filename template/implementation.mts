@@ -1,21 +1,59 @@
+import {ContextInstanceType} from "@fourtune/realm-js"
+import type {DependenciesType} from "./_DependenciesType.d.mts"
+//import type {DependenciesType} from "./_DependenciesSyncType.d.mts"
+
+import type {ScandirOptionsType} from "./ScandirOptionsType.d.mts"
+//import type {ScandirSyncOptionsType} from "./ScandirSyncOptionsType.d.mts"
+
 import type {ScandirEntryType} from "../../export/ScandirEntryType.d.mts"
+
+export type ImplementationDocType = {
+	/**
+	 * @brief Asynchronously scan a directory.
+//	 * @brief Synchronously scan a directory.
+	 * @description
+	 * Asynchronously scans the directory located at `path`.
+//	 * Synchronously scans the directory located at `path`.
+	 * Returns all entries as an array if `callback` was not specified.
+	 * If `callback` was specified, this function will always return `null`.
+	 * @param path The directory to be scanned.
+	 * @param options The options parameter can contain the following properties:
+	 * 
+	 * "callback"
+	 * If this property is set, instead of returning an array of entries
+	 * scandir will call this callback instead. Callback may be asynchronous.
+	 * 
+	 * "filter"
+	 * If this property is set, instructs scandir to filter entries based
+	 * on the return value of the function provided. Callback may be asynchronous.
+	 * 
+	 * "map"
+	 * If this property is set, maps the entries with the provided function. Callback may be asynchronous.
+	 * 
+	 * "reverse"
+	 * Sets the order in which scandir reports entries.
+	 * `true` means report directories before reporting files.
+	 * 
+	 * "sorted"
+	 * If set, sorts entries with `localCompare`.
+	 * This option has no effect if `callback` was specified.
+	 * 
+	 * "allow_missing_dir"
+	 * Allow entry directory path to not exist. Paths that are
+	 * broken symlinks or non directories (like files) don't count.
+	 * 
+	 * @return
+	 * Array of entries or `null` if `callback` option was provided.
+	 */
+	(path : string, options? : ScandirOptionsType) : Promise<ScandirEntryType[]|null>
+//	(path : string, options? : ScandirSyncOptionsType) : ScandirEntryType[]|null
+}
+
+import path from "node:path"
+import {PathType} from "@anio-fs/path-type"
 
 import {readdir, realpath} from "@anio-fs/api/async"
 //import {readdir, realpath} from "@anio-fs/api/sync"
-import {getTypeOfPathFactory} from "@anio-fs/path-type"
-//import {getTypeOfPathSyncFactory as getTypeOfPathFactory} from "@anio-fs/path-type"
-import {useContext} from "@fourtune/realm-js"
-import type {FunctionTypeFromFactoryType, UsableContextType, ContextInstanceType} from "@fourtune/realm-js"
-import path from "node:path"
-import {PathType} from "@anio-fs/path-type"
-import type {ScandirOptionsType} from "./ScandirOptionsType.d.mts"
-//import type {ScandirSyncOptionsType} from "./ScandirSyncOptionsType.d.mts"
-import {scandir as fn} from "./scandir.mts"
-//import {scandirSync as fn} from "./scandirSync.mts"
-
-interface Dependencies {
-	getTypeOfPath: FunctionTypeFromFactoryType<typeof getTypeOfPathFactory>
-}
 
 function parents(relative_path : string) : string[] {
 	let parents = path.dirname(relative_path).split(path.sep)
@@ -32,7 +70,7 @@ async function scandirImplementation(
 	root_dir : string,
 	relative_entry_dir : string,
 	options : any,
-	dependencies : Dependencies
+	dependencies : DependenciesType
 ) : Promise<void> {
 //) : void {
 	const {getTypeOfPath} = dependencies
@@ -112,8 +150,8 @@ async function scandirFrontend(root_dir : string, {
 	sorted = false,
 	filter = null,
 	map = null
-} : ScandirOptionsType = {}, context : ContextInstanceType, dependencies : Dependencies) : Promise<ScandirEntryType[]|null> {
-//} : ScandirSyncOptionsType = {}, context : ContextInstanceType, dependencies : Dependencies) : ScandirEntryType[]|null {
+} : ScandirOptionsType = {}, context : ContextInstanceType, dependencies : DependenciesType) : Promise<ScandirEntryType[]|null> {
+//} : ScandirSyncOptionsType = {}, context : ContextInstanceType, dependencies : DependenciesType) : ScandirEntryType[]|null {
 	const {getTypeOfPath} = dependencies
 
 	const return_entries = typeof callback !== "function"
@@ -165,17 +203,10 @@ async function scandirFrontend(root_dir : string, {
 	return return_entries ? entries : []
 }
 
-export function scandirFactory(context_or_options : UsableContextType = {}) : typeof fn {
-//export function scandirSyncFactory(context_or_options : UsableContextType = {}) : typeof fn {
-	const context = useContext(context_or_options)
+export default async function(context : ContextInstanceType, dependencies : DependenciesType, path : string, options : ScandirOptionsType = {}) : Promise<ScandirEntryType[]|null> {
+//export default function(context : ContextInstanceType, dependencies : DependenciesType, path : string, options : ScandirSyncOptionsType = {}) : ScandirEntryType[]|null {
 
-	const dependencies : Dependencies = {
-		getTypeOfPath: getTypeOfPathFactory(context_or_options)
-	}
+	return await scandirFrontend(path, options, context, dependencies)
+//	return scandirFrontend(path, options, context, dependencies)
 
-	return async function scandir(root_dir : string, options : ScandirOptionsType = {}) : ReturnType<typeof fn> {
-//	return function scandirSync(root_dir : string, options : ScandirSyncOptionsType = {}) : ReturnType<typeof fn> {
-		return await scandirFrontend(root_dir, options, context, dependencies)
-//		return scandirFrontend(root_dir, options, context, dependencies)
-	}
 }
