@@ -1,14 +1,14 @@
 import type {ScandirEntryType} from "../../export/ScandirEntryType.d.mts";
 
-interface CallbackType {
+type CallbackType = {
 	(entry : ScandirEntryType) : void;
 }
 
-interface FilterType {
+type FilterType = {
 	(entry : ScandirEntryType) : boolean;
 }
 
-interface MapType {
+type MapType = {
 	(entry : ScandirEntryType) : any;
 }
 
