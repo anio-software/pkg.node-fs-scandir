@@ -177,7 +177,7 @@ function scandirFrontend(root_dir : string, {
 		})
 	}
 
-	return return_entries ? entries : []
+	return return_entries ? entries : null
 }
 
 export default function(context : ContextInstanceType, dependencies : DependenciesType, path : string, options : ScandirSyncOptionsType = {}) : ScandirEntryType[]|null {

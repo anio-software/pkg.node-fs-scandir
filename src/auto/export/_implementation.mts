@@ -177,7 +177,7 @@ async function scandirFrontend(root_dir : string, {
 		})
 	}
 
-	return return_entries ? entries : []
+	return return_entries ? entries : null
 }
 
 export default async function(context : ContextInstanceType, dependencies : DependenciesType, path : string, options : ScandirOptionsType = {}) : Promise<ScandirEntryType[]|null> {
