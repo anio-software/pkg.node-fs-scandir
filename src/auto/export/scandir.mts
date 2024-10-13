@@ -4,7 +4,7 @@
 import {scandirFactory as factory} from "#/auto/export/scandirFactory.mts"
 
 /* ImplementationDocType is needed to make doctypes work in LSP */
-import type {ImplementationDocType} from "#/auto/export/_implementation.mts"
+import type {ImplementationDocType} from "#/auto/export/_ImplementationDocType.d.mts"
 
 const impl = factory()
 

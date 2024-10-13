@@ -9,7 +9,7 @@ import type {DependenciesType} from "#/auto/export/_DependenciesType.d.mts"
 import implementation from "#/auto/export/_implementation.mts"
 
 /* needed to make doctypes work in LSP */
-import type {ImplementationDocType} from "#/auto/export/_implementation.mts"
+import type {ImplementationDocType} from "#/auto/export/_ImplementationDocType.d.mts"
 
 import {getTypeOfPathFactory} from "@anio-fs/path-type"
 
