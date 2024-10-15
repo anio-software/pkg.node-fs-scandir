@@ -1,18 +1,18 @@
 /* -------- required imports by template -------- */
 import type {ContextInstanceType} from "@fourtune/realm-js"
-import type {DependenciesType} from "#/auto/export/_DependenciesType.d.mts"
+import type {DependenciesType} from "#/auto/DependenciesSyncType.d.mts"
 
-import type {ImplementationDocType} from "#/auto/export/_ImplementationDocType.d.mts"
+import type {ImplementationDocType} from "#/auto/ImplementationSyncDocType.d.mts"
 /* -------- required imports by template -------- */
 
 import type {ScandirEntryType} from "#/export/ScandirEntryType.mjs"
 
-import type {ScandirOptionsType} from "#/auto/export/ScandirOptionsType.d.mts"
+import type {ScandirSyncOptionsType} from "#/auto/export/ScandirSyncOptionsType.d.mts"
 
 import path from "node:path"
 import {PathType} from "@anio-fs/path-type"
 
-import {readdir, realpath} from "@anio-fs/api/async"
+import {readdir, realpath} from "@anio-fs/api/sync"
 
 function parents(relative_path : string) : string[] {
 	let parents = path.dirname(relative_path).split(path.sep)
@@ -24,14 +24,14 @@ function parents(relative_path : string) : string[] {
 	return parents
 }
 
-async function scandirImplementation(
+function scandirImplementation(
 	root_dir : string,
 	relative_entry_dir : string,
 	options : any,
 	dependencies : DependenciesType
-) : Promise<void> {
+) : void {
 	const {getTypeOfPath} = dependencies
-	const entries = await readdir(
+	const entries = readdir(
 		path.join(root_dir, relative_entry_dir)
 	)
 
@@ -39,7 +39,7 @@ async function scandirImplementation(
 		const absolute_path = path.join(root_dir, relative_entry_dir, entry)
 		const relative_path = path.join(relative_entry_dir, entry)
 
-		const path_type = await getTypeOfPath(absolute_path)
+		const path_type = getTypeOfPath(absolute_path)
 
 		const handle_current_entry = async () => {
 			const data : ScandirEntryType = {
@@ -54,13 +54,13 @@ async function scandirImplementation(
 			}
 
 			if (typeof options.filter === "function") {
-				const keep = await options.filter(data)
+				const keep = options.filter(data)
 
 				if (keep !== true) return
 			}
 
 			if (typeof options.callback === "function") {
-				await options.callback(data)
+				options.callback(data)
 
 				return
 			}
@@ -68,35 +68,35 @@ async function scandirImplementation(
 			if (typeof options.map === "function") {
 				const {map} = options
 
-				options.entries.push(await map(data))
+				options.entries.push(map(data))
 			} else {
 				options.entries.push(data)
 			}
 		}
 
-		const recurse = async () => {
+		const recurse = () => {
 			if (path_type !== PathType.regularDir) return
 
-			await scandirImplementation(root_dir, relative_path, options, dependencies)
+			scandirImplementation(root_dir, relative_path, options, dependencies)
 		}
 
-		if (options.reverse === true) await recurse()
+		if (options.reverse === true) recurse()
 
-		await handle_current_entry()
+		handle_current_entry()
 
 		// written this way so "if statement" has same length as options.reverse === true
-		if (options.reverse !== true) await recurse()
+		if (options.reverse !== true) recurse()
 	}
 }
 
-async function scandirFrontend(root_dir : string, {
+function scandirFrontend(root_dir : string, {
 	allow_missing_dir = false,
 	callback = null,
 	reverse = false,
 	sorted = false,
 	filter = null,
 	map = null
-} : ScandirOptionsType = {}, context : ContextInstanceType, dependencies : DependenciesType) : Promise<ScandirEntryType[]|null> {
+} : ScandirSyncOptionsType = {}, context : ContextInstanceType, dependencies : DependenciesType) : ScandirEntryType[]|null {
 	const {getTypeOfPath} = dependencies
 
 	const return_entries = typeof callback !== "function"
@@ -110,7 +110,7 @@ async function scandirFrontend(root_dir : string, {
 	// folder "root_dir" does not exist.
 	//
 	if (allow_missing_dir === true) {
-		const path_type = await getTypeOfPath(root_dir)
+		const path_type = getTypeOfPath(root_dir)
 
 		if (path_type === PathType.nonExisting) {
 			context.log.debug(
@@ -132,9 +132,9 @@ async function scandirFrontend(root_dir : string, {
 		entries
 	}
 
-	const resolved_root_path = await realpath(root_dir)
+	const resolved_root_path = realpath(root_dir)
 
-	await scandirImplementation(resolved_root_path, ".", options, dependencies)
+	scandirImplementation(resolved_root_path, ".", options, dependencies)
 
 	if (sorted) {
 		entries.sort((a, b) => {
@@ -145,14 +145,14 @@ async function scandirFrontend(root_dir : string, {
 	return return_entries ? entries : null
 }
 
-export default async function(
+export default function(
 	context : ContextInstanceType,
 	dependencies : DependenciesType,
 	/* add additional parameters here */
 	path : string,
-	options? : ScandirOptionsType
+	options? : ScandirSyncOptionsType
 ) : ReturnType<ImplementationDocType> {
 
-	return await scandirFrontend(path, options, context, dependencies)
+	return scandirFrontend(path, options, context, dependencies)
 
 }
