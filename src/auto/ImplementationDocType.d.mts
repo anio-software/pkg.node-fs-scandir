@@ -1,7 +1,7 @@
 /* define and describe your function api here */
 import type {ScandirOptionsType} from "#/auto/export/ScandirOptionsType.d.mts"
 
-import type {ScandirEntryType} from "#/export/ScandirEntryType.mjs"
+import type {ScandirEntryType} from "#/export/ScandirEntryType.d.mts"
 
 export type ImplementationDocType = {
 	/**
