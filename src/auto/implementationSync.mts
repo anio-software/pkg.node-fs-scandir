@@ -5,7 +5,7 @@ import type {DependenciesType} from "#/auto/DependenciesSyncType.d.mts"
 import type {ImplementationDocType} from "#/auto/ImplementationSyncDocType.d.mts"
 /* -------- required imports by template -------- */
 
-import type {ScandirEntryType} from "#/export/ScandirEntryType.mjs"
+import type {ScandirEntryType} from "#/export/ScandirEntryType.d.mts"
 
 import type {ScandirSyncOptionsType} from "#/auto/export/ScandirSyncOptionsType.d.mts"
 
