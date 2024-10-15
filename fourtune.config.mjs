@@ -2,7 +2,7 @@ import {generateSyncAsyncVariant} from "fourtune/autogenerate"
 
 export default {
 	realm: "js",
-	type: "async-sync",
+	type: "package:async/sync",
 
 	autogenerate: {
 		"export/ScandirOptionsType.d.mts": generateSyncAsyncVariant("template/ScandirOptionsType.d.mts", "async"),
