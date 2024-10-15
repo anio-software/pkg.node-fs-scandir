@@ -1,7 +1,7 @@
 {
   "name": "@anio-fs/scandir",
   "type": "module",
-  "version": "7.1.2",
+  "version": "7.1.3",
   "exports": {
     ".": {
       "import": "./dist/default/index.min.mjs",
