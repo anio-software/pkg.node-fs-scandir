@@ -1,10 +1,10 @@
 /* -------- required imports by template -------- */
 import type {ContextInstanceType} from "@fourtune/realm-js"
-import type {DependenciesType} from "#/auto/export/_DependenciesType.d.mts"
-//import type {DependenciesType} from "#/auto/export/_DependenciesSyncType.d.mts"
+import type {DependenciesType} from "#/auto/DependenciesType.d.mts"
+//import type {DependenciesType} from "#/auto/DependenciesSyncType.d.mts"
 
-import type {ImplementationDocType} from "#/auto/export/_ImplementationDocType.d.mts"
-//import type {ImplementationDocType} from "#/auto/export/_ImplementationSyncDocType.d.mts"
+import type {ImplementationDocType} from "#/auto/ImplementationDocType.d.mts"
+//import type {ImplementationDocType} from "#/auto/ImplementationSyncDocType.d.mts"
 /* -------- required imports by template -------- */
 
 import type {ScandirEntryType} from "#/export/ScandirEntryType.mjs"
