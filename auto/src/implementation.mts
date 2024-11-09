@@ -10,7 +10,7 @@ import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 import type {ScandirOptions} from "#~auto/export/ScandirOptions.d.mts"
 
 import path from "node:path"
-import {PathType} from "@anio-fs/path-type"
+import type {PathType} from "@anio-fs/path-type"
 
 import {readdir, realpath} from "@anio-fs/api/async"
 
@@ -75,7 +75,7 @@ async function scandirImplementation(
 		}
 
 		const recurse = async () => {
-			if (path_type !== PathType.regularDir) return
+			if (path_type !== "regularDir") return
 
 			await scandirImplementation(root_dir, relative_path, options, dependencies)
 		}
@@ -112,7 +112,7 @@ async function scandirFrontend(root_dir : string, {
 	if (allow_missing_dir === true) {
 		const path_type = await getTypeOfPath(root_dir)
 
-		if (path_type === PathType.nonExisting) {
+		if (path_type === "nonExisting") {
 			context.log.debug(
 				`Scandir cant' find '${root_dir}', ignoring error since allow_missing_dir was set to 'true'.`
 			)
