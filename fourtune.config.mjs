@@ -5,8 +5,8 @@ export default {
 	type: "package:async/sync",
 
 	autogenerate: {
-		"export/ScandirOptionsType.d.mts": generateAsyncSyncVariant("template/ScandirOptionsType.d.mts", "async"),
-		"export/ScandirSyncOptionsType.d.mts": generateAsyncSyncVariant("template/ScandirOptionsType.d.mts", "sync"),
+		"src/export/ScandirOptionsType.d.mts": generateAsyncSyncVariant("template/ScandirOptionsType.d.mts", "async"),
+		"src/export/ScandirSyncOptionsType.d.mts": generateAsyncSyncVariant("template/ScandirOptionsType.d.mts", "sync"),
 	},
 
 	target: {
