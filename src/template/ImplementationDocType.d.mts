@@ -1,16 +1,16 @@
 /* define and describe your function api here */
 import type {ScandirOptions} from "#~auto/export/ScandirOptions.d.mts"
-//import type {ScandirSyncOptions} from "#~auto/export/ScandirSyncOptions.d.mts"
+//>import type {ScandirSyncOptions} from "#~auto/export/ScandirSyncOptions.d.mts"
 
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
 export type ImplementationDocType = {
 	/**
 	 * @brief Asynchronously scan a directory.
-//	 * @brief Synchronously scan a directory.
+//>	 * @brief Synchronously scan a directory.
 	 * @description
 	 * Asynchronously scans the directory located at `path`.
-//	 * Synchronously scans the directory located at `path`.
+//>	 * Synchronously scans the directory located at `path`.
 	 * Returns all entries as an array if `callback` was not specified.
 	 * If `callback` was specified, this function will always return `null`.
 	 * @param path The directory to be scanned.
@@ -43,5 +43,5 @@ export type ImplementationDocType = {
 	 * Array of entries or `null` if `callback` option was provided.
 	 */
 	(path : string, options? : ScandirOptions) : Promise<ScandirEntry[]|null>
-//	(path : string, options? : ScandirSyncOptions) : ScandirEntry[]|null
+//>	(path : string, options? : ScandirSyncOptions) : ScandirEntry[]|null
 }
