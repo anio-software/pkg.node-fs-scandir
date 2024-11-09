@@ -1,14 +1,14 @@
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts";
 
-type CallbackType = {
+type Callback = {
 	(entry : ScandirEntry) : void;
 }
 
-type FilterType = {
+type Filter = {
 	(entry : ScandirEntry) : boolean;
 }
 
-type MapType = {
+type Map = {
 	(entry : ScandirEntry) : any;
 }
 
@@ -18,19 +18,19 @@ export type ScandirSyncOptionsType = {
 	 * If this option is set, instead of returning all entries as
 	 * an array, "callback" is called for every entry.
 	 */
-	callback? : CallbackType | null
+	callback? : Callback | null
 
 	/**
 	 * @description
 	 * This option can be set to filter entries.
 	 */
-	filter? : FilterType | null
+	filter? : Filter | null
 
 	/**
 	 * @description
 	 * This option can be used to map entries.
 	 */
-	map? : MapType | null
+	map? : Map | null
 
 	/**
 	 * @description
