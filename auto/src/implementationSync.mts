@@ -5,7 +5,7 @@ import type {DependenciesType} from "#~auto/DependenciesSyncType.d.mts"
 import type {ImplementationDocType} from "#~auto/ImplementationSyncDocType.d.mts"
 /* -------- required imports by template -------- */
 
-import type {ScandirEntryType} from "#~src/export/ScandirEntryType.d.mts"
+import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
 import type {ScandirSyncOptionsType} from "#~auto/export/ScandirSyncOptionsType.d.mts"
 
@@ -42,7 +42,7 @@ function scandirImplementation(
 		const path_type = getTypeOfPath(absolute_path)
 
 		const handle_current_entry = async () => {
-			const data : ScandirEntryType = {
+			const data : ScandirEntry = {
 				type: path_type,
 				parents: parents(relative_path),
 				name: entry,
@@ -96,7 +96,7 @@ function scandirFrontend(root_dir : string, {
 	sorted = false,
 	filter = null,
 	map = null
-} : ScandirSyncOptionsType = {}, context : ContextInstance, dependencies : DependenciesType) : ScandirEntryType[]|null {
+} : ScandirSyncOptionsType = {}, context : ContextInstance, dependencies : DependenciesType) : ScandirEntry[]|null {
 	const {getTypeOfPath} = dependencies
 
 	const return_entries = typeof callback !== "function"
@@ -121,7 +121,7 @@ function scandirFrontend(root_dir : string, {
 		}
 	}
 
-	let entries : ScandirEntryType[] = []
+	let entries : ScandirEntry[] = []
 
 	const options = {
 		n_root_dir: path.normalize(root_dir),

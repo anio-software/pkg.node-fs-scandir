@@ -2,7 +2,7 @@
 import type {ScandirOptionsType} from "#~auto/export/ScandirOptionsType.d.mts"
 //import type {ScandirSyncOptionsType} from "#~auto/export/ScandirSyncOptionsType.d.mts"
 
-import type {ScandirEntryType} from "#~src/export/ScandirEntryType.d.mts"
+import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
 export type ImplementationDocType = {
 	/**
@@ -42,6 +42,6 @@ export type ImplementationDocType = {
 	 * @return
 	 * Array of entries or `null` if `callback` option was provided.
 	 */
-	(path : string, options? : ScandirOptionsType) : Promise<ScandirEntryType[]|null>
-//	(path : string, options? : ScandirSyncOptionsType) : ScandirEntryType[]|null
+	(path : string, options? : ScandirOptionsType) : Promise<ScandirEntry[]|null>
+//	(path : string, options? : ScandirSyncOptionsType) : ScandirEntry[]|null
 }

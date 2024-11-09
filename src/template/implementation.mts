@@ -7,7 +7,7 @@ import type {ImplementationDocType} from "#~auto/ImplementationDocType.d.mts"
 //import type {ImplementationDocType} from "#~auto/ImplementationSyncDocType.d.mts"
 /* -------- required imports by template -------- */
 
-import type {ScandirEntryType} from "#~src/export/ScandirEntryType.d.mts"
+import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
 import type {ScandirOptionsType} from "#~auto/export/ScandirOptionsType.d.mts"
 //import type {ScandirSyncOptionsType} from "#~auto/export/ScandirSyncOptionsType.d.mts"
@@ -50,7 +50,7 @@ async function scandirImplementation(
 //		const path_type = getTypeOfPath(absolute_path)
 
 		const handle_current_entry = async () => {
-			const data : ScandirEntryType = {
+			const data : ScandirEntry = {
 				type: path_type,
 				parents: parents(relative_path),
 				name: entry,
@@ -113,8 +113,8 @@ async function scandirFrontend(root_dir : string, {
 	sorted = false,
 	filter = null,
 	map = null
-} : ScandirOptionsType = {}, context : ContextInstance, dependencies : DependenciesType) : Promise<ScandirEntryType[]|null> {
-//} : ScandirSyncOptionsType = {}, context : ContextInstance, dependencies : DependenciesType) : ScandirEntryType[]|null {
+} : ScandirOptionsType = {}, context : ContextInstance, dependencies : DependenciesType) : Promise<ScandirEntry[]|null> {
+//} : ScandirSyncOptionsType = {}, context : ContextInstance, dependencies : DependenciesType) : ScandirEntry[]|null {
 	const {getTypeOfPath} = dependencies
 
 	const return_entries = typeof callback !== "function"
@@ -140,7 +140,7 @@ async function scandirFrontend(root_dir : string, {
 		}
 	}
 
-	let entries : ScandirEntryType[] = []
+	let entries : ScandirEntry[] = []
 
 	const options = {
 		n_root_dir: path.normalize(root_dir),

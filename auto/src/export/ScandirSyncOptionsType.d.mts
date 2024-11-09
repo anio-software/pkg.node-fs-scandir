@@ -1,15 +1,15 @@
-import type {ScandirEntryType} from "#~src/export/ScandirEntryType.d.mts";
+import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts";
 
 type CallbackType = {
-	(entry : ScandirEntryType) : void;
+	(entry : ScandirEntry) : void;
 }
 
 type FilterType = {
-	(entry : ScandirEntryType) : boolean;
+	(entry : ScandirEntry) : boolean;
 }
 
 type MapType = {
-	(entry : ScandirEntryType) : any;
+	(entry : ScandirEntry) : any;
 }
 
 export type ScandirSyncOptionsType = {
