@@ -7,7 +7,7 @@ import type {ImplementationDocType} from "#~auto/ImplementationSyncDocType.d.mts
 
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
-import type {ScandirSyncOptionsType} from "#~auto/export/ScandirSyncOptionsType.d.mts"
+import type {ScandirSyncOptions} from "#~auto/export/ScandirSyncOptions.d.mts"
 
 import path from "node:path"
 import {PathType} from "@anio-fs/path-type"
@@ -96,7 +96,7 @@ function scandirFrontend(root_dir : string, {
 	sorted = false,
 	filter = null,
 	map = null
-} : ScandirSyncOptionsType = {}, context : ContextInstance, dependencies : DependenciesType) : ScandirEntry[]|null {
+} : ScandirSyncOptions = {}, context : ContextInstance, dependencies : DependenciesType) : ScandirEntry[]|null {
 	const {getTypeOfPath} = dependencies
 
 	const return_entries = typeof callback !== "function"
@@ -150,7 +150,7 @@ export default function(
 	dependencies : DependenciesType,
 	/* add additional parameters here */
 	path : string,
-	options? : ScandirSyncOptionsType
+	options? : ScandirSyncOptions
 ) : ReturnType<ImplementationDocType> {
 
 	return scandirFrontend(path, options, context, dependencies)

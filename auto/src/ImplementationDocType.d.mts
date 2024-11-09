@@ -1,5 +1,5 @@
 /* define and describe your function api here */
-import type {ScandirOptionsType} from "#~auto/export/ScandirOptionsType.d.mts"
+import type {ScandirOptions} from "#~auto/export/ScandirOptions.d.mts"
 
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
@@ -39,5 +39,5 @@ export type ImplementationDocType = {
 	 * @return
 	 * Array of entries or `null` if `callback` option was provided.
 	 */
-	(path : string, options? : ScandirOptionsType) : Promise<ScandirEntry[]|null>
+	(path : string, options? : ScandirOptions) : Promise<ScandirEntry[]|null>
 }

@@ -1,5 +1,5 @@
 /* define and describe your function api here */
-import type {ScandirSyncOptionsType} from "#~auto/export/ScandirSyncOptionsType.d.mts"
+import type {ScandirSyncOptions} from "#~auto/export/ScandirSyncOptions.d.mts"
 
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
@@ -39,5 +39,5 @@ export type ImplementationDocType = {
 	 * @return
 	 * Array of entries or `null` if `callback` option was provided.
 	 */
-	(path : string, options? : ScandirSyncOptionsType) : ScandirEntry[]|null
+	(path : string, options? : ScandirSyncOptions) : ScandirEntry[]|null
 }
