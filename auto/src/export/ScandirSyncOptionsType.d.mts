@@ -1,4 +1,4 @@
-import type {ScandirEntryType} from "#/export/ScandirEntryType.d.mts";
+import type {ScandirEntryType} from "#~src/export/ScandirEntryType.d.mts";
 
 type CallbackType = {
 	(entry : ScandirEntryType) : void;
