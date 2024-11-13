@@ -1,6 +1,6 @@
 /* define and describe your function api here */
-import type {ScandirOptions} from "#~auto/export/ScandirOptions.d.mts"
-//>import type {ScandirSyncOptions} from "#~auto/export/ScandirSyncOptions.d.mts"
+import type {ScandirOptions} from "#~auto/user/export/ScandirOptions.d.mts"
+//>import type {ScandirSyncOptions} from "#~auto/user/export/ScandirSyncOptions.d.mts"
 
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 

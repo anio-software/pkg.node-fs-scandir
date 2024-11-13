@@ -1,16 +1,16 @@
 /* -------- required imports by template -------- */
 import type {ContextInstance} from "@fourtune/realm-js/v0/runtime"
-import type {DependenciesType} from "#~auto/DependenciesType.d.mts"
-//>import type {DependenciesType} from "#~auto/DependenciesSyncType.d.mts"
+import type {DependenciesType} from "#~auto/fourtune/async.sync/scandir/DependenciesType.d.mts"
+//>import type {DependenciesType} from "#~auto/fourtune/async.sync/scandir/DependenciesSyncType.d.mts"
 
-import type {ImplementationDocType} from "#~auto/ImplementationDocType.d.mts"
-//>import type {ImplementationDocType} from "#~auto/ImplementationSyncDocType.d.mts"
+import type {ImplementationDocType} from "#~auto/fourtune/async.sync/scandir/ImplementationDocType.d.mts"
+//>import type {ImplementationDocType} from "#~auto/fourtune/async.sync/scandir/ImplementationSyncDocType.d.mts"
 /* -------- required imports by template -------- */
 
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
-import type {ScandirOptions} from "#~auto/export/ScandirOptions.d.mts"
-//>import type {ScandirSyncOptions} from "#~auto/export/ScandirSyncOptions.d.mts"
+import type {ScandirOptions} from "#~auto/user/export/ScandirOptions.d.mts"
+//>import type {ScandirSyncOptions} from "#~auto/user/export/ScandirSyncOptions.d.mts"
 
 import path from "node:path"
 import type {PathType} from "@anio-fs/path-type"
