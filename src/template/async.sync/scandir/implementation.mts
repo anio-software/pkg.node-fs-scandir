@@ -13,7 +13,6 @@ import type {ScandirOptions} from "#~auto/user/export/ScandirOptions.d.mts"
 //>import type {ScandirSyncOptions} from "#~auto/user/export/ScandirSyncOptions.d.mts"
 
 import path from "node:path"
-import type {PathType} from "@anio-fs/path-type"
 
 import {readdir, realpath} from "@anio-fs/api/async"
 //>import {readdir, realpath} from "@anio-fs/api/sync"

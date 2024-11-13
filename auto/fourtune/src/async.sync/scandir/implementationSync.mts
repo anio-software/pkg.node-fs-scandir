@@ -10,7 +10,6 @@ import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 import type {ScandirSyncOptions} from "#~auto/user/export/ScandirSyncOptions.d.mts"
 
 import path from "node:path"
-import type {PathType} from "@anio-fs/path-type"
 
 import {readdir, realpath} from "@anio-fs/api/sync"
 
