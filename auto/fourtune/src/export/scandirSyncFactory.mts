@@ -6,12 +6,12 @@ import {
 import type {UserContext} from "@fourtune/realm-js/v0/runtime"
 import {useContext} from "@fourtune/realm-js/v0/runtime"
 
-import type {DependenciesType} from "#~auto/DependenciesSyncType.d.mts"
+import type {DependenciesType} from "#~auto/fourtune/async.sync/scandir/DependenciesSyncType.d.mts"
 
-import implementation from "#~auto/implementationSync.mts"
+import implementation from "#~auto/fourtune/async.sync/scandir/implementationSync.mts"
 
 /* needed to make doctypes work in LSP */
-import type {ImplementationDocType} from "#~auto/ImplementationSyncDocType.d.mts"
+import type {ImplementationDocType} from "#~auto/fourtune/async.sync/scandir/ImplementationSyncDocType.d.mts"
 
 import {getTypeOfPathSyncFactory} from "@anio-fs/path-type"
 
