@@ -5,8 +5,11 @@
             "#~src/*": [
                 "./src/*"
             ],
-            "#~auto/*": [
-                "./auto/src/*"
+            "#~auto/fourtune/*": [
+                "./auto/fourtune/src/*"
+            ],
+            "#~auto/user/*": [
+                "./auto/user/src/*"
             ],
             "#~assets/*": [
                 "./assets/*"
@@ -14,6 +17,7 @@
         }
     },
     "include": [
-        "../../src/**/*"
+        "../../../auto/fourtune/src/**/*",
+        "../../../auto/user/src/**/*"
     ]
 }

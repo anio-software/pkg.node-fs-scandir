@@ -11,6 +11,6 @@
         "module": "nodenext",
         "moduleResolution": "nodenext",
         "isolatedModules": true,
-        "baseUrl": "../../"
+        "baseUrl": "../../../"
     }
 }
