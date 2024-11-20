@@ -5,10 +5,10 @@
             "#~src/*": [
                 "./src/*"
             ],
-            "#~auto/fourtune/*": [
+            "#~fourtune/*": [
                 "./auto/fourtune/src/*"
             ],
-            "#~auto/user/*": [
+            "#~auto/*": [
                 "./auto/user/src/*"
             ],
             "#~assets/*": [
