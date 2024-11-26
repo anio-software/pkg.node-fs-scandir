@@ -16,8 +16,8 @@
     "url": "git+https://github.com/anio-fs-org/scandir.git"
   },
   "devDependencies": {
-    "@anio-fs/api": "^10.0.0",
-    "@anio-fs/path-type": "^10.0.0",
+    "@anio-fs/api": "^11.0.0",
+    "@anio-fs/path-type": "^13.0.0",
     "@fourtune/core": "^0.500.0",
     "@fourtune/realm-js": "^0.3000.0-alpha.2",
     "fourtune": "^0.1000.0"
