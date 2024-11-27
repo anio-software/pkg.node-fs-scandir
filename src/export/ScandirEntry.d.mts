@@ -24,5 +24,5 @@ export type ScandirEntry = {
 	/**
 	 * @brief Parent directories.
 	 */
-	parents: Array<string>;
+	parents: string[];
 }
