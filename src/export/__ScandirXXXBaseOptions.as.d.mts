@@ -11,7 +11,7 @@ export type ScandirBaseOptions = {
 	 * @description
 	 * This option can be set to filter entries.
 	 */
-	filter? : Filter | null
+	filter? : Filter
 
 	/**
 	 * @description
