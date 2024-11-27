@@ -1,7 +1,7 @@
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts";
 
 type Filter = {
-	(entry : ScandirEntry) : Promise<boolean>;
+	(entry : ScandirEntry) : Promise<boolean> | boolean;
 //>	(entry : ScandirEntry) : boolean;
 }
 
