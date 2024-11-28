@@ -1,7 +1,7 @@
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts";
 
 type Filter = {
-	(entry : ScandirEntry) : boolean;
+	(entry : ScandirEntry) : boolean & {then?: never};
 }
 
 export type ScandirSyncBaseOptions = {
@@ -9,7 +9,7 @@ export type ScandirSyncBaseOptions = {
 	 * @description
 	 * This option can be set to filter entries.
 	 */
-	filter? : Filter | null
+	filter? : Filter
 
 	/**
 	 * @description

@@ -1,7 +1,7 @@
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts";
 
 type Filter = {
-	(entry : ScandirEntry) : Promise<boolean>;
+	(entry : ScandirEntry) : Promise<boolean> | boolean;
 }
 
 export type ScandirBaseOptions = {
@@ -9,7 +9,7 @@ export type ScandirBaseOptions = {
 	 * @description
 	 * This option can be set to filter entries.
 	 */
-	filter? : Filter | null
+	filter? : Filter
 
 	/**
 	 * @description
