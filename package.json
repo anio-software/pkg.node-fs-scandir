@@ -19,7 +19,7 @@
     "@anio-fs/api": "^11.0.0",
     "@anio-fs/path-type": "^15.0.0",
     "@fourtune/core": "^0.500.0",
-    "@fourtune/realm-js": "^0.5100.0-alpha.2",
+    "@fourtune/realm-js": "^0.5100.0",
     "fourtune": "^0.1100.0"
   },
   "scripts": {
