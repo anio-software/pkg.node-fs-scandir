@@ -5,8 +5,7 @@ type Filter = {
 //>	(entry : ScandirEntry) : boolean & {then?: never};
 }
 
-export type ScandirBaseOptions = {
-//>export type ScandirSyncBaseOptions = {
+export type __XX__ = {
 	/**
 	 * @description
 	 * This option can be set to filter entries.

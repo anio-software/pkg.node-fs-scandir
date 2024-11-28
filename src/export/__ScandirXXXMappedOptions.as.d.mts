@@ -8,7 +8,7 @@ type Map<T> = {
 //>	(entry : ScandirEntry) : T & {then?: never};
 }
 
-export type ScandirMappedOptions<T> = ScandirBaseOptions & {
-//>export type ScandirSyncMappedOptions<T> = ScandirSyncBaseOptions & {
+export type __XX__<T> = ScandirBaseOptions & {
+//>export type __XX__<T> = ScandirSyncBaseOptions & {
 	map: Map<T>
 }
