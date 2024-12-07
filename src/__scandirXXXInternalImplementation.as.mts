@@ -30,7 +30,7 @@ async function scandirImplementation(
 	relative_entry_dir : string,
 	options : InternalScandirOptions,
 	dependencies : AnioJsDependencies,
-	result: (ScandirEntry[])|undefined
+	result: (any[])|undefined
 ) {
 	
 }
