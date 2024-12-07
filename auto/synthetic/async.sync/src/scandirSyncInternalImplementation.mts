@@ -71,7 +71,7 @@ export function implementation(
 	scandirImplementation(resolved_input_dir, ".", options, dependencies, entries)
 
 	if (returns_entries) {
-		if (options.sorted === true) {
+		if (options.sorted === true && typeof options.map !== "function") {
 			(entries as ScandirEntry[]).sort((a, b) => {
 				return a.relative_path.localeCompare(b.relative_path, "en")
 			})
