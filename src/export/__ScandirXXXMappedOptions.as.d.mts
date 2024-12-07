@@ -5,7 +5,7 @@ import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts";
 
 type Map<T> = {
 	(entry : ScandirEntry) : Promise<T> | T;
-//>	(entry : ScandirEntry) : T & {then?: never};
+//>	(entry : ScandirEntry) : T;
 }
 
 export type __XX__<T> = ScandirBaseOptions & {

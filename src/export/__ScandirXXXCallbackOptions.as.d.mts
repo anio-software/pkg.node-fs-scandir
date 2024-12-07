@@ -4,8 +4,8 @@ import type {ScandirBaseOptions} from "#~synthetic/async.sync/export/ScandirBase
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts";
 
 type Callback = {
-	(entry : ScandirEntry) : Promise<void> | void;
-//>	(entry : ScandirEntry) : void & {then?: never};
+	(entry : ScandirEntry) : Promise<undefined> | undefined;
+//>	(entry : ScandirEntry) : undefined;
 }
 
 export type __XX__ = ScandirBaseOptions & {

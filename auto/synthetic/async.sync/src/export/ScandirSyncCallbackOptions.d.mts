@@ -3,7 +3,7 @@ import type {ScandirSyncBaseOptions} from "#~synthetic/async.sync/export/Scandir
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts";
 
 type Callback = {
-	(entry : ScandirEntry) : void & {then?: never};
+	(entry : ScandirEntry) : undefined;
 }
 
 export type ScandirSyncCallbackOptions = ScandirSyncBaseOptions & {
