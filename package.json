@@ -1,7 +1,7 @@
 {
   "name": "@aniojs/node-fs-scandir",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Anio Software <info@anio.software>",
   "description": "Read a directory recursively.",
   "license": "MIT",
