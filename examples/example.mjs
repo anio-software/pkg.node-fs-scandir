@@ -3,14 +3,16 @@ import {
 	scandirSyncFactory
 } from "../dist/default/index.mjs"
 
-const options = {
+import {createContext} from "@fourtune/realm-js/v0/runtime"
+
+const context = createContext({
 	shouldLog() {
 		return true
 	}
-}
+})
 
-const scandir = scandirFactory(options)
-const scandirSync = scandirSyncFactory(options)
+const scandir = scandirFactory(context)
+const scandirSync = scandirSyncFactory(context)
 
 /*
   {
