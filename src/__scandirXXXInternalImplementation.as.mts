@@ -26,4 +26,23 @@ export async function implementation(
 	context.log.trace(
 		`Request scandir of path '${input_dir}' (mode=${(returns_entries ? "map" : "callback")}).`
 	)
+
+	//
+	// if this flag is set, we don't care if the
+	// folder "input_dir" does not exist.
+	//
+	if (options.allow_missing_dir === true) {
+		const {getTypeOfPath} = dependencies
+
+		const path_type = await getTypeOfPath(input_dir)
+//>		const path_type = getTypeOfPath(input_dir)
+
+		if (path_type === "nonExisting") {
+			context.log.debug(
+				`Scandir cant' find '${input_dir}', ignoring error since allow_missing_dir was set to 'true'.`
+			)
+
+			return returns_entries ? [] : undefined
+		}
+	}
 }
