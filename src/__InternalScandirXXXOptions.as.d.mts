@@ -7,4 +7,5 @@ export type __XX__ = ScandirBaseOptions & {
 //>export type __XX__ = ScandirSyncBaseOptions & {
 	callback?: (e: ScandirEntry) => void
 	map?: (e: ScandirEntry) => unknown
+	sorted?: boolean
 }
