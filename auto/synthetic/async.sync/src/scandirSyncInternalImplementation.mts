@@ -14,7 +14,7 @@ function scandirImplementation(
 	relative_entry_dir : string,
 	options : InternalScandirOptions,
 	dependencies : AnioJsDependencies,
-	entries: (ScandirEntry[])|undefined
+	result: (ScandirEntry[])|undefined
 ) {
 	
 }
