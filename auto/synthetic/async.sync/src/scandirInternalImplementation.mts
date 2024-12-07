@@ -18,9 +18,7 @@ export async function implementation(
 	const context = useContext(wrapped_context, 0)
 	const returns_entries = !("callback" in options)
 
-	if (returns_entries) {
-		context.log.trace(`scandir uses MAP`)
-	} else {
-		context.log.trace(`scandir uses CALLBACK`)
-	}
+	context.log.trace(
+		`Request scandir of path '${input_dir}' (mode=${(returns_entries ? "map" : "callback")}).`
+	)
 }
