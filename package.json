@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "exports": {
     ".": {
-      "import": "./dist/default/index.min.mjs",
-      "types": "./dist/default/index.d.mts"
+      "types": "./dist/default/index.min.d.mts",
+      "import": "./dist/default/index.min.mjs"
     }
   },
   "description": "Read a directory recursively.",
