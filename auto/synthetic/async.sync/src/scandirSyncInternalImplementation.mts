@@ -4,6 +4,11 @@ import type {InternalScandirSyncOptions as InternalScandirOptions} from "#~synth
 
 import type {AnioJsDependencies} from "#~synthetic/async.sync/DependenciesSync.d.mts"
 
+import type {PathType} from "@aniojs/node-path-type"
+import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
+
+import {readdir, realpath} from "@aniojs-private/node-async-sync-fs/sync"
+
 export function implementation(
 	wrapped_context: RuntimeWrappedContextInstance,
 	dependencies: AnioJsDependencies,
