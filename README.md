@@ -7,12 +7,12 @@ import {scandir, scandirSync} from "@aniojs/node-fs-scandir"
 
 /*
   {
-    type: 'file',
+    type: 'regularFile',
     parents: [],
     name: 'example.mjs',
-    path: 'examples/example.mjs',
+    path: '/root/examples/example.mjs',
     relative_path: 'example.mjs',
-    absolute_path: '/some/path/example.mjs'
+    absolute_path: '/root/examples/example.mjs'
   }
 */
 
