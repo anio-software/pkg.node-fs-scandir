@@ -21,13 +21,6 @@ export type __XX__ = {
 
 	/**
 	 * @description
-	 * Specifies whether returned array of entries should be sorted or not.
-	 * The default is `false`.
-	 */
-	sorted? : boolean;
-
-	/**
-	 * @description
 	 * Specifies whether the entry path can be missing.
 	 * The default is `false`.
 	 */
