@@ -66,4 +66,16 @@ export async function implementation(
 
 	await scandirImplementation(resolved_input_dir, ".", options, dependencies, entries)
 //>	scandirImplementation(resolved_input_dir, ".", options, dependencies, entries)
+
+	if (returns_entries) {
+		if (options.sorted === true) {
+			(entries as ScandirEntry[]).sort((a, b) => {
+				return a.relative_path.localeCompare(b.relative_path, "en")
+			})
+		}
+
+		return entries
+	}
+
+	return undefined
 }
