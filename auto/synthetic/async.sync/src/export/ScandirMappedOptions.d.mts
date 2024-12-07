@@ -7,7 +7,9 @@ type Map<T> = {
 }
 
 export type ScandirMappedOptions<T> = ScandirBaseOptions & {
-	map?: Map<T>
+	map: Map<T>
+} | {
+	map?: undefined
 
 	/**
 	 * @description
