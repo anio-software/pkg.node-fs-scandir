@@ -11,7 +11,8 @@ export type {AnioJsDependencies}
 export function implementation(
 	wrapped_context: RuntimeWrappedContextInstance,
 	dependencies: AnioJsDependencies,
+	input_dir: string,
 	options: Options
 ) : undefined {
-	scandirInternal(wrapped_context, dependencies, options)
+	scandirInternal(wrapped_context, dependencies, input_dir, options)
 }

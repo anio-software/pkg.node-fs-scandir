@@ -12,6 +12,7 @@ import type {ScandirMappedOptions as Options} from "#~synthetic/async.sync/expor
 // ^^^--- types needed for implementation
 
 declare function scandir<T>(
+	input_dir: string,
 	options: Options<T>
 ) : Promise<T[]>
 
@@ -43,7 +44,7 @@ export function scandirFactory(context: RuntimeWrappedContextInstance) : typeof 
 		}
 	}
 
-	return async function scandir<T>(options: Options<T>) : Promise<T[]> {
-		return await implementation(local_context, dependencies, options)
+	return async function scandir<T>(input_dir: string, options: Options<T>) : Promise<T[]> {
+		return await implementation(local_context, dependencies, input_dir, options)
 	}
 }

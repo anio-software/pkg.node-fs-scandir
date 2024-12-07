@@ -12,6 +12,7 @@ import type {ScandirCallbackOptions as Options} from "#~synthetic/async.sync/exp
 // ^^^--- types needed for implementation
 
 declare function scandirCallback(
+	input_dir: string,
 	options: Options
 ) : Promise<undefined>
 
@@ -43,7 +44,7 @@ export function scandirCallbackFactory(context: RuntimeWrappedContextInstance) :
 		}
 	}
 
-	return async function scandirCallback(options: Options) : Promise<undefined> {
-		return await implementation(local_context, dependencies, options)
+	return async function scandirCallback(input_dir: string, options: Options) : Promise<undefined> {
+		return await implementation(local_context, dependencies, input_dir, options)
 	}
 }

@@ -10,6 +10,7 @@ export async function implementation(
 //>export function implementation(
 	wrapped_context: RuntimeWrappedContextInstance,
 	dependencies: AnioJsDependencies,
+	input_dir: string,
 	options: InternalScandirOptions
 ) : Promise<any> {
 //>) : any {

@@ -8,6 +8,6 @@ import {scandirSyncCallbackFactory as factory} from "#~synthetic/user/export/sca
 
 const fn = factory(createContext())
 
-export function scandirSyncCallback(options: Options) : undefined {
-	return fn(options)
+export function scandirSyncCallback(input_dir: string, options: Options) : undefined {
+	return fn(input_dir, options)
 }

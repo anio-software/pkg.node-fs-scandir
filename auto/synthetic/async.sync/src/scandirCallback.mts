@@ -11,7 +11,8 @@ export type {AnioJsDependencies}
 export async function implementation(
 	wrapped_context: RuntimeWrappedContextInstance,
 	dependencies: AnioJsDependencies,
+	input_dir: string,
 	options: Options
 ) : Promise<undefined> {
-	await scandirInternal(wrapped_context, dependencies, options)
+	await scandirInternal(wrapped_context, dependencies, input_dir, options)
 }

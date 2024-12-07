@@ -11,6 +11,7 @@ import type {ScandirSyncCallbackOptions as Options} from "#~synthetic/async.sync
 // ^^^--- types needed for implementation
 
 declare function scandirSyncCallback(
+	input_dir: string,
 	options: Options
 ) : undefined
 
@@ -42,7 +43,7 @@ export function scandirSyncCallbackFactory(context: RuntimeWrappedContextInstanc
 		}
 	}
 
-	return function scandirSyncCallback(options: Options) : undefined {
-		return implementation(local_context, dependencies, options)
+	return function scandirSyncCallback(input_dir: string, options: Options) : undefined {
+		return implementation(local_context, dependencies, input_dir, options)
 	}
 }

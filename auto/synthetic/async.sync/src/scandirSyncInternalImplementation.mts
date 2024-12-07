@@ -7,6 +7,7 @@ import type {AnioJsDependencies} from "#~synthetic/async.sync/DependenciesSync.d
 export function implementation(
 	wrapped_context: RuntimeWrappedContextInstance,
 	dependencies: AnioJsDependencies,
+	input_dir: string,
 	options: InternalScandirOptions
 ) : any {
 	const context = useContext(wrapped_context, 0)
