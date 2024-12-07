@@ -2,18 +2,18 @@
   "name": "@anio-fs/scandir",
   "type": "module",
   "version": "0.0.0",
+  "author": "Anio Software <info@anio.software>",
+  "description": "Read a directory recursively.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anio-fs-org/scandir.git"
+  },
   "exports": {
     ".": {
       "types": "./dist/default/index.min.d.mts",
       "import": "./dist/default/index.min.mjs"
     }
-  },
-  "description": "Read a directory recursively.",
-  "author": "Anio Software <info@anio.software>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/anio-fs-org/scandir.git"
   },
   "devDependencies": {
     "@aniojs-private/node-async-sync-fs": "^0.1.1",
