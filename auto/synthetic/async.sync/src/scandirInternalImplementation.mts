@@ -1,11 +1,11 @@
 import {useContext, type RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 
-import type {InternalScandirSyncOptions as InternalScandirOptions} from "#~auto/InternalScandirSyncOptions.d.mts"
+import type {InternalScandirOptions} from "#~synthetic/async.sync/InternalScandirOptions.d.mts"
 
-export function implementation(
+export async function implementation(
 	wrapped_context: RuntimeWrappedContextInstance,
 	options: InternalScandirOptions
-) : any {
+) : Promise<any> {
 	const context = useContext(wrapped_context, 0)
 	
 }

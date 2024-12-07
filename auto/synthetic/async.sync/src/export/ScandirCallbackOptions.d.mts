@@ -1,4 +1,4 @@
-import type {ScandirBaseOptions} from "#~auto/export/ScandirBaseOptions.d.mts"
+import type {ScandirBaseOptions} from "#~synthetic/async.sync/export/ScandirBaseOptions.d.mts"
 
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts";
 
