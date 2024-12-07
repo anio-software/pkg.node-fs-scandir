@@ -8,4 +8,11 @@ type Map<T> = {
 
 export type ScandirMappedOptions<T> = ScandirBaseOptions & {
 	map?: Map<T>
+
+	/**
+	 * @description
+	 * Specifies whether returned array of entries should be sorted or not.
+	 * The default is `false`.
+	 */
+	sorted? : boolean
 }

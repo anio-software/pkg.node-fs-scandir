@@ -11,4 +11,11 @@ type Map<T> = {
 export type __XX__<T> = ScandirBaseOptions & {
 //>export type __XX__<T> = ScandirSyncBaseOptions & {
 	map?: Map<T>
+
+	/**
+	 * @description
+	 * Specifies whether returned array of entries should be sorted or not.
+	 * The default is `false`.
+	 */
+	sorted? : boolean
 }
