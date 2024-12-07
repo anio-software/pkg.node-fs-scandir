@@ -16,10 +16,11 @@ export function implementation(
 	options: InternalScandirOptions
 ) : any {
 	const context = useContext(wrapped_context, 0)
+	const returns_entries = !("callback" in options)
 
-	if ("callback" in options) {
-		context.log.trace(`scandir uses CALLBACK`)
-	} else {
+	if (returns_entries) {
 		context.log.trace(`scandir uses MAP`)
+	} else {
+		context.log.trace(`scandir uses CALLBACK`)
 	}
 }
