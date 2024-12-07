@@ -9,6 +9,8 @@ import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
 import {readdir, realpath} from "@aniojs-private/node-async-sync-fs/async"
 
+import path from "node:path"
+
 async function scandirImplementation(
 	root_dir : string,
 	relative_entry_dir : string,

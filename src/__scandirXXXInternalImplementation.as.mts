@@ -12,6 +12,8 @@ import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 import {readdir, realpath} from "@aniojs-private/node-async-sync-fs/async"
 //>import {readdir, realpath} from "@aniojs-private/node-async-sync-fs/sync"
 
+import path from "node:path"
+
 async function scandirImplementation(
 //>function scandirImplementation(
 	root_dir : string,
