@@ -3,7 +3,7 @@ import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 import {getProject} from "@fourtune/realm-js/v0/project"
 
 // vvv dependencies declared via AnioJsDependencies type
-import {getTypeOfPathSyncFactory} from "@aniojs/node-path-type"
+import {getTypeOfPathSyncFactory} from "@aniojs/node-fs-path-type"
 // ^^^ dependencies declared via AnioJsDependencies type
 
 // vvv--- types needed for implementation
