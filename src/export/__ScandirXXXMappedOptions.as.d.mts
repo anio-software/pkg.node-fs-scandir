@@ -10,5 +10,5 @@ type Map<T> = {
 
 export type __XX__<T> = ScandirBaseOptions & {
 //>export type __XX__<T> = ScandirSyncBaseOptions & {
-	map: Map<T>
+	map?: Map<T>
 }
