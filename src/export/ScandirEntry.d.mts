@@ -1,4 +1,4 @@
-import type {PathType} from "@anio-fs/path-type"
+import type {PathType} from "@aniojs/node-path-type"
 
 export type ScandirEntry = {
 	/**
