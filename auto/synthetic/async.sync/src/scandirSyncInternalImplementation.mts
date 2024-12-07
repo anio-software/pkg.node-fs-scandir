@@ -28,7 +28,19 @@ function scandirImplementation(
 	dependencies : AnioJsDependencies,
 	result: (any[])|undefined
 ) {
-	
+	const {getTypeOfPath} = dependencies
+	const entries = readdir(
+		path.join(root_dir, relative_entry_dir)
+	)
+
+	const normalized_root_dir = path.normalize(root_dir)
+
+	for (const entry of entries) {
+		const absolute_path = path.join(root_dir, relative_entry_dir, entry)
+		const relative_path = path.join(relative_entry_dir, entry)
+
+		const path_type = getTypeOfPath(absolute_path)
+	}
 }
 
 export function implementation(
