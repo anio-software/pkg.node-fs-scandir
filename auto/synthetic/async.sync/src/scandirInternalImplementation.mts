@@ -9,6 +9,16 @@ import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
 import {readdir, realpath} from "@aniojs-private/node-async-sync-fs/async"
 
+async function scandirImplementation(
+	root_dir : string,
+	relative_entry_dir : string,
+	options : InternalScandirOptions,
+	dependencies : AnioJsDependencies,
+	entries: (ScandirEntry[])|undefined
+) {
+	
+}
+
 export async function implementation(
 	wrapped_context: RuntimeWrappedContextInstance,
 	dependencies: AnioJsDependencies,
@@ -39,4 +49,12 @@ export async function implementation(
 			return returns_entries ? [] : undefined
 		}
 	}
+
+	const resolved_input_dir = await realpath(input_dir)
+
+	let entries : (ScandirEntry[])|undefined = undefined
+
+	if (returns_entries) entries = []
+
+	await scandirImplementation(resolved_input_dir, ".", options, dependencies, entries)
 }
