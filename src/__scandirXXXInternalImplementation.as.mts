@@ -14,5 +14,12 @@ export async function implementation(
 ) : Promise<any> {
 //>) : any {
 	const context = useContext(wrapped_context, 0)
-	
+
+	if ("map" in options) {
+		context.log.trace(`scandir uses MAP`)
+	} else if ("callback" in options) {
+		context.log.trace(`scandir uses CALLBACK`)
+	} else {
+		throw new Error(`Invalid mode of operation detected.`)
+	}
 }
