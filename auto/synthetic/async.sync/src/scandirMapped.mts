@@ -12,7 +12,7 @@ export async function implementation<T>(
 	wrapped_context: RuntimeWrappedContextInstance,
 	dependencies: AnioJsDependencies,
 	input_dir: string,
-	options: Options<T>
+	options: Options<T> = {}
 ) : Promise<T[]> {
 	return await scandirInternal(wrapped_context, dependencies, input_dir, options)
 }
