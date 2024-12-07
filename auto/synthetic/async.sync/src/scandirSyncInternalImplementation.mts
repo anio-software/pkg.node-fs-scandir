@@ -40,6 +40,50 @@ function scandirImplementation(
 		const relative_path = path.join(relative_entry_dir, entry)
 
 		const path_type = getTypeOfPath(absolute_path)
+
+		const handle_current_entry = async () => {
+			const data : ScandirEntry = {
+				type: path_type,
+				parents: parents(relative_path),
+				name: entry,
+				path: path.join(
+					normalized_root_dir, relative_path
+				),
+				relative_path,
+				absolute_path
+			}
+
+			if (typeof options.filter === "function") {
+				const keep = options.filter(data)
+
+				if (keep !== true) return
+			}
+
+			if (typeof options.callback === "function") {
+				options.callback(data)
+
+				return
+			}
+
+			if (typeof options.map === "function") {
+				(result as any[]).push(options.map(data))
+			} else {
+				(result as any[]).push(data)
+			}
+		}
+
+		const recurse = () => {
+			if (path_type !== "regularDir") return
+
+			scandirImplementation(root_dir, relative_path, options, dependencies, result)
+		}
+
+		if (options.reverse === true) recurse()
+
+		handle_current_entry()
+
+		// written this way so "if statement" has same length as options.reverse === true
+		if (options.reverse !== true) recurse()
 	}
 }
 
