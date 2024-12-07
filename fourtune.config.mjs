@@ -11,6 +11,11 @@ export default {
 			source_file: "src/__scandirXXXMapped.as.mts",
 			export_name: "scandirXXX",
 			destination: "src/export"
+		}),
+		...generateFactoryFiles({
+			source_file: "src/__scandirXXXCallback.as.mts",
+			export_name: "scandirXXXCallback",
+			destination: "src/export"
 		})
 	}
 }
