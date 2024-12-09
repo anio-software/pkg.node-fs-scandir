@@ -7,7 +7,7 @@ import {getTypeOfPathFactory} from "@aniojs/node-fs-path-type"
 // ^^^ dependencies declared via AnioJsDependencies type
 
 // vvv--- types needed for implementation
-import type {ScandirBaseOptions as Options} from "#~synthetic/async.sync/export/ScandirBaseOptions.d.mts"
+import type {ScandirOptions as Options} from "#~synthetic/async.sync/export/ScandirOptions.d.mts"
 /* couldn't find a user defined type named 'Promise' at the top level */
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 // ^^^--- types needed for implementation

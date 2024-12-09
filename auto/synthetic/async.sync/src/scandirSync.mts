@@ -1,6 +1,6 @@
 import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 
-import type {ScandirSyncBaseOptions as Options} from "#~synthetic/async.sync/export/ScandirSyncBaseOptions.d.mts"
+import type {ScandirSyncOptions as Options} from "#~synthetic/async.sync/export/ScandirSyncOptions.d.mts"
 
 import type {AnioJsDependencies} from "#~synthetic/async.sync/DependenciesSync.d.mts"
 

@@ -7,7 +7,7 @@ import {getTypeOfPathSyncFactory} from "@aniojs/node-fs-path-type"
 // ^^^ dependencies declared via AnioJsDependencies type
 
 // vvv--- types needed for implementation
-import type {ScandirSyncBaseOptions as Options} from "#~synthetic/async.sync/export/ScandirSyncBaseOptions.d.mts"
+import type {ScandirSyncOptions as Options} from "#~synthetic/async.sync/export/ScandirSyncOptions.d.mts"
 import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 // ^^^--- types needed for implementation
 
