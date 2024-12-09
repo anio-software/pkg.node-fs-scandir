@@ -8,7 +8,7 @@ import {getTypeOfPathFactory} from "@aniojs/node-fs-path-type"
 
 // vvv--- types needed for implementation
 import type {ScandirCallbackOptions as Options} from "#~synthetic/async.sync/export/ScandirCallbackOptions.d.mts"
-/* couldn't find the type 'Promise' at the top level */
+/* couldn't find a user defined type named 'Promise' at the top level */
 // ^^^--- types needed for implementation
 
 declare function scandirCallback(
