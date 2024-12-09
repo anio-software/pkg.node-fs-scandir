@@ -12,7 +12,7 @@ import type {ScandirSyncMappedOptions as Options} from "#~synthetic/async.sync/e
 
 declare function scandirSync<T>(
 	input_dir: string,
-	options: Options<T>
+	options?: Options<T>
 ) : T[]
 
 /**
@@ -43,7 +43,7 @@ export function scandirSyncFactory(context: RuntimeWrappedContextInstance) : typ
 		}
 	}
 
-	return function scandirSync<T>(input_dir: string, options: Options<T>) : T[] {
+	return function scandirSync<T>(input_dir: string, options?: Options<T>) : T[] {
 		return implementation(local_context, dependencies, input_dir, options)
 	}
 }

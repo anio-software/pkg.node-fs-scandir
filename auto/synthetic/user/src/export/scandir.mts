@@ -9,6 +9,6 @@ import {scandirFactory as factory} from "#~synthetic/user/export/scandirFactory.
 
 const fn = factory(createContext())
 
-export async function scandir<T>(input_dir: string, options: Options<T>) : Promise<T[]> {
+export async function scandir<T>(input_dir: string, options?: Options<T>) : Promise<T[]> {
 	return await fn(input_dir, options)
 }
