@@ -8,8 +8,8 @@ type Map<T> = {
 //>	(entry : ScandirEntry) : T;
 }
 
-export type __XX__<T> = ScandirBaseOptions & {
-//>export type __XX__<T> = ScandirSyncBaseOptions & {
+export type __XX__<T> = ScandirBaseOptions & ({
+//>export type __XX__<T> = ScandirSyncBaseOptions & ({
 	map: Map<T>
 } | {
 	map?: undefined
@@ -20,4 +20,4 @@ export type __XX__<T> = ScandirBaseOptions & {
 	 * The default is `false`.
 	 */
 	sorted? : boolean
-}
+})

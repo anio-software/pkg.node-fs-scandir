@@ -6,7 +6,7 @@ type Map<T> = {
 	(entry : ScandirEntry) : Promise<T> | T;
 }
 
-export type ScandirMappedOptions<T> = ScandirBaseOptions & {
+export type ScandirMappedOptions<T> = ScandirBaseOptions & ({
 	map: Map<T>
 } | {
 	map?: undefined
@@ -17,4 +17,4 @@ export type ScandirMappedOptions<T> = ScandirBaseOptions & {
 	 * The default is `false`.
 	 */
 	sorted? : boolean
-}
+})

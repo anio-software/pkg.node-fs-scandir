@@ -6,7 +6,7 @@ type Map<T> = {
 	(entry : ScandirEntry) : T;
 }
 
-export type ScandirSyncMappedOptions<T> = ScandirSyncBaseOptions & {
+export type ScandirSyncMappedOptions<T> = ScandirSyncBaseOptions & ({
 	map: Map<T>
 } | {
 	map?: undefined
@@ -17,4 +17,4 @@ export type ScandirSyncMappedOptions<T> = ScandirSyncBaseOptions & {
 	 * The default is `false`.
 	 */
 	sorted? : boolean
-}
+})
