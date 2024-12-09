@@ -1,4 +1,4 @@
-import {implementation, type AnioJsDependencies} from "#~synthetic/async.sync/scandirMapped.mts"
+import {implementation, type AnioJsDependencies} from "#~synthetic/async.sync/scandir.mts"
 import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 import {getProject} from "@fourtune/realm-js/v0/project"
 
@@ -7,14 +7,15 @@ import {getTypeOfPathFactory} from "@aniojs/node-fs-path-type"
 // ^^^ dependencies declared via AnioJsDependencies type
 
 // vvv--- types needed for implementation
-import type {ScandirMappedOptions as Options} from "#~synthetic/async.sync/export/ScandirMappedOptions.d.mts"
+import type {ScandirBaseOptions as Options} from "#~synthetic/async.sync/export/ScandirBaseOptions.d.mts"
 /* couldn't find a user defined type named 'Promise' at the top level */
+import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 // ^^^--- types needed for implementation
 
-declare function scandir<T>(
+declare function scandir(
 	input_dir: string,
-	options?: Options<T>
-) : Promise<T[]>
+	options?: Options
+) : Promise<ScandirEntry[]>
 
 /**
  * @brief
@@ -44,7 +45,7 @@ export function scandirFactory(context: RuntimeWrappedContextInstance) : typeof 
 		}
 	}
 
-	return async function scandir<T>(input_dir: string, options?: Options<T>) : Promise<T[]> {
+	return async function scandir(input_dir: string, options?: Options) : Promise<ScandirEntry[]> {
 		return await implementation(local_context, dependencies, input_dir, options)
 	}
 }

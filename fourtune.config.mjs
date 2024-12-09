@@ -12,8 +12,13 @@ export default {
 
 	autogenerate: {
 		...generateFactoryFiles({
-			source_file: "src/__scandirXXXMapped.as.mts",
+			source_file: "src/__scandirXXX.as.mts",
 			export_name: "scandirXXX",
+			destination: "src/export"
+		}),
+		...generateFactoryFiles({
+			source_file: "src/__scandirXXXMapped.as.mts",
+			export_name: "scandirXXXMapped",
 			destination: "src/export"
 		}),
 		...generateFactoryFiles({

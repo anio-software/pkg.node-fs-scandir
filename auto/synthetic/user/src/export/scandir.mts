@@ -1,14 +1,15 @@
 import {createContext} from "@fourtune/realm-js/v0/runtime"
 
 // vvv--- types needed for implementation
-import type {ScandirMappedOptions as Options} from "#~synthetic/async.sync/export/ScandirMappedOptions.d.mts"
+import type {ScandirBaseOptions as Options} from "#~synthetic/async.sync/export/ScandirBaseOptions.d.mts"
 /* couldn't find a user defined type named 'Promise' at the top level */
+import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 // ^^^--- types needed for implementation
 
 import {scandirFactory as factory} from "#~synthetic/user/export/scandirFactory.mts"
 
 const fn = factory(createContext())
 
-export async function scandir<T>(input_dir: string, options?: Options<T>) : Promise<T[]> {
+export async function scandir(input_dir: string, options?: Options) : Promise<ScandirEntry[]> {
 	return await fn(input_dir, options)
 }

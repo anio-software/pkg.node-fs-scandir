@@ -1,24 +1,24 @@
-import {implementation, type AnioJsDependencies} from "#~synthetic/async.sync/scandirSync.mts"
+import {implementation, type AnioJsDependencies} from "#~synthetic/async.sync/scandirMapped.mts"
 import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 import {getProject} from "@fourtune/realm-js/v0/project"
 
 // vvv dependencies declared via AnioJsDependencies type
-import {getTypeOfPathSyncFactory} from "@aniojs/node-fs-path-type"
+import {getTypeOfPathFactory} from "@aniojs/node-fs-path-type"
 // ^^^ dependencies declared via AnioJsDependencies type
 
 // vvv--- types needed for implementation
-import type {ScandirSyncBaseOptions as Options} from "#~synthetic/async.sync/export/ScandirSyncBaseOptions.d.mts"
-import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
+import type {ScandirMappedOptions as Options} from "#~synthetic/async.sync/export/ScandirMappedOptions.d.mts"
+/* couldn't find a user defined type named 'Promise' at the top level */
 // ^^^--- types needed for implementation
 
-declare function scandirSync<T>(
+declare function scandirMapped<T>(
 	input_dir: string,
-	options?: Options
-) : ScandirEntry[]
+	options?: Options<T>
+) : Promise<T[]>
 
 /**
  * @brief
- * Create an instance of the function 'scandirSync'.
+ * Create an instance of the function 'scandirMapped'.
  *
  * @param user
  * Options object (see @fourtune/realm-js/v0/runtime) or an already
@@ -26,11 +26,11 @@ declare function scandirSync<T>(
  * This parameter is optional.
  *
  * @return
- * An instance of the function 'scandirSync'.
+ * An instance of the function 'scandirMapped'.
  */
-export function scandirSyncFactory(context: RuntimeWrappedContextInstance) : typeof scandirSync {
+export function scandirMappedFactory(context: RuntimeWrappedContextInstance) : typeof scandirMapped {
 	const dependencies : AnioJsDependencies = {
-		getTypeOfPath: getTypeOfPathSyncFactory(context)
+		getTypeOfPath: getTypeOfPathFactory(context)
 	}
 
 	const project = getProject()
@@ -44,7 +44,7 @@ export function scandirSyncFactory(context: RuntimeWrappedContextInstance) : typ
 		}
 	}
 
-	return function scandirSync<T>(input_dir: string, options?: Options) : ScandirEntry[] {
-		return implementation(local_context, dependencies, input_dir, options)
+	return async function scandirMapped<T>(input_dir: string, options?: Options<T>) : Promise<T[]> {
+		return await implementation(local_context, dependencies, input_dir, options)
 	}
 }
