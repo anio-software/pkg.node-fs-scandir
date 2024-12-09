@@ -6,15 +6,6 @@ type Map<T> = {
 	(entry : ScandirEntry) : Promise<T> | T;
 }
 
-export type ScandirMappedOptions<T> = ScandirBaseOptions & ({
+export type ScandirMappedOptions<T> = ScandirBaseOptions & {
 	map: Map<T>
-} | {
-	map?: undefined
-
-	/**
-	 * @description
-	 * Specifies whether returned array of entries should be sorted or not.
-	 * The default is `false`.
-	 */
-	sorted? : boolean
-})
+}

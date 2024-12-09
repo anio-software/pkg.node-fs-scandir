@@ -8,6 +8,6 @@ import {scandirSyncMappedFactory as factory} from "#~synthetic/user/export/scand
 
 const fn = factory(createContext())
 
-export function scandirSyncMapped<T>(input_dir: string, options?: Options<T>) : T[] {
+export function scandirSyncMapped<T>(input_dir: string, options: Options<T>) : T[] {
 	return fn(input_dir, options)
 }
