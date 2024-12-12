@@ -21,6 +21,7 @@ function parents(relative_path : string) : string[] {
 }
 
 async function scandirImplementation(
+	normalized_root_dir: string,
 	root_dir : string,
 	relative_entry_dir : string,
 	options : InternalScandirOptions,
@@ -31,8 +32,6 @@ async function scandirImplementation(
 	const entries = await readdir(
 		path.join(root_dir, relative_entry_dir)
 	)
-
-	const normalized_root_dir = path.normalize(root_dir)
 
 	for (const entry of entries) {
 		const absolute_path = path.join(root_dir, relative_entry_dir, entry)
@@ -75,6 +74,7 @@ async function scandirImplementation(
 			if (path_type !== "regularDir") return
 
 			await scandirImplementation(
+				normalized_root_dir,
 				root_dir,
 				relative_path,
 				options,
@@ -130,6 +130,7 @@ export async function implementation(
 	if (returns_entries) entries = []
 
 	await scandirImplementation(
+		path.normalize(input_dir),
 		resolved_input_dir,
 		".",
 		options,
