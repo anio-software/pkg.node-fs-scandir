@@ -74,7 +74,13 @@ function scandirImplementation(
 		const recurse = () => {
 			if (path_type !== "regularDir") return
 
-			scandirImplementation(root_dir, relative_path, options, dependencies, result)
+			scandirImplementation(
+				root_dir,
+				relative_path,
+				options,
+				dependencies,
+				result
+			)
 		}
 
 		if (options.reverse === true) recurse()
@@ -123,7 +129,13 @@ export function implementation(
 
 	if (returns_entries) entries = []
 
-	scandirImplementation(resolved_input_dir, ".", options, dependencies, entries)
+	scandirImplementation(
+		resolved_input_dir,
+		".",
+		options,
+		dependencies,
+		entries
+	)
 
 	if (returns_entries) {
 		// NB: only sort entries when map() wasn't specified

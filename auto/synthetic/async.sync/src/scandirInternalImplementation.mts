@@ -74,7 +74,13 @@ async function scandirImplementation(
 		const recurse = async () => {
 			if (path_type !== "regularDir") return
 
-			await scandirImplementation(root_dir, relative_path, options, dependencies, result)
+			await scandirImplementation(
+				root_dir,
+				relative_path,
+				options,
+				dependencies,
+				result
+			)
 		}
 
 		if (options.reverse === true) await recurse()
@@ -123,7 +129,13 @@ export async function implementation(
 
 	if (returns_entries) entries = []
 
-	await scandirImplementation(resolved_input_dir, ".", options, dependencies, entries)
+	await scandirImplementation(
+		resolved_input_dir,
+		".",
+		options,
+		dependencies,
+		entries
+	)
 
 	if (returns_entries) {
 		// NB: only sort entries when map() wasn't specified
