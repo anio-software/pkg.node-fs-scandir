@@ -7,8 +7,10 @@ import type {ScandirMappedOptions as Options} from "#~synthetic/async.sync/expor
 
 import {scandirMappedFactory as factory} from "#~synthetic/user/export/scandirMappedFactory.mts"
 
-const fn = factory(createContext())
+let __fnImplementation: any = null
 
 export async function scandirMapped<T>(input_dir: string, options: Options<T>) : Promise<T[]> {
-	return await fn(input_dir, options)
+	if (__fnImplementation === null) __fnImplementation = factory(createContext());
+
+	return await __fnImplementation(input_dir, options)
 }

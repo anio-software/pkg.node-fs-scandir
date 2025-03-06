@@ -6,8 +6,10 @@ import type {ScandirSyncMappedOptions as Options} from "#~synthetic/async.sync/e
 
 import {scandirSyncMappedFactory as factory} from "#~synthetic/user/export/scandirSyncMappedFactory.mts"
 
-const fn = factory(createContext())
+let __fnImplementation: any = null
 
 export function scandirSyncMapped<T>(input_dir: string, options: Options<T>) : T[] {
-	return fn(input_dir, options)
+	if (__fnImplementation === null) __fnImplementation = factory(createContext());
+
+	return __fnImplementation(input_dir, options)
 }

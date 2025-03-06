@@ -7,8 +7,10 @@ import type {ScandirCallbackOptions as Options} from "#~synthetic/async.sync/exp
 
 import {scandirCallbackFactory as factory} from "#~synthetic/user/export/scandirCallbackFactory.mts"
 
-const fn = factory(createContext())
+let __fnImplementation: any = null
 
 export async function scandirCallback(input_dir: string, options: Options) : Promise<undefined> {
-	return await fn(input_dir, options)
+	if (__fnImplementation === null) __fnImplementation = factory(createContext());
+
+	return await __fnImplementation(input_dir, options)
 }

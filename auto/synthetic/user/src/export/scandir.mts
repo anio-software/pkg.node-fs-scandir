@@ -8,8 +8,10 @@ import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 
 import {scandirFactory as factory} from "#~synthetic/user/export/scandirFactory.mts"
 
-const fn = factory(createContext())
+let __fnImplementation: any = null
 
 export async function scandir(input_dir: string, options?: Options) : Promise<ScandirEntry[]> {
-	return await fn(input_dir, options)
+	if (__fnImplementation === null) __fnImplementation = factory(createContext());
+
+	return await __fnImplementation(input_dir, options)
 }
