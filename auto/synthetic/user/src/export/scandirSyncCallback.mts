@@ -6,10 +6,8 @@ import type {ScandirSyncCallbackOptions as Options} from "#~synthetic/async.sync
 
 import {scandirSyncCallbackFactory as factory} from "#~synthetic/user/export/scandirSyncCallbackFactory.mts"
 
-let __fnImplementation: any = null
-
 export function scandirSyncCallback(input_dir: string, options: Options) : undefined {
-	if (__fnImplementation === null) __fnImplementation = factory(createContext());
+	const __fnImplementation = factory(createContext())
 
 	return __fnImplementation(input_dir, options)
 }
