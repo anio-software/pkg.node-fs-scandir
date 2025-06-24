@@ -9,16 +9,7 @@ import type {ScandirEntry} from "#~src/export/ScandirEntry.d.mts"
 import {readdir, realpath} from "@aniojs-private/node-async-sync-fs/async"
 
 import path from "node:path"
-
-function parents(relative_path : string) : string[] {
-	let parents = path.dirname(relative_path).split(path.sep)
-
-	if (parents.length === 1 && parents[0] === ".") {
-		return []
-	}
-
-	return parents
-}
+import {parents} from "#~src/parents.mts"
 
 async function scandirImplementation(
 	normalized_root_dir: string,
