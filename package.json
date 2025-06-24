@@ -19,7 +19,7 @@
     "@aniojs-private/node-async-sync-fs": "^0.3.0",
     "@aniojs/node-fs-path-type": "^1.0.6",
     "@fourtune/core": "^0.1101.0",
-    "@fourtune/realm-js": "^1.0.3",
+    "@fourtune/realm-js": "^1.0.5",
     "fourtune": "^0.30000.1"
   },
   "peerDependencies": {
