@@ -4,3 +4,5 @@
 /src/ScandirSyncCallbackOptions.ts
 /src/ScandirCommonOptions.ts
 /src/ScandirSyncCommonOptions.ts
+/src/ScandirMappedOptions.ts
+/src/ScandirSyncMappedOptions.ts

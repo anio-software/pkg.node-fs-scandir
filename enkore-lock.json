@@ -15,6 +15,12 @@
         },
         "project/src/ScandirSyncCommonOptions.ts": {
             "hash": "1e50b7e3d6c1d796492e1ec7fe10cd4f47570c645c99c41d0892fc7335fc34ca"
+        },
+        "project/src/ScandirMappedOptions.ts": {
+            "hash": "bf8cc8d9de683d390e0199bab585eac8a9bafa27663ae5255a07b6e444f5464f"
+        },
+        "project/src/ScandirSyncMappedOptions.ts": {
+            "hash": "b85426d2bdc84d519f41c3e906ee217b23e1b22d446b168c0198728283fbe264"
         }
     },
     "toolchain": [
