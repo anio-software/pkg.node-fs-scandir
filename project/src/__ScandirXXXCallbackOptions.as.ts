@@ -1,5 +1,5 @@
-import type {ScandirBaseOptions} from "#~src/ScandirBaseOptions.ts"
-//>import type {ScandirSyncBaseOptions} from "#~src/ScandirSyncBaseOptions.ts"
+import type {ScandirCommonOptions} from "#~src/ScandirCommonOptions.ts"
+//>import type {ScandirSyncCommonOptions} from "#~src/ScandirSyncCommonOptions.ts"
 
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 
@@ -8,7 +8,7 @@ type Callback = {
 //>	(entry: ScandirEntry): undefined
 }
 
-export type __XX__ = ScandirBaseOptions & {
-//>export type __XX__ = ScandirSyncBaseOptions & {
+export type __XX__ = ScandirCommonOptions & {
+//>export type __XX__ = ScandirSyncCommonOptions & {
 	callback: Callback
 }
