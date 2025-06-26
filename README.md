@@ -1,9 +1,9 @@
-# @aniojs/node-fs-scandir
+# @anio-software/pkg.node-fs-scandir
 
 Read a directory recursively.
 
 ```js
-import {scandir, scandirSync} from "@aniojs/node-fs-scandir"
+import {scandir, scandirSync} from "@anio-software/pkg.node-fs-scandir"
 
 /*
   {
@@ -11,8 +11,8 @@ import {scandir, scandirSync} from "@aniojs/node-fs-scandir"
     parents: [],
     name: 'example.mjs',
     path: '/root/examples/example.mjs',
-    relative_path: 'example.mjs',
-    absolute_path: '/root/examples/example.mjs'
+    relativePath: 'example.mjs',
+    absolutePath: '/root/examples/example.mjs'
   }
 */
 
