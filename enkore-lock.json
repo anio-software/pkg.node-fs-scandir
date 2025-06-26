@@ -9,6 +9,12 @@
         },
         "project/src/ScandirSyncBaseOptions.ts": {
             "hash": "0d2bdb293fe7f1d928b18c4f7f4c4960d572d71c37bd0342644cbb3f5c680779"
+        },
+        "project/src/ScandirCallbackOptions.ts": {
+            "hash": "68615ba8a819b0b1486e469d95695479e4499874c11bf1b5c7b00307c6fd215c"
+        },
+        "project/src/ScandirSyncCallbackOptions.ts": {
+            "hash": "e167c75c9ad736f0129aaf6d368038339298ecebb8bfe82e4ee45fec5b1c7688"
         }
     },
     "toolchain": [
