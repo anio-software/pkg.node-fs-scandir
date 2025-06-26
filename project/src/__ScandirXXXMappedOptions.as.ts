@@ -4,8 +4,8 @@ import type {ScandirCommonOptions} from "#~src/ScandirCommonOptions.ts"
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 
 type Map<T> = {
-	(entry: ScandirEntry): Promise<T> | T;
-//>	(entry: ScandirEntry): T;
+	(entry: ScandirEntry): Promise<T> | T
+//>	(entry: ScandirEntry): T
 }
 
 export type __XX__<T> = ScandirCommonOptions & {

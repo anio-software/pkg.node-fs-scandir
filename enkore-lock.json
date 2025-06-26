@@ -17,10 +17,10 @@
             "hash": "1e50b7e3d6c1d796492e1ec7fe10cd4f47570c645c99c41d0892fc7335fc34ca"
         },
         "project/src/ScandirMappedOptions.ts": {
-            "hash": "bf8cc8d9de683d390e0199bab585eac8a9bafa27663ae5255a07b6e444f5464f"
+            "hash": "f29b702a4f6adc31af9312f947a174978657948678bd33568f35b37665972dc4"
         },
         "project/src/ScandirSyncMappedOptions.ts": {
-            "hash": "b85426d2bdc84d519f41c3e906ee217b23e1b22d446b168c0198728283fbe264"
+            "hash": "c8383b5635abca903e3e754b49e98a6da1e84c423432db214455c4147c70a544"
         }
     },
     "toolchain": [
