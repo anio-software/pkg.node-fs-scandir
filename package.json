@@ -15,16 +15,6 @@
     "url": "git+https://github.com/anio-software/pkg.node-fs-scandir.git"
   },
   "type": "module",
-  "devDependencies": {
-    "@aniojs-private/node-async-sync-fs": "^0.3.0",
-    "@aniojs/node-fs-path-type": "^1.0.6",
-    "@fourtune/core": "^0.1101.0",
-    "@fourtune/realm-js": "^1.0.5",
-    "fourtune": "^0.30000.1"
-  },
-  "peerDependencies": {
-    "@types/node": ">=22.7.x"
-  },
   "scripts": {
     "prepare": "./node_modules/.bin/fourtune ."
   },
