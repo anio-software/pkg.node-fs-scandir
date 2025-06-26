@@ -8,5 +8,10 @@
     "type": "git",
     "url": "git+https://github.com/anio-software/pkg.node-fs-scandir.git"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@anio-software/enkore": "^0.0.103",
+    "@anio-software/enkore.core": "^0.11.2",
+    "@anio-software/enkore.target-js-node": "^0.0.259-canary-390192b1-2480e47a"
+  }
 }
