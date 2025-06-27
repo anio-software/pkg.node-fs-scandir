@@ -21,6 +21,7 @@ import type {ValidPathType} from "@anio-software/pkg.node-fs-path-type"
 import path from "node:path"
 import {parents} from "#~src/parents.ts"
 import {isFunction} from "@anio-software/pkg.is"
+import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 
 type Options = ReturnType<typeof validateInputOptions>
 
@@ -169,5 +170,19 @@ export async function __XX__<T extends ModeOfOperation>(
 		entries
 	)
 
-	return {} as any
+	// scandir and scandirMapped both return the array of entries
+	if (modeOfOperation === "scandir" || modeOfOperation === "scandirMapped") {
+		return entries as any
+	}
+	// scandirExt returns an object
+	else if (modeOfOperation === "scandirExt") {
+		const ret: ScandirExtRet = {
+			entries: entries as any
+		}
+
+		return ret as any
+	}
+
+	// scandirCallback returns undefined
+	return undefined as any
 }
