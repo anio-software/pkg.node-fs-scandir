@@ -17,7 +17,8 @@ export async function __XX__(
 	dependencies: Dependencies,
 	modeOfOperation: ModeOfOperation,
 	userOptions: AllOptions|undefined
-) {
+): Promise<any> {
+//>): any {
 	const context = createContext(contextOptions, 0)
 	const options = getOptions(userOptions)
 
