@@ -68,14 +68,14 @@ async function scandirImplementation(
 				if (keep !== true) return
 			}
 
-			if (typeof options.callback === "function") {
+			if (optionsType === "scandirCallback") {
 				await options.callback(data)
 //>				options.callback(data)
 
 				return
 			}
 
-			if (typeof options.map === "function") {
+			if (optionsType === "scandirMapped") {
 				(result as any[]).push(await options.map(data))
 //>				(result as any[]).push(options.map(data))
 			} else {
