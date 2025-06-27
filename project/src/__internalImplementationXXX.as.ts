@@ -6,21 +6,16 @@ import {
 
 import type {__EnkoreFunctionDependencies as Dependencies} from "#~src/Dependencies.ts"
 //>import type {__EnkoreFunctionDependencies as Dependencies} from "#~src/DependenciesSync.ts"
-
-import type {ModeOfOperation} from "#~src/ModeOfOperation.ts"
-
 import type {AllOptions} from "#~src/getOptions.ts"
 //>import type {AllOptions} from "#~src/getOptionsSync.ts"
-
 import {validateInputOptions} from "#~src/validateInputOptions.ts"
 //>import {validateSyncInputOptions as validateInputOptions} from "#~src/validateSyncInputOptions.ts"
-
-import type {ReturnMap} from "#~src/ReturnMap.ts"
-import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
-
 import {realpath} from "@anio-software/pkg-private.node-consistent-fs/async"
 //>import {realpath} from "@anio-software/pkg-private.node-consistent-fs/sync"
 
+import type {ModeOfOperation} from "#~src/ModeOfOperation.ts"
+import type {ReturnMap} from "#~src/ReturnMap.ts"
+import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import path from "node:path"
 
 async function scandirImplementation(
