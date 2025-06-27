@@ -5,8 +5,8 @@ import type {__EnkoreFunctionDependencies} from "#~src/Dependencies.ts"
 
 export type {__EnkoreFunctionDependencies}
 
-import type {ScandirOptions as Options} from "#~export/ScandirOptions.ts"
-//>import type {ScandirSyncOptions as Options} from "#~export/ScandirSyncOptions.ts"
+import type {ScandirCallbackOptions as Options} from "#~export/ScandirCallbackOptions.ts"
+//>import type {ScandirSyncCallbackOptions as Options} from "#~export/ScandirSyncCallbackOptions.ts"
 
 import {internalImplementation as impl} from "#~src/internalImplementation.ts"
 //>import {internalImplementationSync as impl} from "#~src/internalImplementationSync.ts"
