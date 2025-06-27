@@ -177,7 +177,10 @@ export async function __XX__<T extends ModeOfOperation>(
 	// scandirExt returns an object
 	else if (modeOfOperation === "scandirExt") {
 		const ret: ScandirExtRet = {
-			entries: entries as any
+			entries: entries as any,
+			createScandirEntryFromPath(filePath) {
+				return {} as any
+			}
 		}
 
 		return ret as any

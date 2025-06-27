@@ -15,6 +15,7 @@ import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 
 export type Ret = {
 	entries: ScandirEntry[]
+	createScandirEntryFromPath: (filePath: string) => ScandirEntry
 }
 
 export async function __implementation(

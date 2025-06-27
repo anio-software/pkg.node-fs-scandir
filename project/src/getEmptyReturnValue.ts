@@ -11,7 +11,10 @@ export function getEmptyReturnValue<T extends ModeOfOperation>(mode: T): ReturnM
 
 		case "scandirExt": {
 			const ret: ScandirExtRet = {
-				entries: []
+				entries: [],
+				createScandirEntryFromPath(filePath) {
+					return {} as any
+				}
 			}
 
 			return ret as any
