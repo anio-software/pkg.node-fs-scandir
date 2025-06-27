@@ -50,6 +50,7 @@ async function scandirImplementation(
 //>		const pathType = getTypeOfPath(absolutePath)
 
 		const handleCurrentEntry = async () => {
+//>		const handleCurrentEntry = () => {
 			const data: ScandirEntry = {
 				type: pathType as ValidPathType,
 				parents: parents(relativePath),
