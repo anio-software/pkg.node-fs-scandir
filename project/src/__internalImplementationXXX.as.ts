@@ -26,11 +26,11 @@ async function scandirImplementation(
 	normalizedInputDir: string,
 	resolvedInputDir: string,
 	relativeEntryDir: string,
-	options: Options,
+	userOptions: Options,
 	dependencies: Dependencies,
 	result: (any[])|undefined
 ) {
-
+	const {options, type: optionsType} = userOptions
 }
 
 export async function __XX__<T extends ModeOfOperation>(
