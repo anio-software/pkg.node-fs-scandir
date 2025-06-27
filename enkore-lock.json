@@ -52,6 +52,12 @@
         "project/src/scandirSync.ts": {
             "hash": "c804c3eb70fc0addb3e7e7fc559799f049ae3730ffbf6cc18311a86153ca2458"
         },
+        "project/src/scandirCallback.ts": {
+            "hash": "d0f27b21fe17b8a4bb72556a6151018c8b6da67c58a9d873362ed49ade5f4453"
+        },
+        "project/src/scandirSyncCallback.ts": {
+            "hash": "b61eab0b071a24f8343d62c72e4693a01ce7a6266c5f45a5fe886a41411a1f3f"
+        },
         "project/src/scandirExt.ts": {
             "hash": "c9c5aacede0f92df6e3e6dbf7e0b76ffb3ed5835afae72aff25b2b400d9014fd"
         },

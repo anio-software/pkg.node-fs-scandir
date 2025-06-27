@@ -16,6 +16,8 @@
 /src/internalImplementationSync.ts
 /src/scandir.ts
 /src/scandirSync.ts
+/src/scandirCallback.ts
+/src/scandirSyncCallback.ts
 /src/scandirExt.ts
 /src/scandirSyncExt.ts
 /export/scandirFactory.ts
