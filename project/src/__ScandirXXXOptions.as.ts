@@ -8,7 +8,7 @@ export type __XX__ = ScandirCommonOptions & {
 	 * Specifies whether returned array of entries should be sorted or not.
 	 * The default is `false`.
 	 */
-	sorted?: "alphabetical:ascending"  |
-	         "alphabetical:descending" |
-	         false
+	sort?: "alphabetical:ascending"  |
+	       "alphabetical:descending" |
+	       false
 }
