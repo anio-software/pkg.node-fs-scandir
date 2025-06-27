@@ -1,6 +1,7 @@
 import {
 	type EnkoreJSRuntimeContextOptions,
-	createContext
+	createContext,
+	type EnkoreJSRuntimeContext
 } from "@anio-software/enkore.js-runtime"
 
 import type {__EnkoreFunctionDependencies as Dependencies} from "#~src/Dependencies.ts"
@@ -19,6 +20,21 @@ import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 
 import {realpath} from "@anio-software/pkg-private.node-consistent-fs/async"
 //>import {realpath} from "@anio-software/pkg-private.node-consistent-fs/sync"
+
+import path from "node:path"
+
+async function scandirImplementation(
+//>function scandirImplementation(
+	context: EnkoreJSRuntimeContext,
+	normalizedInputDir: string,
+	resolvedInputDir: string,
+	relativeEntryDir: string,
+	options: AllOptions,
+	dependencies: Dependencies,
+	result: (any[])|undefined
+) {
+
+}
 
 export async function __XX__<T extends ModeOfOperation>(
 //>export function __XX__<T extends ModeOfOperation>(
@@ -54,6 +70,8 @@ export async function __XX__<T extends ModeOfOperation>(
 	const resolvedInputDir = await realpath(inputDir)
 //>	const resolvedInputDir = realpath(inputDir)
 
+	const normalizedInputDir = path.normalize(inputDir)
+
 	const entries: (unknown[])|undefined = (() => {
 		if (modeOfOperation === "scandir" ||
 		    modeOfOperation === "scandirMapped") {
@@ -63,7 +81,16 @@ export async function __XX__<T extends ModeOfOperation>(
 		return undefined
 	})()
 
-	// todo: call into recursive function
+	await scandirImplementation(
+//>	scandirImplementation(
+		context,
+		normalizedInputDir,
+		resolvedInputDir,
+		".",
+		options,
+		dependencies,
+		entries
+	)
 
 	return {} as any
 }
