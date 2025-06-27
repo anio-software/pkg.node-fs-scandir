@@ -35,7 +35,7 @@ export async function __XX__<T extends ModeOfOperation>(
 	const options = getOptions(userOptions)
 
 	context.log.trace(
-		`modeOfOperation = '${modeOfOperation}', options.type = '${options.type}'`
+		`inputDir = '${inputDir}', modeOfOperation = '${modeOfOperation}', options.type = '${options.type}'`
 	)
 
 	//
