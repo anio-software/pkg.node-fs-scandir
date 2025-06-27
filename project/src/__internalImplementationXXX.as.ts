@@ -85,5 +85,20 @@ export async function __XX__<T extends ModeOfOperation>(
 		}
 	}
 
+	if (options.allowMissingDir === true) {
+		const {getTypeOfPath} = dependencies
+
+		const pathType = await getTypeOfPath(inputDir)
+//>		const pathType = getTypeOfPath(inputDir)
+
+		if (pathType === "nonExisting") {
+			context.log.debug(
+				`Scandir can't find '${inputDir}', ignoring error since allowMissingDir was set to 'true'.`
+			)
+
+			return getEmptyReturnValue(modeOfOperation)
+		}
+	}
+
 	return {} as any
 }
