@@ -11,16 +11,8 @@ import type {ModeOfOperation} from "#~src/ModeOfOperation.ts"
 import {type AllOptions, getOptions} from "#~src/getOptions.ts"
 //>import {type AllOptions, getOptions} from "#~src/getOptionsSync.ts"
 
-import type {ScandirEntry} from "#~export/ScandirEntry.ts"
-
 import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
-
-type ReturnMap = {
-	"scandir": ScandirEntry[]
-	"scandirExt": ScandirExtRet
-	"scandirCallback": undefined
-	"scandirMapped": unknown[]
-}
+import type {ReturnMap} from "#~src/ReturnMap.ts"
 
 function getEmptyReturnValue<T extends ModeOfOperation>(mode: T): ReturnMap[T] {
 	switch (mode) {
