@@ -45,6 +45,12 @@
         },
         "project/src/internalImplementationSync.ts": {
             "hash": "d45f1ea2ba21a37d41f7b59661affd2fb9d1ec313cefb2c2ed4409880e598477"
+        },
+        "project/src/scandir.ts": {
+            "hash": "2be6a3f68818022c49218c05ac7bee79702df576cd4cbae936aa799cd53c7ffb"
+        },
+        "project/src/scandirSync.ts": {
+            "hash": "73a0e1b4400830c37c5aab47d132a0d8e1be7acfd2749e3570e46b29b3bc00c8"
         }
     },
     "toolchain": [
