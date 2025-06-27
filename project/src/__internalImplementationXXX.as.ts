@@ -22,6 +22,7 @@ import path from "node:path"
 import {parents} from "#~src/parents.ts"
 import {isFunction} from "@anio-software/pkg.is"
 import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
+import {createScandirEntryFromPathFactory} from "#~src/createScandirEntryFromPathFactory.ts"
 
 type Options = ReturnType<typeof validateInputOptions>
 
@@ -178,9 +179,7 @@ export async function __XX__<T extends ModeOfOperation>(
 	else if (modeOfOperation === "scandirExt") {
 		const ret: ScandirExtRet = {
 			entries: entries as any,
-			createScandirEntryFromPath(filePath) {
-				return {} as any
-			}
+			createScandirEntryFromPath: createScandirEntryFromPathFactory(inputDir)
 		}
 
 		return ret as any

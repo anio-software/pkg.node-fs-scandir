@@ -1,6 +1,7 @@
 import type {ModeOfOperation} from "#~src/ModeOfOperation.ts"
 import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 import type {ReturnMap} from "#~src/ReturnMap.ts"
+import {createScandirEntryFromPathFactory} from "#~src/createScandirEntryFromPathFactory.ts"
 
 export function getEmptyReturnValue<T extends ModeOfOperation>(
 	mode: T,
@@ -15,9 +16,7 @@ export function getEmptyReturnValue<T extends ModeOfOperation>(
 		case "scandirExt": {
 			const ret: ScandirExtRet = {
 				entries: [],
-				createScandirEntryFromPath(filePath) {
-					return {} as any
-				}
+				createScandirEntryFromPath: createScandirEntryFromPathFactory(inputDir)
 			}
 
 			return ret as any
