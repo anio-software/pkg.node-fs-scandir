@@ -35,10 +35,10 @@
             "hash": "0caebe0c1fac9508f44b9b2934e88a6fe5152b7b1438216e2a781bb304c3f49c"
         },
         "project/src/getOptions.ts": {
-            "hash": "5930098c6eb5fd8a5cef4ad317cfd951a2e3b3cc4da6faf59fc15206f65f10c8"
+            "hash": "2110fd47600a28ff4552a203517103524c52235c151065dd88e0626e5f35cc98"
         },
         "project/src/getOptionsSync.ts": {
-            "hash": "c952294e0c154e0a99e60de69517832082711d6c34bbc285246b032365404626"
+            "hash": "da3c937b277df647efe5cf50a0833558b2663ee797b243d959c0fcf384f8f520"
         }
     },
     "toolchain": [

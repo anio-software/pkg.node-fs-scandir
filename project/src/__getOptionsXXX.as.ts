@@ -9,7 +9,7 @@ import type {ScandirMappedOptions as MappedOptions} from "#~export/ScandirMapped
 
 import {isUndefined} from "@anio-software/pkg.is"
 
-type AllOptions = Options | CallbackOptions | MappedOptions<unknown>
+export type AllOptions = Options | CallbackOptions | MappedOptions<unknown>
 
 type Ret = {
 	type: "scandir"
