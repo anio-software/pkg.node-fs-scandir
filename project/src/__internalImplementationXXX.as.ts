@@ -15,6 +15,9 @@ import type {ReturnMap} from "#~src/ReturnMap.ts"
 import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import {validateInputOptions} from "#~src/validateInputOptions.ts"
 
+import {realpath} from "@anio-software/pkg-private.node-consistent-fs/async"
+//>import {realpath} from "@anio-software/pkg-private.node-consistent-fs/sync"
+
 export async function __XX__<T extends ModeOfOperation>(
 //>export function __XX__<T extends ModeOfOperation>(
 	contextOptions: EnkoreJSRuntimeContextOptions,
@@ -45,6 +48,20 @@ export async function __XX__<T extends ModeOfOperation>(
 			return getEmptyReturnValue(modeOfOperation)
 		}
 	}
+
+	const resolvedInputDir = await realpath(inputDir)
+//>	const resolvedInputDir = realpath(inputDir)
+
+	const entries: (unknown[])|undefined = (() => {
+		if (modeOfOperation === "scandir" ||
+		    modeOfOperation === "scandirMapped") {
+			return []
+		}
+
+		return undefined
+	})()
+
+	// todo: call into recursive function
 
 	return {} as any
 }
