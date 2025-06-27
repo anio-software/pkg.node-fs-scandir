@@ -7,6 +7,8 @@ import type {ScandirCallbackOptions as CallbackOptions} from "#~export/ScandirCa
 import type {ScandirMappedOptions as MappedOptions} from "#~export/ScandirMappedOptions.ts"
 //>import type {ScandirSyncMappedOptions as MappedOptions} from "#~export/ScandirSyncMappedOptions.ts"
 
+import {isUndefined} from "@anio-software/pkg.is"
+
 type AllOptions = Options | CallbackOptions | MappedOptions<unknown>
 
 type Ret = {
@@ -20,7 +22,14 @@ type Ret = {
 	options: MappedOptions<unknown>
 }
 
-export function __XX__(userOptions: AllOptions): Ret {
+export function __XX__(userOptions: AllOptions|undefined): Ret {
+	if (isUndefined(userOptions)) {
+		return {
+			type: "scandir",
+			options: {}
+		}
+	}
+
 	if ("callback" in userOptions) {
 		return {
 			type: "scandirCallback",
