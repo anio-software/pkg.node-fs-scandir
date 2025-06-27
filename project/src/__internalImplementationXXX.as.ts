@@ -16,13 +16,13 @@ import {readdir, realpath} from "@anio-software/pkg-private.node-consistent-fs/a
 import type {ModeOfOperation} from "#~src/ModeOfOperation.ts"
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 import type {ReturnMap} from "#~src/ReturnMap.ts"
-import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
+import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 import type {ValidPathType} from "@anio-software/pkg.node-fs-path-type"
-import path from "node:path"
+import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import {parents} from "#~src/parents.ts"
 import {isFunction} from "@anio-software/pkg.is"
-import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 import {createScandirEntryFromPathFactory} from "#~src/createScandirEntryFromPathFactory.ts"
+import path from "node:path"
 
 type Options = ReturnType<typeof validateInputOptions>
 
