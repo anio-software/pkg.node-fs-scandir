@@ -4,7 +4,7 @@ export type ScandirEntry = {
 	/**
 	 * @brief The type of the entry.
 	 */
-	type: ValidPathType
+	type: ValidPathType | "error"
 
 	/**
 	 * @brief Normalized relative path to the entry joined with the initial root directory.

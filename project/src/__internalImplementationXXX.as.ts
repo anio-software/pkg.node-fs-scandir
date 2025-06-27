@@ -48,13 +48,25 @@ async function scandirImplementation(
 		const absolutePath = path.join(resolvedInputDir, relativeEntryDir, entry)
 		const relativePath = path.join(relativeEntryDir, entry)
 
-		const pathType = await getTypeOfPath(absolutePath)
-//>		const pathType = getTypeOfPath(absolutePath)
+		const pathType: ValidPathType | "error" = await (async () => {
+//>		const pathType: ValidPathType | "error" = (() => {
+			const type = await getTypeOfPath(absolutePath)
+//>			const type = getTypeOfPath(absolutePath)
+
+			if (
+			    type === "nonExisting" ||
+			    type === "link:error"  ||
+			    type === "error") {
+				return "error"
+			}
+
+			return type
+		})()
 
 		const handleCurrentEntry = async () => {
 //>		const handleCurrentEntry = () => {
 			const data: ScandirEntry = {
-				type: pathType as ValidPathType,
+				type: pathType,
 				parents: parents(relativePath),
 				name: entry,
 				path: path.join(
