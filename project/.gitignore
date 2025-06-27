@@ -28,3 +28,7 @@
 /export/scandirExt.ts
 /export/scandirSyncExtFactory.ts
 /export/scandirSyncExt.ts
+/export/scandirCallbackFactory.ts
+/export/scandirCallback.ts
+/export/scandirSyncCallbackFactory.ts
+/export/scandirSyncCallback.ts
