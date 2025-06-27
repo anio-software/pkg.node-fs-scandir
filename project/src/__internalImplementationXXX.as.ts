@@ -32,10 +32,10 @@ export async function __XX__<T extends ModeOfOperation>(
 ): Promise<ReturnMap[T]> {
 //>): ReturnMap[T] {
 	const context = createContext(contextOptions, 0)
-	const options = getOptions(userOptions)
+	const {options, type: optionsType} = getOptions(userOptions)
 
 	context.log.trace(
-		`inputDir = '${inputDir}', modeOfOperation = '${modeOfOperation}', options.type = '${options.type}'`
+		`inputDir = '${inputDir}', modeOfOperation = '${modeOfOperation}', options.type = '${optionsType}'`
 	)
 
 	//
@@ -44,19 +44,19 @@ export async function __XX__<T extends ModeOfOperation>(
 	switch (modeOfOperation) {
 		case "scandir":
 		case "scandirExt": {
-			if (options.type !== "scandir") {
+			if (optionsType !== "scandir") {
 				throw new Error(`Invalid options object for mode '${modeOfOperation}'.`)
 			}
 		} break
 
 		case "scandirCallback": {
-			if (options.type !== "scandirCallback") {
+			if (optionsType !== "scandirCallback") {
 				throw new Error(`Invalid options object for mode '${modeOfOperation}'.`)
 			}
 		} break
 
 		case "scandirMapped": {
-			if (options.type !== "scandirMapped") {
+			if (optionsType !== "scandirMapped") {
 				throw new Error(`Invalid options object for mode '${modeOfOperation}'.`)
 			}
 		} break
