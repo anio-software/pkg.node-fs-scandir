@@ -149,7 +149,8 @@ export async function __XX__<T extends ModeOfOperation>(
 	const normalizedInputDir = path.normalize(inputDir)
 
 	const entries: (unknown[])|undefined = (() => {
-		if (modeOfOperation === "scandir" ||
+		if (modeOfOperation === "scandir"    ||
+		    modeOfOperation === "scandirExt" ||
 		    modeOfOperation === "scandirMapped") {
 			return []
 		}
