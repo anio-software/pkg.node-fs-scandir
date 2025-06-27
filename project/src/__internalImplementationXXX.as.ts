@@ -13,9 +13,11 @@ import {type AllOptions, getOptions} from "#~src/getOptions.ts"
 
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 
+import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
+
 type ReturnMap = {
 	"scandir": ScandirEntry[]
-	"scandirExt": {entries: ScandirEntry[]}
+	"scandirExt": ScandirExtRet
 	"scandirCallback": undefined
 	"scandirMapped": unknown[]
 }
