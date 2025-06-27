@@ -20,6 +20,8 @@
 /src/scandirSyncCallback.ts
 /src/scandirExt.ts
 /src/scandirSyncExt.ts
+/src/scandirMapped.ts
+/src/scandirSyncMapped.ts
 /export/scandirFactory.ts
 /export/scandir.ts
 /export/scandirSyncFactory.ts

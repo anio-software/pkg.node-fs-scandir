@@ -64,6 +64,12 @@
         "project/src/scandirSyncExt.ts": {
             "hash": "f7b051d8ddbc90f48996b51295becd7820cbb3f579d05f7924408cd97a5ad15e"
         },
+        "project/src/scandirMapped.ts": {
+            "hash": "b63a3594970d931a494417d90b1fd026d2a3969251e864542191c8ab8ef3403f"
+        },
+        "project/src/scandirSyncMapped.ts": {
+            "hash": "f15487dd4c955ca4eaef3d83d027f5af8a6baf9061913549773a46fe8be84713"
+        },
         "project/export/scandirFactory.ts": {
             "hash": "646d02d9739c6f7751b67963e42931f8de529b56d635f547b8e150f8ad627b44"
         },
