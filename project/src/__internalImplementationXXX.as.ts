@@ -11,9 +11,11 @@ import type {ModeOfOperation} from "#~src/ModeOfOperation.ts"
 import type {AllOptions} from "#~src/getOptions.ts"
 //>import type {AllOptions} from "#~src/getOptionsSync.ts"
 
+import {validateInputOptions} from "#~src/validateInputOptions.ts"
+//>import {validateSyncInputOptions as validateInputOptions} from "#~src/validateSyncInputOptions.ts"
+
 import type {ReturnMap} from "#~src/ReturnMap.ts"
 import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
-import {validateInputOptions} from "#~src/validateInputOptions.ts"
 
 import {realpath} from "@anio-software/pkg-private.node-consistent-fs/async"
 //>import {realpath} from "@anio-software/pkg-private.node-consistent-fs/sync"

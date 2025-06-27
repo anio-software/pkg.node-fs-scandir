@@ -22,6 +22,8 @@
 /src/scandirSyncExt.ts
 /src/scandirMapped.ts
 /src/scandirSyncMapped.ts
+/src/validateInputOptions.ts
+/src/validateSyncInputOptions.ts
 /export/scandirFactory.ts
 /export/scandir.ts
 /export/scandirSyncFactory.ts

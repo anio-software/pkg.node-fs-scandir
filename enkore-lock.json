@@ -41,10 +41,10 @@
             "hash": "09313b9e944cc88cf68851ba0b07646e87e2669b948c52b9d963f15128e39e54"
         },
         "project/src/internalImplementation.ts": {
-            "hash": "577e9a1e19dfdfcda3edef4bea08b98fbea48ac2cb9c2947ffdad8dd64930cec"
+            "hash": "71eb41a7da14d101d5ed9af09dbb1f04998fc8fb3bbab2c20ea058992861abd2"
         },
         "project/src/internalImplementationSync.ts": {
-            "hash": "51d0fcdb682817647a822708cbe0c0ae4b6231b24672961239c379569a2da7ff"
+            "hash": "f49a3d645dc91ffa10faf13bb0dc6c7fcac3705fdaaa5aef38066fd59934959c"
         },
         "project/src/scandir.ts": {
             "hash": "4cbe1bc8975131afbee5fede4d288e47a3b9e20292576db6941e64a7f3eb4ce5"
@@ -69,6 +69,12 @@
         },
         "project/src/scandirSyncMapped.ts": {
             "hash": "5b25d0f6ddc4ccb046a373edf3f663691849593cdb6495334d84c57f86ecfb92"
+        },
+        "project/src/validateInputOptions.ts": {
+            "hash": "bed6864f7260d75441727af5ddab9d4e5af539c8a219b9dd64f55ce7a4fb368b"
+        },
+        "project/src/validateSyncInputOptions.ts": {
+            "hash": "71e19c8b3cc54601ec0c4e0f2c75b3f4ffe233b55d4a762e1ee225fb67aa90d6"
         },
         "project/export/scandirFactory.ts": {
             "hash": "2461e26bc37e1dcaa41f0cfb8a3db893ec778218bbdb774fb49c5578104a5b77"
