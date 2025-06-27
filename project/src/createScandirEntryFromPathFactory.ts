@@ -8,14 +8,14 @@ export function createScandirEntryFromPathFactory(
 ): ScandirExtRet["createScandirEntryFromPath"] {
 	// todo: also support directories, not only files!
 	return function(filePath) {
-		const normalizedRootDir = path.normalize(inputDir)
-		const normalizedFilePath = path.normalize(filePath)
-
-		if (!normalizedFilePath.startsWith(normalizedRootDir)) {
+		if (!filePath.startsWith(inputDir)) {
 			throw new Error(
-				`Relative file path '${normalizedFilePath}' must start with '${normalizedRootDir}'.`
+				`Relative file path '${filePath}' must start with '${inputDir}'.`
 			)
 		}
+
+		const normalizedRootDir = path.normalize(inputDir)
+		const normalizedFilePath = path.normalize(filePath)
 
 		const relativePath = path.relative(normalizedRootDir, normalizedFilePath)
 
