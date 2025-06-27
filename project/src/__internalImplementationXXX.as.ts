@@ -18,13 +18,15 @@ import type {ReturnMap} from "#~src/ReturnMap.ts"
 import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import path from "node:path"
 
+type Options = ReturnType<typeof validateInputOptions>
+
 async function scandirImplementation(
 //>function scandirImplementation(
 	context: EnkoreJSRuntimeContext,
 	normalizedInputDir: string,
 	resolvedInputDir: string,
 	relativeEntryDir: string,
-	options: AllOptions,
+	options: Options,
 	dependencies: Dependencies,
 	result: (any[])|undefined
 ) {
@@ -41,13 +43,13 @@ export async function __XX__<T extends ModeOfOperation>(
 ): Promise<ReturnMap[T]> {
 //>): ReturnMap[T] {
 	const context = createContext(contextOptions, 0)
-	const {options, type: optionsType} = validateInputOptions(modeOfOperation, userOptions)
+	const options = validateInputOptions(modeOfOperation, userOptions)
 
 	context.log.trace(
-		`inputDir = '${inputDir}', modeOfOperation = '${modeOfOperation}', options.type = '${optionsType}'`
+		`inputDir = '${inputDir}', modeOfOperation = '${modeOfOperation}', options.type = '${options.type}'`
 	)
 
-	if (options.allowMissingDir === true) {
+	if (options.options.allowMissingDir === true) {
 		const {getTypeOfPath} = dependencies
 
 		const pathType = await getTypeOfPath(inputDir)
