@@ -14,6 +14,7 @@
     "@anio-software/enkore": "^0.0.103",
     "@anio-software/enkore.core": "^0.11.2",
     "@anio-software/enkore.target-js-node": "^0.0.259-canary-390192b1-2480e47a",
+    "@anio-software/pkg-private.node-consistent-fs": "^0.0.1",
     "@anio-software/pkg.is": "^0.0.3",
     "@anio-software/pkg.node-fs-path-type": "^0.0.6"
   }
