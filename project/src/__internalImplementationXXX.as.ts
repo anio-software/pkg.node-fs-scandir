@@ -20,7 +20,7 @@ import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 import type {ValidPathType} from "@anio-software/pkg.node-fs-path-type"
 import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import {parents} from "#~src/parents.ts"
-import {isFunction} from "@anio-software/pkg.is"
+import {isFunction, isString} from "@anio-software/pkg.is"
 import {createScandirEntryFromPathFactory} from "#~src/createScandirEntryFromPathFactory.ts"
 import path from "node:path"
 
@@ -130,6 +130,14 @@ async function scandirImplementation(
 	}
 }
 
+function sortAscending(a: ScandirEntry, b: ScandirEntry) {
+	return a.relativePath.localeCompare(b.relativePath, "en")
+}
+
+function sortDescending(a: ScandirEntry, b: ScandirEntry) {
+	return b.relativePath.localeCompare(a.relativePath, "en")
+}
+
 export async function __XX__<T extends ModeOfOperation>(
 //>export function __XX__<T extends ModeOfOperation>(
 	contextOptions: EnkoreJSRuntimeContextOptions,
@@ -186,6 +194,15 @@ export async function __XX__<T extends ModeOfOperation>(
 		dependencies,
 		entries
 	)
+
+	// this also catches the scandirExt case
+	if (options.type === "scandir") {
+		if (isString(options.options.sort)) {
+			const sorter = options.options.sort === "alphabetical:ascending" ? sortAscending : sortDescending;
+
+			(entries as ScandirEntry[]).sort(sorter)
+		}
+	}
 
 	// scandir and scandirMapped both return the array of entries
 	if (modeOfOperation === "scandir" || modeOfOperation === "scandirMapped") {
