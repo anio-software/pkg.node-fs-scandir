@@ -10,3 +10,5 @@
 /src/ScandirSyncMappedOptions.ts
 /src/ScandirOptions.ts
 /src/ScandirSyncOptions.ts
+/src/getOptions.ts
+/src/getOptionsSync.ts
