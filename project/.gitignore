@@ -12,3 +12,5 @@
 /src/ScandirSyncOptions.ts
 /src/getOptions.ts
 /src/getOptionsSync.ts
+/src/internalImplementation.ts
+/src/internalImplementationSync.ts

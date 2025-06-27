@@ -39,6 +39,12 @@
         },
         "project/src/getOptionsSync.ts": {
             "hash": "09313b9e944cc88cf68851ba0b07646e87e2669b948c52b9d963f15128e39e54"
+        },
+        "project/src/internalImplementation.ts": {
+            "hash": "9a97aa10bc394fef375ebc956f13ba932bbe5a7758a193a7a7fa7598533e2bae"
+        },
+        "project/src/internalImplementationSync.ts": {
+            "hash": "d45f1ea2ba21a37d41f7b59661affd2fb9d1ec313cefb2c2ed4409880e598477"
         }
     },
     "toolchain": [
