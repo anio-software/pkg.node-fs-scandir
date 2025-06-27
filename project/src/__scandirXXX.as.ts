@@ -1,7 +1,7 @@
 import type {EnkoreJSRuntimeContextOptions} from "@anio-software/enkore.js-runtime"
 
-import type {__EnkoreFunctionDependencies as Dependencies} from "#~src/Dependencies.ts"
-//>import type {__EnkoreFunctionDependencies as Dependencies} from "#~src/DependenciesSync.ts"
+import type {__EnkoreFunctionDependencies} from "#~src/Dependencies.ts"
+//>import type {__EnkoreFunctionDependencies} from "#~src/DependenciesSync.ts"
 
 import type {ScandirOptions as Options} from "#~export/ScandirOptions.ts"
 //>import type {ScandirSyncOptions as Options} from "#~export/ScandirSyncOptions.ts"
@@ -14,7 +14,7 @@ import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 export async function __implementation(
 //>export function __implementationSync(
 	contextOptions: EnkoreJSRuntimeContextOptions,
-	dependencies: Dependencies,
+	dependencies: __EnkoreFunctionDependencies,
 	options?: Options
 ): Promise<ScandirEntry[]> {
 //>): ScandirEntry[] {
