@@ -19,14 +19,14 @@ const scandirExt = scandirSyncExtFactory(options)
 const scandirCallback = scandirSyncCallbackFactory(options)
 const scandirMapped = scandirSyncMappedFactory(options)
 
-console.log(scandir("."))
-console.log(scandirExt("."))
-console.log(scandirCallback(".", {
+console.log(scandir("project"))
+console.log(scandirExt("project"))
+console.log(scandirCallback("project", {
 	callback(e) {
 		console.log("got it", e)
 	}
 }))
-console.log(scandirMapped(".", {
+console.log(scandirMapped("project", {
 	map(e) {
 		return e.type
 	}
