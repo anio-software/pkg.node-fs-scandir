@@ -47,10 +47,10 @@
             "hash": "d45f1ea2ba21a37d41f7b59661affd2fb9d1ec313cefb2c2ed4409880e598477"
         },
         "project/src/scandir.ts": {
-            "hash": "2be6a3f68818022c49218c05ac7bee79702df576cd4cbae936aa799cd53c7ffb"
+            "hash": "4cffad277278edf08c2797a44f2f4ff71c7018c6f4872f4f0e064bef0a034bd2"
         },
         "project/src/scandirSync.ts": {
-            "hash": "73a0e1b4400830c37c5aab47d132a0d8e1be7acfd2749e3570e46b29b3bc00c8"
+            "hash": "d4c5c972ab5c53102cf9b8e023caeb57047e956d4bc209d79d6aca455fcc7de2"
         }
     },
     "toolchain": [

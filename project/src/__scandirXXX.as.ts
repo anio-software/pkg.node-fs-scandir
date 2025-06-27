@@ -11,8 +11,8 @@ import {internalImplementation as impl} from "#~src/internalImplementation.ts"
 
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 
-export async function scandir(
-//>export function scandir(
+export async function __implementation(
+//>export function __implementationSync(
 	contextOptions: EnkoreJSRuntimeContextOptions,
 	dependencies: Dependencies,
 	options?: Options
