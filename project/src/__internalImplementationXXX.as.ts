@@ -140,7 +140,7 @@ export async function __XX__<T extends ModeOfOperation>(
 				`Scandir can't find '${inputDir}', ignoring error since allowMissingDir was set to 'true'.`
 			)
 
-			return getEmptyReturnValue(modeOfOperation)
+			return getEmptyReturnValue(modeOfOperation, inputDir)
 		}
 	}
 

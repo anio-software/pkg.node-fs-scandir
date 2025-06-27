@@ -3,7 +3,8 @@ import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 import type {ReturnMap} from "#~src/ReturnMap.ts"
 
 export function getEmptyReturnValue<T extends ModeOfOperation>(
-	mode: T
+	mode: T,
+	inputDir: string
 ): ReturnMap[T] {
 	switch (mode) {
 		case "scandir":
