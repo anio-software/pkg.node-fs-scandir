@@ -22,7 +22,7 @@ type Ret = {
 	options: MappedOptions<unknown>
 }
 
-export function __XX__(userOptions: AllOptions|undefined): Ret {
+export function getOptions(userOptions: AllOptions|undefined): Ret {
 	if (isUndefined(userOptions)) {
 		return {
 			type: "scandir",
