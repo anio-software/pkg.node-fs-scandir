@@ -63,6 +63,10 @@ async function scandirImplementation(
 			return type
 		})()
 
+		if (pathType === "error") {
+			context.log.warn(`path '${absolutePath}' has path type 'error'!`)
+		}
+
 		const handleCurrentEntry = async () => {
 //>		const handleCurrentEntry = () => {
 			const data: ScandirEntry = {
