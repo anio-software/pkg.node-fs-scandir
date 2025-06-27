@@ -105,6 +105,18 @@
         },
         "project/export/scandirSyncCallback.ts": {
             "hash": "31bf9b3c038c63e1d7a6b3f143a35dcd98ad0cf5c260f96b6be714d6ee64cf6b"
+        },
+        "project/export/scandirMappedFactory.ts": {
+            "hash": "87c6a4a7e4dc9161ce2cc9f38fdd251b8c4f5b9a535216e8ce506b06459086f4"
+        },
+        "project/export/scandirMapped.ts": {
+            "hash": "9c34285a9b4ebc76e4160210bd81db9c05b273d442b69715e5fdc05406306536"
+        },
+        "project/export/scandirSyncMappedFactory.ts": {
+            "hash": "1245110c283876e2db872c5ee2bfe4605e73e87983bc677d1a7407c6d9f860dc"
+        },
+        "project/export/scandirSyncMapped.ts": {
+            "hash": "e04b282169f18c39c6d08e4abc7df44f2b2e8be17b15a7b4b27a1c7d683c1eb3"
         }
     },
     "toolchain": [

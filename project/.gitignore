@@ -34,3 +34,7 @@
 /export/scandirCallback.ts
 /export/scandirSyncCallbackFactory.ts
 /export/scandirSyncCallback.ts
+/export/scandirMappedFactory.ts
+/export/scandirMapped.ts
+/export/scandirSyncMappedFactory.ts
+/export/scandirSyncMapped.ts
