@@ -1,31 +1,33 @@
 import {
-	scandirFactory,
-	scandirSyncFactory
-} from "../dist/default/index.mjs"
+	scandirSyncFactory,
+	scandirSyncExtFactory,
+	scandirSyncCallbackFactory,
+	scandirSyncMappedFactory
+} from "../products/project/dist/default/index.mjs"
+import {getProject} from "@anio-software/enkore.target-js-node/project"
+import {defineContextOptions} from "@anio-software/enkore.js-runtime"
 
-import {createContext} from "@fourtune/realm-js/v0/runtime"
-
-const context = createContext({
+const options = defineContextOptions({
+	project: getProject(),
 	shouldLog() {
 		return true
 	}
 })
 
-const scandir = scandirFactory(context)
-const scandirSync = scandirSyncFactory(context)
+const scandir = scandirSyncFactory(options)
+const scandirExt = scandirSyncExtFactory(options)
+const scandirCallback = scandirSyncCallbackFactory(options)
+const scandirMapped = scandirSyncMappedFactory(options)
 
-/*
-  {
-    type: 'file',
-    relative_path: 'example.mjs',
-    absolute_path: '/some/path/example.mjs'
-  }
-*/
-
-console.log(
-	await scandir("examples")
-)
-
-console.log(
-	scandirSync("examples")
-)
+console.log(scandir("."))
+console.log(scandirExt("."))
+console.log(scandirCallback(".", {
+	callback(e) {
+		console.log("got it", e)
+	}
+}))
+console.log(scandirMapped(".", {
+	map(e) {
+		return e.type
+	}
+}))
