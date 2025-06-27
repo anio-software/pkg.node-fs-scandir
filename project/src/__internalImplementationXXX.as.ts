@@ -22,6 +22,25 @@ type ReturnMap = {
 	"scandirMapped": unknown[]
 }
 
+function getEmptyReturnValue<T extends ModeOfOperation>(mode: T): ReturnMap[T] {
+	switch (mode) {
+		case "scandir":
+		case "scandirMapped": {
+			return [] as any
+		}
+
+		case "scandirExt": {
+			const ret: ScandirExtRet = {
+				entries: []
+			}
+
+			return ret as any
+		}
+	}
+
+	return undefined as any
+}
+
 export async function __XX__<T extends ModeOfOperation>(
 //>export function __XX__<T extends ModeOfOperation>(
 	contextOptions: EnkoreJSRuntimeContextOptions,
