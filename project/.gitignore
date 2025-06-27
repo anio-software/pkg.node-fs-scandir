@@ -22,3 +22,7 @@
 /export/scandir.ts
 /export/scandirSyncFactory.ts
 /export/scandirSync.ts
+/export/scandirExtFactory.ts
+/export/scandirExt.ts
+/export/scandirSyncExtFactory.ts
+/export/scandirSyncExt.ts

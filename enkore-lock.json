@@ -69,6 +69,18 @@
         },
         "project/export/scandirSync.ts": {
             "hash": "9fdd96b2359ed98147de6a4881f234defb05d3e9b6c5a128e4b346a553fd4943"
+        },
+        "project/export/scandirExtFactory.ts": {
+            "hash": "710a0b4b0393dc4501c966d08fa87d43f1b82d3b62b2d8b4ea0ca047a6498d4b"
+        },
+        "project/export/scandirExt.ts": {
+            "hash": "d7da69799df438e9e62735e42d796908adf06d64c66184d048fd3cad84433992"
+        },
+        "project/export/scandirSyncExtFactory.ts": {
+            "hash": "8ec9c625d45e7290bfe7ee0350962289043cee3c9185719813373778e9b7bd88"
+        },
+        "project/export/scandirSyncExt.ts": {
+            "hash": "ff17a81f390b47da4e5617d51991335dc73e15f61e74f80af1b84d875a84c0ff"
         }
     },
     "toolchain": [

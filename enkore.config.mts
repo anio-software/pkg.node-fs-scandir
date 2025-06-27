@@ -33,6 +33,10 @@ export const config: unknown = defineConfig({
 		...generateFactoryWithInstantiationFile({
 			source: "project/src/__scandirXXX.as.ts",
 			destination: "project/export/__scandirXXXFactory.as.ts"
+		}),
+		...generateFactoryWithInstantiationFile({
+			source: "project/src/__scandirXXXExt.as.ts",
+			destination: "project/export/__scandirXXXExtFactory.as.ts"
 		})
 	]
 })
