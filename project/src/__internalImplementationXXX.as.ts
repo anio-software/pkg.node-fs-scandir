@@ -11,14 +11,23 @@ import type {ModeOfOperation} from "#~src/ModeOfOperation.ts"
 import {type AllOptions, getOptions} from "#~src/getOptions.ts"
 //>import {type AllOptions, getOptions} from "#~src/getOptionsSync.ts"
 
-export async function __XX__(
-//>export function __XX__(
+import type {ScandirEntry} from "#~export/ScandirEntry.ts"
+
+type ReturnMap = {
+	"scandir": ScandirEntry[]
+	"scandirExt": {entries: ScandirEntry[]}
+	"scandirCallback": undefined
+	"scandirMapped": unknown[]
+}
+
+export async function __XX__<T extends ModeOfOperation>(
+//>export function __XX__<T extends ModeOfOperation>(
 	contextOptions: EnkoreJSRuntimeContextOptions,
 	dependencies: Dependencies,
-	modeOfOperation: ModeOfOperation,
+	modeOfOperation: T,
 	userOptions: AllOptions|undefined
-): Promise<any> {
-//>): any {
+): Promise<ReturnMap[T]> {
+//>): ReturnMap[T] {
 	const context = createContext(contextOptions, 0)
 	const options = getOptions(userOptions)
 
@@ -53,4 +62,6 @@ export async function __XX__(
 			throw new Error(`Invalid mode of operation '${modeOfOperation}'.`)
 		}
 	}
+
+	return {} as any
 }
