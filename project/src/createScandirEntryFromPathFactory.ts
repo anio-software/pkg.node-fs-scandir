@@ -6,6 +6,7 @@ import {realpathSync} from "@anio-software/pkg-private.node-consistent-fs/sync"
 export function createScandirEntryFromPathFactory(
 	inputDir: string
 ): ScandirExtRet["createScandirEntryFromPath"] {
+	// todo: also support directories, not only files!
 	return function(filePath) {
 		const normalizedRootDir = path.normalize(inputDir)
 		const normalizedFilePath = path.normalize(filePath)
