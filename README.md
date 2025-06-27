@@ -7,7 +7,7 @@ import {scandir, scandirSync} from "@anio-software/pkg.node-fs-scandir"
 
 /*
   {
-    type: 'regularFile',
+    type: 'file:regular',
     parents: [],
     name: 'example.mjs',
     path: '/root/examples/example.mjs',
