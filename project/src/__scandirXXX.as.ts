@@ -20,13 +20,11 @@ export async function __implementation(
 	options?: Options
 ): Promise<ScandirEntry[]> {
 //>): ScandirEntry[] {
-	const result = await impl(
-//>	const result = impl(
+	return await impl(
+//>	return impl(
 		contextOptions,
 		dependencies,
 		"scandir",
 		options
 	)
-
-	return []
 }
