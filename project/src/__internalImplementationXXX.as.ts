@@ -20,6 +20,7 @@ import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import type {ValidPathType} from "@anio-software/pkg.node-fs-path-type"
 import path from "node:path"
 import {parents} from "#~src/parents.ts"
+import {isFunction} from "@anio-software/pkg.is"
 
 type Options = ReturnType<typeof validateInputOptions>
 
@@ -60,7 +61,7 @@ async function scandirImplementation(
 				absolutePath
 			}
 
-			if (typeof options.filter === "function") {
+			if (isFunction(options.filter)) {
 				const keep = await options.filter(data)
 //>				const keep = options.filter(data)
 
