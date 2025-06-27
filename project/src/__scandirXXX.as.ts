@@ -3,6 +3,8 @@ import type {EnkoreJSRuntimeContextOptions} from "@anio-software/enkore.js-runti
 import type {__EnkoreFunctionDependencies} from "#~src/Dependencies.ts"
 //>import type {__EnkoreFunctionDependencies} from "#~src/DependenciesSync.ts"
 
+export type {__EnkoreFunctionDependencies}
+
 import type {ScandirOptions as Options} from "#~export/ScandirOptions.ts"
 //>import type {ScandirSyncOptions as Options} from "#~export/ScandirSyncOptions.ts"
 
