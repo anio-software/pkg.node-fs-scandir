@@ -21,6 +21,7 @@ export async function __implementation(
 //>export function __implementationSync(
 	contextOptions: EnkoreJSRuntimeContextOptions,
 	dependencies: __EnkoreFunctionDependencies,
+	inputDir: string,
 	options?: Options
 ): Promise<Ret> {
 //>): Ret {
@@ -29,6 +30,7 @@ export async function __implementation(
 		contextOptions,
 		dependencies,
 		"scandirExt",
+		inputDir,
 		options
 	)
 }

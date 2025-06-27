@@ -27,6 +27,7 @@ export async function __XX__<T extends ModeOfOperation>(
 	contextOptions: EnkoreJSRuntimeContextOptions,
 	dependencies: Dependencies,
 	modeOfOperation: T,
+	inputDir: string,
 	userOptions: AllOptions|undefined
 ): Promise<ReturnMap[T]> {
 //>): ReturnMap[T] {

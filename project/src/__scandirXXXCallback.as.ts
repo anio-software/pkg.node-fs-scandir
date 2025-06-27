@@ -15,6 +15,7 @@ export async function __implementation(
 //>export function __implementationSync(
 	contextOptions: EnkoreJSRuntimeContextOptions,
 	dependencies: __EnkoreFunctionDependencies,
+	inputDir: string,
 	options?: Options
 ): Promise<undefined> {
 //>): undefined {
@@ -23,6 +24,7 @@ export async function __implementation(
 		contextOptions,
 		dependencies,
 		"scandirCallback",
+		inputDir,
 		options
 	)
 }

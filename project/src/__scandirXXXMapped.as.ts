@@ -15,6 +15,7 @@ export async function __implementation<T>(
 //>export function __implementationSync<T>(
 	contextOptions: EnkoreJSRuntimeContextOptions,
 	dependencies: __EnkoreFunctionDependencies,
+	inputDir: string,
 	options?: Options<T>
 ): Promise<T[]> {
 //>): T[] {
@@ -23,6 +24,7 @@ export async function __implementation<T>(
 		contextOptions,
 		dependencies,
 		"scandirMapped",
+		inputDir,
 		options
 	) as any[]
 }
