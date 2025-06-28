@@ -129,7 +129,7 @@ async function scandirImplementation(
 				absolutePath
 			}
 
-			if (options.includeMetaInformation === true) {
+			if (options.includePathInformation === true) {
 				try {
 					data.information = await dependencies.getPathInformation(absolutePath)
 //>					data.information = dependencies.getPathInformation(absolutePath)

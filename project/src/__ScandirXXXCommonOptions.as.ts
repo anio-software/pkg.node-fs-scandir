@@ -37,5 +37,5 @@ export type __XX__ = {
 	 * @description
 	 * Whether to include information such as file size, file owner etc.
 	 */
-	includeMetaInformation?: boolean
+	includePathInformation?: boolean
 }

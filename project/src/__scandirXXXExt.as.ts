@@ -18,7 +18,7 @@ export type Ret = {
 	entries: ScandirEntry[]
 	createScandirEntryFromPath: (
 		filePath: string,
-		includeMetaInformation?: boolean
+		includePathInformation?: boolean
 	) => ScandirEntry
 }
 
