@@ -152,7 +152,9 @@ async function scandirImplementation(
 							group: stats.gid
 						}
 					}
-				} catch {}
+				} catch {
+					// todo emit warning
+				}
 			}
 
 			if (isFunction(options.filter)) {
