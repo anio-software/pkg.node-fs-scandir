@@ -12,6 +12,6 @@ export type __XX__ = ScandirCommonOptions & {
 //>export type __XX__ = ScandirSyncCommonOptions & {
 	callback: Callback
 
-	onError?: (e: NodeJS.ErrnoException) => Promise<undefined> | undefined
-//>	onError?: (e: NodeJS.ErrnoException) => undefined
+	onError?: (e: Error) => Promise<undefined> | undefined
+//>	onError?: (e: Error) => undefined
 }
