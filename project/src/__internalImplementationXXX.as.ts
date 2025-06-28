@@ -80,6 +80,12 @@ async function scandirImplementation(
 			else if (additionalState.modeOfOperation === "scandirExt") {
 				additionalState.errors.push(error)
 			}
+			// re-throw error as is if mode of operation is "scandir"
+			// note that is different from optionsType === "scandir"
+			// which includes *both* scandir() and scandirExt()
+			else if (additionalState.modeOfOperation === "scandir") {
+				throw _e
+			}
 
 			return []
 		}
