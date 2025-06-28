@@ -26,6 +26,13 @@ import path from "node:path"
 
 type Options = ReturnType<typeof validateInputOptions>
 
+// keeps track of additional state such as
+// has an error occurred or the errors that have occurred (depending on the mode)
+type AdditionalState = {
+	errorHasOccurred: boolean
+	errors: Error[]
+}
+
 async function scandirImplementation(
 //>function scandirImplementation(
 	context: EnkoreJSRuntimeContext,
@@ -35,7 +42,8 @@ async function scandirImplementation(
 	userOptions: Options,
 	dependencies: Dependencies,
 	result: (any[])|undefined,
-	currentLevel: number
+	currentLevel: number,
+	additionalState: AdditionalState
 ) {
 	const {options, type: optionsType} = userOptions
 
@@ -52,6 +60,10 @@ async function scandirImplementation(
 			} else {
 				context.log.warn(`caught exception while trying to read '${pathToRead}'.`)
 			}
+
+			additionalState.errorHasOccurred = true
+			// todo: push error onto additionalState.errors
+			// if mode is scandirExt
 
 			return []
 		}
@@ -139,7 +151,8 @@ async function scandirImplementation(
 				userOptions,
 				dependencies,
 				result,
-				nextLevel
+				nextLevel,
+				additionalState
 			)
 		}
 
@@ -209,6 +222,11 @@ export async function __XX__<T extends ModeOfOperation>(
 		return undefined
 	})()
 
+	const additionalState: AdditionalState = {
+		errorHasOccurred: false,
+		errors: []
+	}
+
 	await scandirImplementation(
 //>	scandirImplementation(
 		context,
@@ -218,7 +236,8 @@ export async function __XX__<T extends ModeOfOperation>(
 		options,
 		dependencies,
 		entries,
-		0
+		0,
+		additionalState
 	)
 
 	// this also catches the scandirExt case
