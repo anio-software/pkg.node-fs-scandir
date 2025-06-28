@@ -263,6 +263,6 @@ export async function __XX__<T extends ModeOfOperation>(
 		return ret as any
 	}
 
-	// scandirCallback returns undefined
-	return undefined as any
+	// scandirCallback returns success
+	return !additionalState.errorHasOccurred as any
 }

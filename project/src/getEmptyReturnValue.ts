@@ -23,5 +23,5 @@ export function getEmptyReturnValue<T extends ModeOfOperation>(
 		}
 	}
 
-	return undefined as any
+	return true as any
 }

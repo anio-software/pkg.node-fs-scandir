@@ -4,6 +4,6 @@ import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 export type ReturnMap = {
 	"scandir": ScandirEntry[]
 	"scandirExt": ScandirExtRet
-	"scandirCallback": undefined
+	"scandirCallback": boolean
 	"scandirMapped": unknown[]
 }

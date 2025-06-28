@@ -17,8 +17,8 @@ export async function __implementation(
 	dependencies: __EnkoreFunctionDependencies,
 	inputDir: string,
 	options?: Options
-): Promise<undefined> {
-//>): undefined {
+): Promise<boolean> {
+//>): boolean {
 	return await impl(
 //>	return impl(
 		contextOptions,
