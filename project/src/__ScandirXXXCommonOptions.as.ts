@@ -1,8 +1,8 @@
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 
 type Filter = {
-	(entry: ScandirEntry): Promise<boolean> | boolean;
-//>	(entry: ScandirEntry): boolean & {then?: never};
+	(entry: ScandirEntry): Promise<boolean> | boolean
+//>	(entry: ScandirEntry): boolean & {then?: never}
 }
 
 export type __XX__ = {
