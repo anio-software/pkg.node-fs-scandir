@@ -1,3 +1,5 @@
+import type {Permissions} from "./Permissions.ts"
+
 export type MetaInformation = {
 	fileSize: number
 
@@ -7,12 +9,5 @@ export type MetaInformation = {
 
 	rawMode: number
 
-	permissions: {
-		mode: number
-
-		owner: {
-			user: number
-			group: number
-		}
-	}
+	permissions: Permissions
 }
