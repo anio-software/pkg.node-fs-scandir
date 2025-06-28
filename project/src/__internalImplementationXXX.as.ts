@@ -52,6 +52,7 @@ async function scandirImplementation(
 	const entries: string[] = await (async () => {
 //>	const entries: string[] = (() => {
 		const pathToRead = path.join(resolvedInputDir, relativeEntryDir)
+
 		try {
 			return await readdir(pathToRead)
 //>			return readdir(pathToRead)
