@@ -10,8 +10,8 @@ import type {AllOptions} from "#~src/getOptions.ts"
 //>import type {AllOptions} from "#~src/getOptionsSync.ts"
 import {validateInputOptions} from "#~src/validateInputOptions.ts"
 //>import {validateSyncInputOptions as validateInputOptions} from "#~src/validateSyncInputOptions.ts"
-import {readdir, realpath} from "@anio-software/pkg-private.node-consistent-fs/async"
-//>import {readdir, realpath} from "@anio-software/pkg-private.node-consistent-fs/sync"
+import {readdir, realpath, lstat} from "@anio-software/pkg-private.node-consistent-fs/async"
+//>import {readdir, realpath, lstat} from "@anio-software/pkg-private.node-consistent-fs/sync"
 
 import type {ModeOfOperation} from "#~src/ModeOfOperation.ts"
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
@@ -132,6 +132,27 @@ async function scandirImplementation(
 				),
 				relativePath,
 				absolutePath
+			}
+
+			if (options.includePermissions === true) {
+				try {
+					const stats = await lstat(absolutePath)
+//>					const stats = lstat(absolutePath)
+
+					data.permissions = {
+						sticky: !!(stats.mode & 0o1000),
+						sGID:   !!(stats.mode & 0o2000),
+						sUID:   !!(stats.mode & 0o4000),
+
+						rawMode: stats.mode,
+						mode: stats.mode & 0o777,
+
+						owner: {
+							user: stats.uid,
+							group: stats.gid
+						}
+					}
+				} catch {}
 			}
 
 			if (isFunction(options.filter)) {
