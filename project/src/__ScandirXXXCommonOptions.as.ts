@@ -32,4 +32,10 @@ export type __XX__ = {
 	 * The default is `false`.
 	 */
 	allowMissingDir?: boolean
+
+	/**
+	 * @description
+	 * Whether to include permission related information or not.
+	 */
+	includePermissions?: boolean
 }
