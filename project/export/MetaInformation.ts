@@ -6,10 +6,13 @@ export type MetaInformation = {
 	sUID: boolean
 
 	rawMode: number
-	mode: number
 
-	owner: {
-		user: number
-		group: number
+	permissions: {
+		mode: number
+
+		owner: {
+			user: number
+			group: number
+		}
 	}
 }

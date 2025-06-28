@@ -147,11 +147,13 @@ async function scandirImplementation(
 						sUID:   !!(stats.mode & 0o4000),
 
 						rawMode: stats.mode,
-						mode: stats.mode & 0o777,
 
-						owner: {
-							user: stats.uid,
-							group: stats.gid
+						permissions: {
+							mode: stats.mode & 0o777,
+							owner: {
+								user: stats.uid,
+								group: stats.gid
+							}
 						}
 					}
 				} catch {
