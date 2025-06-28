@@ -40,6 +40,11 @@ export type ScandirEntry = {
 	 * @brief Permissions.
 	 */
 	permissions?: {
+		sticky: boolean
+		sGID: boolean
+		sUID: boolean
+
+		rawMode: number
 		mode: number
 
 		owner: {
