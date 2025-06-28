@@ -55,25 +55,29 @@ async function scandirImplementation(
 		try {
 			return await readdir(pathToRead)
 //>			return readdir(pathToRead)
-		} catch (e) {
-			if (e instanceof Error) {
-				context.log.warn(`caught exception '${e.message}' while trying to read '${pathToRead}'.`)
-			} else {
-				context.log.warn(`caught exception while trying to read '${pathToRead}'.`)
-			}
+		} catch (_e) {
+			const error: Error = (() => {
+				if (_e instanceof Error) {
+					return _e
+				}
+
+				return new Error(`unknown error`)
+			})()
+
+			context.log.warn(`caught exception '${error.message}' while trying to read '${pathToRead}'.`)
 
 			additionalState.errorHasOccurred = true
 
 			if (optionsType === "scandirCallback") {
 				if (isFunction(options.onError)) {
-					await options.onError(e as any)
-//>					options.onError(e as any)
+					await options.onError(error)
+//>					options.onError(error)
 				}
 			}
 			// can't use "optionsType" here because it doesn't differentiate
 			// between scandir() and scandirExt()
 			else if (additionalState.modeOfOperation === "scandirExt") {
-				additionalState.errors.push(e as any)
+				additionalState.errors.push(error)
 			}
 
 			return []
