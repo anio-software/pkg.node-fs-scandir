@@ -2,7 +2,7 @@ import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 import path from "node:path"
 import {parents} from "#~src/parents.ts"
-import {realpathSync, lstatSync} from "@anio-software/pkg-private.node-consistent-fs/sync"
+import {realpathSync} from "@anio-software/pkg-private.node-consistent-fs/sync"
 import {getPathInformationSync} from "@anio-software/pkg.node-fs-stat-path"
 
 export function createScandirEntryFromPathFactory(
