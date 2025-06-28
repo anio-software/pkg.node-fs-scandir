@@ -134,7 +134,7 @@ async function scandirImplementation(
 				absolutePath
 			}
 
-			if (options.includePermissions === true) {
+			if (options.includeMetaInformation === true) {
 				try {
 					const stats = await lstat(absolutePath)
 //>					const stats = lstat(absolutePath)

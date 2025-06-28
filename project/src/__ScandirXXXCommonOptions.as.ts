@@ -35,7 +35,7 @@ export type __XX__ = {
 
 	/**
 	 * @description
-	 * Whether to include permission related information or not.
+	 * Whether to include information such as file size, file owner etc.
 	 */
-	includePermissions?: boolean
+	includeMetaInformation?: boolean
 }
