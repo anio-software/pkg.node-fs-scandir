@@ -29,6 +29,7 @@ type Options = ReturnType<typeof validateInputOptions>
 // keeps track of additional state such as
 // has an error occurred or the errors that have occurred (depending on the mode)
 type AdditionalState = {
+	modeOfOperation: ModeOfOperation
 	errorHasOccurred: boolean
 	errors: Error[]
 }
@@ -62,14 +63,17 @@ async function scandirImplementation(
 			}
 
 			additionalState.errorHasOccurred = true
-			// todo: push error onto additionalState.errors
-			// if mode is scandirExt
 
 			if (optionsType === "scandirCallback") {
 				if (isFunction(options.onError)) {
 					await options.onError(e as any)
 //>					options.onError(e as any)
 				}
+			}
+			// can't use "optionsType" here because it doesn't differentiate
+			// between scandir() and scandirExt()
+			else if (additionalState.modeOfOperation === "scandirExt") {
+				additionalState.errors.push(e as any)
 			}
 
 			return []
@@ -230,6 +234,7 @@ export async function __XX__<T extends ModeOfOperation>(
 	})()
 
 	const additionalState: AdditionalState = {
+		modeOfOperation,
 		errorHasOccurred: false,
 		errors: []
 	}
