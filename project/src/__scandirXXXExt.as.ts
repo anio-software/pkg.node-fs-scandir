@@ -16,7 +16,10 @@ import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 export type Ret = {
 	errors: Error[]
 	entries: ScandirEntry[]
-	createScandirEntryFromPath: (filePath: string) => ScandirEntry
+	createScandirEntryFromPath: (
+		filePath: string,
+		includeMetaInformation?: boolean
+	) => ScandirEntry
 }
 
 export async function __implementation(

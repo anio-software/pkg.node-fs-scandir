@@ -7,7 +7,7 @@ export function createScandirEntryFromPathFactory(
 	inputDir: string
 ): ScandirExtRet["createScandirEntryFromPath"] {
 	// todo: also support directories, not only files!
-	return function(filePath) {
+	return function(filePath, includeMetaInformation) {
 		if (!filePath.startsWith(inputDir)) {
 			throw new Error(
 				`Relative file path '${filePath}' must start with '${inputDir}'.`
