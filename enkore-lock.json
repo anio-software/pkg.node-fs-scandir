@@ -41,10 +41,10 @@
             "hash": "09313b9e944cc88cf68851ba0b07646e87e2669b948c52b9d963f15128e39e54"
         },
         "project/src/internalImplementation.ts": {
-            "hash": "8a2e36e41c6b6ccf221a90fe62bdd015ce08d7ed838aaecd9c6a0dcec1065476"
+            "hash": "caad293ad2712189ccddbf7c8d424e7627a2590544f1ad5f8db0a420c3342b0e"
         },
         "project/src/internalImplementationSync.ts": {
-            "hash": "6299b555f125e6bc44ce251870caa109d5610791526826394238fe8b112d5ecb"
+            "hash": "6ba934c5d6e697ed464565ad6bf311563dc52fabc10fa22427bd3ecec5de5624"
         },
         "project/src/scandir.ts": {
             "hash": "4cbe1bc8975131afbee5fede4d288e47a3b9e20292576db6941e64a7f3eb4ce5"

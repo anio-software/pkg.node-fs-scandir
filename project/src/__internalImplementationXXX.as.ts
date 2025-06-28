@@ -40,10 +40,22 @@ async function scandirImplementation(
 	const {options, type: optionsType} = userOptions
 
 	const {getTypeOfPath} = dependencies
-	const entries = await readdir(
-//>	const entries = readdir(
-		path.join(resolvedInputDir, relativeEntryDir)
-	)
+	const entries: string[] = await (async () => {
+//>	const entries: string[] = (() => {
+		const pathToRead = path.join(resolvedInputDir, relativeEntryDir)
+		try {
+			return await readdir(pathToRead)
+//>			return readdir(pathToRead)
+		} catch (e) {
+			if (e instanceof Error) {
+				context.log.warn(`caught exception '${e.message}' while trying to read '${pathToRead}'.`)
+			} else {
+				context.log.warn(`caught exception while trying to read '${pathToRead}'.`)
+			}
+
+			return []
+		}
+	})()
 
 	for (const entry of entries) {
 		const absolutePath = path.join(resolvedInputDir, relativeEntryDir, entry)
