@@ -35,4 +35,16 @@ export type ScandirEntry = {
 	 * @brief Parent directories.
 	 */
 	parents: string[]
+
+	/**
+	 * @brief Permissions.
+	 */
+	permissions?: {
+		mode: number
+
+		owner: {
+			user: number
+			group: number
+		}
+	} | undefined
 }
