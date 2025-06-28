@@ -1,4 +1,5 @@
 import type {PathType, ValidPathType} from "@anio-software/pkg.node-fs-path-type"
+import type {Permissions} from "./Permissions.ts"
 
 export type ScandirEntry = {
 	/**
@@ -39,17 +40,5 @@ export type ScandirEntry = {
 	/**
 	 * @brief Permissions.
 	 */
-	permissions?: {
-		sticky: boolean
-		sGID: boolean
-		sUID: boolean
-
-		rawMode: number
-		mode: number
-
-		owner: {
-			user: number
-			group: number
-		}
-	} | undefined
+	permissions?: Permissions | undefined
 }
