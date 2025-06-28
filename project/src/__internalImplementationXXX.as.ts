@@ -153,8 +153,10 @@ async function scandirImplementation(
 							}
 						}
 					}
-				} catch {
-					// todo emit warning
+				} catch (_e) {
+					const error = getOrCreateError(_e)
+
+					context.log.warn(`caught exception '${error.message}' while trying to lstat() '${absolutePath}'.`)
 				}
 			}
 
