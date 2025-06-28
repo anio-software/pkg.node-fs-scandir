@@ -38,7 +38,7 @@ export type ScandirEntry = {
 	parents: string[]
 
 	/**
-	 * @brief Meta information.
+	 * @brief Additional information about the path.
 	 */
-	meta?: PathInformation | undefined
+	information?: PathInformation | undefined
 }

@@ -131,8 +131,8 @@ async function scandirImplementation(
 
 			if (options.includeMetaInformation === true) {
 				try {
-					data.meta = await dependencies.getPathInformation(absolutePath)
-//>					data.meta = dependencies.getPathInformation(absolutePath)
+					data.information = await dependencies.getPathInformation(absolutePath)
+//>					data.information = dependencies.getPathInformation(absolutePath)
 				} catch (_e) {
 					const error = getOrCreateError(_e)
 

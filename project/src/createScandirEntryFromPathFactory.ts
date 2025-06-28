@@ -33,7 +33,7 @@ export function createScandirEntryFromPathFactory(
 		}
 
 		if (includeMetaInformation === true) {
-			entry.meta = getPathInformationSync(absolutePath)
+			entry.information = getPathInformationSync(absolutePath)
 		}
 
 		return entry
