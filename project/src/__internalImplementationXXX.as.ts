@@ -141,6 +141,8 @@ async function scandirImplementation(
 
 					data.meta = {
 						fileSize: stats.size,
+						fileCreated: stats.birthtimeMs,
+						fileModified: stats.mtimeMs,
 
 						sticky: !!(stats.mode & 0o1000),
 						sGID:   !!(stats.mode & 0o2000),
