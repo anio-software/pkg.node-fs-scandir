@@ -20,7 +20,7 @@ import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 import type {ValidPathType} from "@anio-software/pkg.node-fs-path-type"
 import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import {parents} from "#~src/parents.ts"
-import {isFunction, isString} from "@anio-software/pkg.is"
+import {isFunction, isString, isNumber} from "@anio-software/pkg.is"
 import {createScandirEntryFromPathFactory} from "#~src/createScandirEntryFromPathFactory.ts"
 import path from "node:path"
 
@@ -34,7 +34,8 @@ async function scandirImplementation(
 	relativeEntryDir: string,
 	userOptions: Options,
 	dependencies: Dependencies,
-	result: (any[])|undefined
+	result: (any[])|undefined,
+	currentLevel: number
 ) {
 	const {options, type: optionsType} = userOptions
 
@@ -107,6 +108,16 @@ async function scandirImplementation(
 //>		const recurse = () => {
 			if (pathType !== "dir:regular") return
 
+			const nextLevel = currentLevel + 1
+
+			if (isNumber(options.maxDepth)) {
+				if (nextLevel > options.maxDepth) {
+					context.log.debug(`maxDepth '${options.maxDepth}' reached, stopping recursion at level '${currentLevel}'`)
+
+					return
+				}
+			}
+
 			await scandirImplementation(
 //>			scandirImplementation(
 				context,
@@ -115,7 +126,8 @@ async function scandirImplementation(
 				relativePath,
 				userOptions,
 				dependencies,
-				result
+				result,
+				nextLevel
 			)
 		}
 
@@ -193,7 +205,8 @@ export async function __XX__<T extends ModeOfOperation>(
 		".",
 		options,
 		dependencies,
-		entries
+		entries,
+		0
 	)
 
 	// this also catches the scandirExt case
