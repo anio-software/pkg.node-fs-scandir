@@ -65,6 +65,13 @@ async function scandirImplementation(
 			// todo: push error onto additionalState.errors
 			// if mode is scandirExt
 
+			if (optionsType === "scandirCallback") {
+				if (isFunction(options.onError)) {
+					await options.onError(e as any)
+//>					options.onError(e as any)
+				}
+			}
+
 			return []
 		}
 	})()
