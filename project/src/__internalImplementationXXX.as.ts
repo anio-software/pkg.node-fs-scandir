@@ -23,7 +23,6 @@ import {parents} from "#~src/parents.ts"
 import {isFunction, isString, isNumber} from "@anio-software/pkg.is"
 import {createScandirEntryFromPathFactory} from "#~src/createScandirEntryFromPathFactory.ts"
 import {getOrCreateError} from "@anio-software/pkg.js-utils"
-import {nodeStatsToMetaObject} from "./nodeStatsToMetaObject.ts"
 import path from "node:path"
 
 type Options = ReturnType<typeof validateInputOptions>
@@ -132,10 +131,8 @@ async function scandirImplementation(
 
 			if (options.includeMetaInformation === true) {
 				try {
-					const stats = await lstat(absolutePath)
-//>					const stats = lstat(absolutePath)
-
-					data.meta = nodeStatsToMetaObject(stats)
+					data.meta = await dependencies.getPathInformation(absolutePath)
+//>					data.meta = dependencies.getPathInformation(absolutePath)
 				} catch (_e) {
 					const error = getOrCreateError(_e)
 
