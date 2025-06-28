@@ -84,6 +84,12 @@ async function scandirImplementation(
 			// note that is different from optionsType === "scandir"
 			// which includes *both* scandir() and scandirExt()
 			else if (additionalState.modeOfOperation === "scandir") {
+				// ignoreErrors is not correctly inferred because we are checking
+				// modeOfOperation instead of optionsType
+				if ((options as any).ignoreErrors === true) {
+					return []
+				}
+
 				throw _e
 			}
 
