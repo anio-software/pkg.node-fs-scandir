@@ -18,6 +18,7 @@ export function createScandirEntryFromPathFactory(
 		const normalizedFilePath = path.normalize(filePath)
 
 		const relativePath = path.relative(normalizedRootDir, normalizedFilePath)
+		const absolutePath = realpathSync(filePath)
 
 		return {
 			pathType: "file:regular",
@@ -26,7 +27,7 @@ export function createScandirEntryFromPathFactory(
 			name: path.basename(filePath),
 			path: normalizedFilePath,
 			relativePath,
-			absolutePath: realpathSync(filePath)
+			absolutePath
 		}
 	}
 }
