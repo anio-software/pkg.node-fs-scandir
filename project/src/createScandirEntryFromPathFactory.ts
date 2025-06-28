@@ -1,7 +1,9 @@
 import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
+import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 import path from "node:path"
 import {parents} from "#~src/parents.ts"
-import {realpathSync} from "@anio-software/pkg-private.node-consistent-fs/sync"
+import {realpathSync, lstatSync} from "@anio-software/pkg-private.node-consistent-fs/sync"
+import {nodeStatsToMetaObject} from "./nodeStatsToMetaObject.ts"
 
 export function createScandirEntryFromPathFactory(
 	inputDir: string
@@ -20,7 +22,7 @@ export function createScandirEntryFromPathFactory(
 		const relativePath = path.relative(normalizedRootDir, normalizedFilePath)
 		const absolutePath = realpathSync(filePath)
 
-		return {
+		const entry: ScandirEntry = {
 			pathType: "file:regular",
 			type: "file:regular",
 			parents: parents(relativePath),
@@ -29,5 +31,11 @@ export function createScandirEntryFromPathFactory(
 			relativePath,
 			absolutePath
 		}
+
+		if (includeMetaInformation === true) {
+			entry.meta = nodeStatsToMetaObject(lstatSync(absolutePath))
+		}
+
+		return entry
 	}
 }
