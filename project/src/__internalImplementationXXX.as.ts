@@ -22,6 +22,7 @@ import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import {parents} from "#~src/parents.ts"
 import {isFunction, isString, isNumber} from "@anio-software/pkg.is"
 import {createScandirEntryFromPathFactory} from "#~src/createScandirEntryFromPathFactory.ts"
+import {getOrCreateError} from "@anio-software/pkg.js-utils"
 import path from "node:path"
 
 type Options = ReturnType<typeof validateInputOptions>
@@ -57,13 +58,7 @@ async function scandirImplementation(
 			return await readdir(pathToRead)
 //>			return readdir(pathToRead)
 		} catch (_e) {
-			const error: Error = (() => {
-				if (_e instanceof Error) {
-					return _e
-				}
-
-				return new Error(`unknown error`)
-			})()
+			const error = getOrCreateError(_e)
 
 			context.log.warn(`caught exception '${error.message}' while trying to read '${pathToRead}'.`)
 
