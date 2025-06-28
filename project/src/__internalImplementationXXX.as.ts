@@ -139,7 +139,7 @@ async function scandirImplementation(
 					const stats = await lstat(absolutePath)
 //>					const stats = lstat(absolutePath)
 
-					data.permissions = {
+					data.meta = {
 						sticky: !!(stats.mode & 0o1000),
 						sGID:   !!(stats.mode & 0o2000),
 						sUID:   !!(stats.mode & 0o4000),

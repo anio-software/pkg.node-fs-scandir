@@ -40,5 +40,5 @@ export type ScandirEntry = {
 	/**
 	 * @brief Meta information.
 	 */
-	permissions?: MetaInformation | undefined
+	meta?: MetaInformation | undefined
 }
