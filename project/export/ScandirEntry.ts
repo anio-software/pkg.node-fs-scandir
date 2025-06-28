@@ -1,5 +1,5 @@
 import type {PathType, ValidPathType} from "@anio-software/pkg.node-fs-path-type"
-import type {MetaInformation} from "./MetaInformation.ts"
+import type {PathInformation} from "@anio-software/pkg.node-fs-stat-path"
 
 export type ScandirEntry = {
 	/**
@@ -40,5 +40,5 @@ export type ScandirEntry = {
 	/**
 	 * @brief Meta information.
 	 */
-	meta?: MetaInformation | undefined
+	meta?: PathInformation | undefined
 }
