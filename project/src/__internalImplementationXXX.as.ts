@@ -140,6 +140,8 @@ async function scandirImplementation(
 //>					const stats = lstat(absolutePath)
 
 					data.meta = {
+						fileSize: stats.size,
+
 						sticky: !!(stats.mode & 0o1000),
 						sGID:   !!(stats.mode & 0o2000),
 						sUID:   !!(stats.mode & 0o4000),

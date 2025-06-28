@@ -1,4 +1,6 @@
 export type MetaInformation = {
+	fileSize: number
+
 	sticky: boolean
 	sGID: boolean
 	sUID: boolean
