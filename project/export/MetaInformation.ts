@@ -1,4 +1,4 @@
-export type Permissions = {
+export type MetaInformation = {
 	sticky: boolean
 	sGID: boolean
 	sUID: boolean

@@ -1,5 +1,5 @@
 import type {PathType, ValidPathType} from "@anio-software/pkg.node-fs-path-type"
-import type {Permissions} from "./Permissions.ts"
+import type {MetaInformation} from "./MetaInformation.ts"
 
 export type ScandirEntry = {
 	/**
@@ -38,7 +38,7 @@ export type ScandirEntry = {
 	parents: string[]
 
 	/**
-	 * @brief Permissions.
+	 * @brief Meta information.
 	 */
-	permissions?: Permissions | undefined
+	permissions?: MetaInformation | undefined
 }
