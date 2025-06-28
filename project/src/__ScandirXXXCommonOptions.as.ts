@@ -8,6 +8,13 @@ type Filter = {
 export type __XX__ = {
 	/**
 	 * @description
+	 * The maximum depth of recursion.
+	 * The default is unlimited, undefined means no limit.
+	 */
+	maxDepth?: number|undefined
+
+	/**
+	 * @description
 	 * This option can be set to filter entries.
 	 */
 	filter?: Filter
