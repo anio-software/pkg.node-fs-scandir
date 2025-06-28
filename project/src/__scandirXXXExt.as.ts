@@ -14,6 +14,7 @@ import {internalImplementation as impl} from "#~src/internalImplementation.ts"
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 
 export type Ret = {
+	errors: Error[]
 	entries: ScandirEntry[]
 	createScandirEntryFromPath: (filePath: string) => ScandirEntry
 }

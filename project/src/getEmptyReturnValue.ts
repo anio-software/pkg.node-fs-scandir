@@ -15,6 +15,7 @@ export function getEmptyReturnValue<T extends ModeOfOperation>(
 
 		case "scandirExt": {
 			const ret: ScandirExtRet = {
+				errors: [],
 				entries: [],
 				createScandirEntryFromPath: createScandirEntryFromPathFactory(inputDir)
 			}
