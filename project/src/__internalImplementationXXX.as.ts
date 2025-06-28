@@ -70,6 +70,7 @@ async function scandirImplementation(
 		const handleCurrentEntry = async () => {
 //>		const handleCurrentEntry = () => {
 			const data: ScandirEntry = {
+				pathType,
 				type: pathType,
 				parents: parents(relativePath),
 				name: entry,

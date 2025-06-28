@@ -20,6 +20,7 @@ export function createScandirEntryFromPathFactory(
 		const relativePath = path.relative(normalizedRootDir, normalizedFilePath)
 
 		return {
+			pathType: "file:regular",
 			type: "file:regular",
 			parents: parents(relativePath),
 			name: path.basename(filePath),

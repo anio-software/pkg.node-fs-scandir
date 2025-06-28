@@ -1,6 +1,11 @@
-import type {ValidPathType} from "@anio-software/pkg.node-fs-path-type"
+import type {PathType, ValidPathType} from "@anio-software/pkg.node-fs-path-type"
 
 export type ScandirEntry = {
+	/**
+	 * @brief The path type as returned by getTypeOfPath
+	 */
+	pathType: PathType
+
 	/**
 	 * @brief The type of the entry.
 	 */
