@@ -18,6 +18,7 @@ import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 import type {ReturnMap} from "#~src/ReturnMap.ts"
 import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 import type {ValidPathType} from "@anio-software/pkg.node-fs-path-type"
+import type {Stop} from "#~src/Stop.ts"
 import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import {parents} from "#~src/parents.ts"
 import {isFunction, isString, isNumber} from "@anio-software/pkg.is"
@@ -153,7 +154,7 @@ async function scandirImplementation(
 			if (optionsType === "scandirCallback") {
 				const stopRecursionSymbol = Symbol()
 				const stopLoopSymbol = Symbol()
-				const stopObject = {
+				const stopObject: Stop = {
 					stopRecursion: () => stopRecursionSymbol,
 					stopLoop: () => stopLoopSymbol
 				}
