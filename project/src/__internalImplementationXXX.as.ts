@@ -21,7 +21,7 @@ import type {ValidPathType} from "@anio-software/pkg.node-fs-path-type"
 import type {Stop} from "#~src/Stop.ts"
 import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import {parents} from "#~src/parents.ts"
-import {isFunction, isString, isNumber} from "@anio-software/pkg.is"
+import {isFunction, isString, isNumber, isBoolean, isUndefined} from "@anio-software/pkg.is"
 import {createScandirEntryFromPathFactory} from "#~src/createScandirEntryFromPathFactory.ts"
 import {getOrCreateError} from "@anio-software/pkg.js-utils"
 import path from "node:path"
@@ -34,6 +34,8 @@ type AdditionalState = {
 	modeOfOperation: ModeOfOperation
 	errorHasOccurred: boolean
 	errors: Error[]
+	// undefined means return success/failure
+	userDefinedReturnValue: boolean|undefined
 }
 
 async function scandirImplementation(
@@ -156,7 +158,13 @@ async function scandirImplementation(
 				const stopLoopSymbol = Symbol()
 				const stopObject: Stop = {
 					stopRecursion: () => stopRecursionSymbol,
-					stopLoop: () => stopLoopSymbol
+					stopLoop: (returnValue) => {
+						if (isBoolean(returnValue)) {
+							additionalState.userDefinedReturnValue = returnValue
+						}
+
+						return stopLoopSymbol
+					}
 				}
 
 				const cbRet = await options.callback(data, stopObject)
@@ -293,7 +301,8 @@ export async function __XX__<T extends ModeOfOperation>(
 	const additionalState: AdditionalState = {
 		modeOfOperation,
 		errorHasOccurred: false,
-		errors: []
+		errors: [],
+		userDefinedReturnValue: undefined
 	}
 
 	await scandirImplementation(
@@ -331,6 +340,13 @@ export async function __XX__<T extends ModeOfOperation>(
 		}
 
 		return ret as any
+	}
+
+	// user can overwrite default return value
+	if (!isUndefined(additionalState.userDefinedReturnValue)) {
+		context.log.trace(`returning user defined value '${additionalState.userDefinedReturnValue}'`)
+
+		return additionalState.userDefinedReturnValue as any
 	}
 
 	// scandirCallback returns success

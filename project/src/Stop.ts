@@ -1,4 +1,4 @@
 export type Stop = {
 	stopRecursion: () => symbol
-	stopLoop: () => symbol
+	stopLoop: (returnValue?: boolean) => symbol
 }
