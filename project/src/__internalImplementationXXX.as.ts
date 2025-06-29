@@ -47,6 +47,8 @@ async function scandirImplementation(
 	currentLevel: number,
 	additionalState: AdditionalState
 ) {
+	let stopRecursionRequested = false
+
 	const {options, type: optionsType} = userOptions
 
 	const {getTypeOfPath} = dependencies
@@ -148,8 +150,17 @@ async function scandirImplementation(
 			}
 
 			if (optionsType === "scandirCallback") {
-				await options.callback(data)
-//>				options.callback(data)
+				const stopSymbol = Symbol()
+				const getStopSymbol = () => stopSymbol
+
+				const cbRet = await options.callback(data, getStopSymbol)
+//>				const cbRet = options.callback(data, getStopSymbol)
+
+				if (cbRet === stopSymbol) {
+					context.log.debug(`recursion was requested to be stopped.`)
+
+					stopRecursionRequested = true
+				}
 
 				return
 			}
@@ -165,6 +176,12 @@ async function scandirImplementation(
 		const recurse = async () => {
 //>		const recurse = () => {
 			if (pathType !== "dir:regular") return
+
+			if (stopRecursionRequested === true) {
+				context.log.debug(`stopping recursion early due to user's request.`)
+
+				return
+			}
 
 			const nextLevel = currentLevel + 1
 
