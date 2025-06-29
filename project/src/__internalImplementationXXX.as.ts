@@ -10,8 +10,8 @@ import type {AllOptions} from "#~src/getOptions.ts"
 //>import type {AllOptions} from "#~src/getOptionsSync.ts"
 import {validateInputOptions} from "#~src/validateInputOptions.ts"
 //>import {validateSyncInputOptions as validateInputOptions} from "#~src/validateSyncInputOptions.ts"
-import {readdir, realpath} from "@anio-software/pkg-private.node-consistent-fs/async"
-//>import {readdir, realpath} from "@anio-software/pkg-private.node-consistent-fs/sync"
+import {openDirectory, realpath} from "@anio-software/pkg-private.node-consistent-fs/async"
+//>import {openDirectory, realpath} from "@anio-software/pkg-private.node-consistent-fs/sync"
 import type {FunctionState} from "#~src/FunctionState.ts"
 //>import type {FunctionState} from "#~src/FunctionStateSync.ts"
 
@@ -28,6 +28,8 @@ import {createScandirEntryFromPathFactory} from "#~src/createScandirEntryFromPat
 import {getOrCreateError} from "@anio-software/pkg.js-utils"
 import path from "node:path"
 
+type DirHandle = Awaited<ReturnType<typeof openDirectory>>
+
 async function scandirImplementation(
 //>function scandirImplementation(
 	state: FunctionState,
@@ -36,10 +38,42 @@ async function scandirImplementation(
 	let stopRecursionRequested = false
 	let stopLoopRequested = false
 
+	const {context} = state
 	const {options, type: optionsType} = state.userOptions
 	const {getTypeOfPath} = state.dependencies
 	const dirToRead = path.join(state.resolvedInputDir, relativeEntryDir)
 
+	let dirHandle: DirHandle|undefined = undefined
+
+	try {
+		dirHandle = await openDirectory(dirToRead)
+//>		dirHandle = openDirectory(dirToRead)
+	} catch (e) {
+		handleError(e)
+	}
+
+	if (!dirHandle) return
+
+	while (true) {
+		try {
+			const item = await dirHandle.read()
+//>			const item = dirHandle.read()
+
+			if (item === null) break
+
+			console.log("handle item", item.name)
+		} catch (e) {
+			handleError(e)
+
+			break
+		}
+	}
+
+	function handleError(e: unknown) {
+		const error = getOrCreateError(e)
+
+		context.log.warn(`caught exception '${error.message}'.`)
+	}
 }
 
 function sortAscending(a: ScandirEntry, b: ScandirEntry) {
