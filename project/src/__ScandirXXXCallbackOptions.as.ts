@@ -2,11 +2,7 @@ import type {ScandirCommonOptions} from "#~src/ScandirCommonOptions.ts"
 //>import type {ScandirSyncCommonOptions} from "#~src/ScandirSyncCommonOptions.ts"
 
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
-
-type Stop = {
-	stopRecursion: () => symbol
-	stopLoop: () => symbol
-}
+import type {Stop} from "#~src/Stop.ts"
 
 type Callback = {
 	(entry: ScandirEntry, stop: Stop): Promise<undefined | symbol> | undefined | symbol
