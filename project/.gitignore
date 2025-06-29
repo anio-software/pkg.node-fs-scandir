@@ -2,6 +2,8 @@
 # DO NOT ADD ENTRIES HERE, THEY WILL BE REMOVED
 /src/Dependencies.ts
 /src/DependenciesSync.ts
+/src/FunctionState.ts
+/src/FunctionStateSync.ts
 /src/ScandirCallbackOptions.ts
 /src/ScandirSyncCallbackOptions.ts
 /src/ScandirCommonOptions.ts

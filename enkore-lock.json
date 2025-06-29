@@ -10,6 +10,12 @@
         "project/src/DependenciesSync.ts": {
             "hash": "614fe04834ac9b7b1d99c8544f698fde86d47e6902e9d4b158e91d17466b8d1e"
         },
+        "project/src/FunctionState.ts": {
+            "hash": "1f62a39cad5b57814fd5b855505a57f990daad1c7d948dbd625a7a374597cb46"
+        },
+        "project/src/FunctionStateSync.ts": {
+            "hash": "f405bf33447aa41f67d3e33ed90e42fe3b47a12df5ccf9c1e2b500fecd856f56"
+        },
         "project/src/ScandirCallbackOptions.ts": {
             "hash": "8031828d6747d04d4f641f45c116d59df49e732cabce992eb00e29e3f890f759"
         },
