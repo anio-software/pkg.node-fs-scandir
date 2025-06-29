@@ -22,11 +22,11 @@ export type FunctionState = {
 	mutable: {
 		currentDepth: number
 
-		errors: Error[] | undefined
+		errors: Error[]
 		errorHasOccurred: boolean
 
 		userDefinedReturnValue: boolean | undefined
 
-		result: unknown[] | undefined
+		result: unknown[]
 	}
 }
