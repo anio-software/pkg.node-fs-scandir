@@ -9,7 +9,7 @@ type Stop = {
 }
 
 type Callback = {
-	(entry: ScandirEntry, stop: Stop): Promise<undefined> | undefined | Promise<symbol> | symbol
+	(entry: ScandirEntry, stop: Stop): Promise<undefined | symbol> | undefined | symbol
 //>	(entry: ScandirEntry, stop: Stop): undefined | symbol
 }
 
