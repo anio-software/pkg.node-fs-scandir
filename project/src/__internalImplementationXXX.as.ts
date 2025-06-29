@@ -150,13 +150,15 @@ async function scandirImplementation(
 			}
 
 			if (optionsType === "scandirCallback") {
-				const stopSymbol = Symbol()
-				const getStopSymbol = () => stopSymbol
+				const stopRecursionSymbol = Symbol()
+				const stopObject = {
+					stopRecursion: () => stopRecursionSymbol
+				}
 
-				const cbRet = await options.callback(data, getStopSymbol)
-//>				const cbRet = options.callback(data, getStopSymbol)
+				const cbRet = await options.callback(data, stopObject)
+//>				const cbRet = options.callback(data, stopObject)
 
-				if (cbRet === stopSymbol) {
+				if (cbRet === stopRecursionSymbol) {
 					context.log.debug(`recursion was requested to be stopped.`)
 
 					stopRecursionRequested = true
