@@ -11,10 +11,10 @@
             "hash": "614fe04834ac9b7b1d99c8544f698fde86d47e6902e9d4b158e91d17466b8d1e"
         },
         "project/src/ScandirCallbackOptions.ts": {
-            "hash": "f97cc89a142cf08dab6097a37f0cb3fc338c685fed20d5a9b826bef2078ab671"
+            "hash": "57a9923715aaddb2cf4c0eaa958d30c79af09178ac622d8dd99a5572bea1bc50"
         },
         "project/src/ScandirSyncCallbackOptions.ts": {
-            "hash": "4b738d607fe791dec42bfb481e7d39efd390085162b6247efa86ceb94d6267f0"
+            "hash": "86b6d7398d23c216c54b182e146bd4caaa2f94a8e4b8286e40752519e357717c"
         },
         "project/src/ScandirCommonOptions.ts": {
             "hash": "aad484b96229f4af21ef32eafb6482414dbfa8f6f085d72bee40fed02fe854f6"
@@ -41,10 +41,10 @@
             "hash": "09313b9e944cc88cf68851ba0b07646e87e2669b948c52b9d963f15128e39e54"
         },
         "project/src/internalImplementation.ts": {
-            "hash": "7320d2f92d6c514c1622df2c12ece34be0f012d1ac10348f5b29b4e6c6187d4a"
+            "hash": "f8e7e25867295684c3f757ffb85ee14df4c227f6301527126e598d8488b33b1f"
         },
         "project/src/internalImplementationSync.ts": {
-            "hash": "85b1df5aeb684fe7b9a04c01ddd2973da94a577106de1f2818618e92aa2a9364"
+            "hash": "d35f59950be08da40776dc82f6a985e279648969e63640350a9af797895afa1e"
         },
         "project/src/scandir.ts": {
             "hash": "4cbe1bc8975131afbee5fede4d288e47a3b9e20292576db6941e64a7f3eb4ce5"

@@ -48,6 +48,7 @@ async function scandirImplementation(
 	additionalState: AdditionalState
 ) {
 	let stopRecursionRequested = false
+	let stopLoopRequested = false
 
 	const {options, type: optionsType} = userOptions
 
@@ -151,8 +152,10 @@ async function scandirImplementation(
 
 			if (optionsType === "scandirCallback") {
 				const stopRecursionSymbol = Symbol()
+				const stopLoopSymbol = Symbol()
 				const stopObject = {
-					stopRecursion: () => stopRecursionSymbol
+					stopRecursion: () => stopRecursionSymbol,
+					stopLoop: () => stopLoopSymbol
 				}
 
 				const cbRet = await options.callback(data, stopObject)
@@ -162,6 +165,10 @@ async function scandirImplementation(
 					context.log.debug(`recursion was requested to be stopped.`)
 
 					stopRecursionRequested = true
+				} else if (cbRet === stopLoopSymbol) {
+					context.log.debug(`loop was requested to be stopped.`)
+
+					stopLoopRequested = true
 				}
 
 				return
@@ -214,6 +221,13 @@ async function scandirImplementation(
 
 		await handleCurrentEntry()
 //>		handleCurrentEntry()
+
+		// related issue https://github.com/microsoft/TypeScript/issues/58291
+		if ((stopLoopRequested as any) === true) {
+			context.log.debug(`stopping loop early due to user's request.`)
+
+			break
+		}
 
 		// written this way so "if statement" has same length as options.reverse === true
 		if (options.reverse !== true) await recurse()

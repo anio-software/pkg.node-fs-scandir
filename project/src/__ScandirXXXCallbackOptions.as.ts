@@ -5,6 +5,7 @@ import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 
 type Stop = {
 	stopRecursion: () => symbol
+	stopLoop: () => symbol
 }
 
 type Callback = {
