@@ -36,7 +36,7 @@ async function scandirImplementation(
 	relativeEntryDir: string
 ) {
 	const {context, dependencies} = state
-	const {options, type: optionsType} = state.userOptions
+	const {options} = state.userOptions
 	const dirToRead = path.join(state.resolvedInputDir, relativeEntryDir)
 
 	let dirHandle: DirHandle|undefined = undefined
