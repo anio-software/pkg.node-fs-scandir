@@ -230,5 +230,37 @@ export async function __XX__<T extends ModeOfOperation>(
 	await scandirImplementation(state, ".")
 //>	scandirImplementation(state, ".")
 
-	return {} as any
+	// this also catches the scandirExt case
+	if (options.type === "scandir") {
+		if (isString(options.options.sort)) {
+			const sorter = options.options.sort === "alphabetical:ascending" ? sortAscending : sortDescending;
+
+			(state.mutable.result as ScandirEntry[]).sort(sorter)
+		}
+	}
+
+	// scandir and scandirMapped both return the array of entries
+	if (modeOfOperation === "scandir" || modeOfOperation === "scandirMapped") {
+		return state.mutable.result as any
+	}
+	// scandirExt returns an object
+	else if (modeOfOperation === "scandirExt") {
+		const ret: ScandirExtRet = {
+			errors: state.mutable.errors,
+			entries: state.mutable.result as any,
+			createScandirEntryFromPath: createScandirEntryFromPathFactory(inputDir)
+		}
+
+		return ret as any
+	}
+
+	// user can overwrite default return value
+	if (!isUndefined(state.mutable.userDefinedReturnValue)) {
+		context.log.trace(`returning user defined value '${state.mutable.userDefinedReturnValue}'`)
+
+		return state.mutable.userDefinedReturnValue as any
+	}
+
+	// scandirCallback returns success
+	return !state.mutable.errorHasOccurred as any
 }
