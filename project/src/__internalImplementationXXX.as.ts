@@ -38,9 +38,8 @@ async function scandirImplementation(
 	let stopRecursionRequested = false
 	let stopLoopRequested = false
 
-	const {context} = state
+	const {context, dependencies} = state
 	const {options, type: optionsType} = state.userOptions
-	const {getTypeOfPath} = state.dependencies
 	const dirToRead = path.join(state.resolvedInputDir, relativeEntryDir)
 
 	let dirHandle: DirHandle|undefined = undefined
@@ -61,7 +60,34 @@ async function scandirImplementation(
 
 			if (item === null) break
 
-			console.log("handle item", item.name)
+			const absolutePath = path.join(state.resolvedInputDir, relativeEntryDir, item.name)
+			const relativePath = path.join(relativeEntryDir, item.name)
+
+			const pathType = await getTypeOfPath(absolutePath)
+//>			const pathType = getTypeOfPath(absolutePath)
+
+			if (pathType === "error") {
+				context.log.warn(`path '${absolutePath}' has path type 'error'!`)
+			}
+
+			const entry: ScandirEntry = {
+				pathType,
+				type: pathType,
+				parents: parents(relativePath),
+				name: item.name,
+				path: path.join(state.normalizedInputDir, relativePath),
+				relativePath,
+				absolutePath
+			}
+
+			if (options.includePathInformation === true) {
+				try {
+					entry.information = await dependencies.getPathInformation(absolutePath)
+//>					entry.information = dependencies.getPathInformation(absolutePath)
+				} catch (e) {
+					handleError(e)
+				}
+			}
 		} catch (e) {
 			handleError(e)
 
@@ -73,6 +99,21 @@ async function scandirImplementation(
 		const error = getOrCreateError(e)
 
 		context.log.warn(`caught exception '${error.message}'.`)
+	}
+
+	async function getTypeOfPath(path: string): Promise<ValidPathType | "error"> {
+//>	function getTypeOfPath(path: string): ValidPathType | "error" {
+		const type = await dependencies.getTypeOfPath(path)
+//>		const type = dependencies.getTypeOfPath(path)
+
+		if (
+		    type === "nonExisting" ||
+		    type === "link:error"  ||
+		    type === "error") {
+			return "error"
+		}
+
+		return type
 	}
 }
 
