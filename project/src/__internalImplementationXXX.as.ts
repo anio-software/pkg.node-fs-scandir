@@ -134,6 +134,9 @@ async function scandirImplementation(
 		}
 	}
 
+	await dirHandle.close()
+//>	dirHandle.close()
+
 	function handleError(description: string, e: unknown) {
 		const error = getOrCreateError(e)
 
