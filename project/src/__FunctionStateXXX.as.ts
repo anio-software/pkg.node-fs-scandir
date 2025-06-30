@@ -25,6 +25,8 @@ export type FunctionState = {
 		errors: Error[]
 		errorHasOccurred: boolean
 
+		stopLoopRequested: boolean
+		stopRecursionRequested: boolean
 		userDefinedReturnValue: boolean | undefined
 
 		result: unknown[]

@@ -37,9 +37,6 @@ async function scandirImplementation(
 	state: FunctionState,
 	relativeEntryDir: string
 ) {
-	let stopRecursionRequested = false
-	let stopLoopRequested = false
-
 	const {context, dependencies} = state
 	const {options, type: optionsType} = state.userOptions
 	const dirToRead = path.join(state.resolvedInputDir, relativeEntryDir)
@@ -183,6 +180,8 @@ export async function __XX__<T extends ModeOfOperation>(
 			errors: [],
 			errorHasOccurred: false,
 
+			stopLoopRequested: false,
+			stopRecursionRequested: false,
 			userDefinedReturnValue: undefined,
 
 			result: []

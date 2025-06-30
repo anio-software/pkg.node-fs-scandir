@@ -11,10 +11,10 @@
             "hash": "614fe04834ac9b7b1d99c8544f698fde86d47e6902e9d4b158e91d17466b8d1e"
         },
         "project/src/FunctionState.ts": {
-            "hash": "2bad611c130e879eb6018924d5e048872c3f082471996ff38d9c2104c896ac3d"
+            "hash": "2cdf9d5eca6c31adec487b2f153b4f87ed6d9f88e693595350939e910f7c5e69"
         },
         "project/src/FunctionStateSync.ts": {
-            "hash": "31a6bbbdf65e2611a42b56709a4354619905fecade23d1d9928dba0c59e91f48"
+            "hash": "cdbf93b73209f20422b264304d80d386e57fa586a72aa4931c578ef19f7f59e4"
         },
         "project/src/ScandirCallbackOptions.ts": {
             "hash": "8031828d6747d04d4f641f45c116d59df49e732cabce992eb00e29e3f890f759"
@@ -47,10 +47,10 @@
             "hash": "09313b9e944cc88cf68851ba0b07646e87e2669b948c52b9d963f15128e39e54"
         },
         "project/src/internalImplementation.ts": {
-            "hash": "f1ce57a0086bc0ed3b02a1c0799b792e447bc8fb02a1e6a7cbce2a941ef06d76"
+            "hash": "e470afd755ceddfb5572762d593f4e8c89ddd29c6112db0bc4ab9eb3bf7ee636"
         },
         "project/src/internalImplementationSync.ts": {
-            "hash": "11e2adc670c01b278c1c3fd0913fa3bf5c5d41017975b1ba9ec4f18c7874bb54"
+            "hash": "cc6d57392ad68bf10d4218a9bb5d242d7820a323e74baba3fa9a20a1beddee27"
         },
         "project/src/processEntry.ts": {
             "hash": "003d213722c29f36ae2d4abb27641e1e9a34d50fb281884b99c69dd733179501"
