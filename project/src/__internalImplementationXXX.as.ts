@@ -90,6 +90,12 @@ async function scandirImplementation(
 
 			await processEntry(state, entry)
 //>			processEntry(state, entry)
+
+			if (state.mutable.stopLoopRequested === true) {
+				context.log.debug(`stopping loop early due to user's request.`)
+
+				break
+			}
 		} catch (e) {
 			handleError(`error while processing item`, e)
 
