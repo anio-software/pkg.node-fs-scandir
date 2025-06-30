@@ -214,6 +214,7 @@ export async function __XX__<T extends ModeOfOperation>(
 //>	scandirImplementation(state, ".")
 
 	// this also catches the scandirExt case
+	// NB: DON'T (!!) try to sort result when mode is scandirMapped
 	if (options.type === "scandir") {
 		if (isString(options.options.sort)) {
 			const sorter = options.options.sort === "alphabetical:ascending" ? sortAscending : sortDescending;
