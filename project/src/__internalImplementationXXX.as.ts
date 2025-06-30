@@ -50,7 +50,7 @@ async function scandirImplementation(
 		dirHandle = await openDirectory(dirToRead)
 //>		dirHandle = openDirectory(dirToRead)
 	} catch (e) {
-		handleError(e)
+		handleError(`error opening directory '${dirToRead}'`, e)
 	}
 
 	if (!dirHandle) return
@@ -87,23 +87,23 @@ async function scandirImplementation(
 					entry.information = await dependencies.getPathInformation(absolutePath)
 //>					entry.information = dependencies.getPathInformation(absolutePath)
 				} catch (e) {
-					handleError(e)
+					handleError(`unable to get path information for '${absolutePath}'`, e)
 				}
 			}
 
 			await processEntry(state, entry)
 //>			processEntry(state, entry)
 		} catch (e) {
-			handleError(e)
+			handleError(`error while processing item`, e)
 
 			break
 		}
 	}
 
-	function handleError(e: unknown) {
+	function handleError(description: string, e: unknown) {
 		const error = getOrCreateError(e)
 
-		context.log.warn(`caught exception '${error.message}'.`)
+		context.log.warn(`${description}: '${error.message}'.`)
 	}
 
 	async function getTypeOfPath(path: string): Promise<ValidPathType | "error"> {
