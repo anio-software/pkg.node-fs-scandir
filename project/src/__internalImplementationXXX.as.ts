@@ -140,6 +140,13 @@ async function scandirImplementation(
 	function handleError(description: string, e: unknown) {
 		const error = getOrCreateError(e)
 
+		state.mutable.errorHasOccurred = true
+
+		// only collect errors when scandirExt is used
+		if (state.modeOfOperation === "scandirExt") {
+			state.mutable.errors.push(error)
+		}
+
 		context.log.warn(`${description}: '${error.message}'.`)
 	}
 
