@@ -53,10 +53,10 @@
             "hash": "097bbcd3e1d15fb98f7ec372785278caf97005213850c0e6d6738ab692870991"
         },
         "project/src/processEntry.ts": {
-            "hash": "003d213722c29f36ae2d4abb27641e1e9a34d50fb281884b99c69dd733179501"
+            "hash": "9ba7e7ca1e769a6c4aecdb087712340afabb37cc8f29a6b5fa552731582166dd"
         },
         "project/src/processEntrySync.ts": {
-            "hash": "a9f3f820b8a424500d372c4a22c97d6b4483dfd1290ec191a2137fb5c7b13993"
+            "hash": "3fb783e86302459c695d42a6c5f081981023c1530608f81b0b43b0639316bf55"
         },
         "project/src/scandir.ts": {
             "hash": "4cbe1bc8975131afbee5fede4d288e47a3b9e20292576db6941e64a7f3eb4ce5"
