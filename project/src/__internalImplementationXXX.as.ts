@@ -14,6 +14,8 @@ import {openDirectory, realpath} from "@anio-software/pkg-private.node-consisten
 //>import {openDirectory, realpath} from "@anio-software/pkg-private.node-consistent-fs/sync"
 import type {FunctionState} from "#~src/FunctionState.ts"
 //>import type {FunctionState} from "#~src/FunctionStateSync.ts"
+import {processEntry} from "#~src/processEntry.ts"
+//>import {processEntry} from "#~src/processEntrySync.ts"
 
 import type {ModeOfOperation} from "#~src/ModeOfOperation.ts"
 import type {ScandirEntry} from "#~export/ScandirEntry.ts"
@@ -88,6 +90,9 @@ async function scandirImplementation(
 					handleError(e)
 				}
 			}
+
+			await processEntry(state, entry)
+//>			processEntry(state, entry)
 		} catch (e) {
 			handleError(e)
 

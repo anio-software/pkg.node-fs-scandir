@@ -16,6 +16,8 @@
 /src/getOptionsSync.ts
 /src/internalImplementation.ts
 /src/internalImplementationSync.ts
+/src/processEntry.ts
+/src/processEntrySync.ts
 /src/scandir.ts
 /src/scandirSync.ts
 /src/scandirCallback.ts
