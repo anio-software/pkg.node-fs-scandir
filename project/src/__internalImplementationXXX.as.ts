@@ -88,6 +88,35 @@ async function scandirImplementation(
 				}
 			}
 
+			const recurse = async () => {
+//>			const recurse = () => {
+				if (pathType !== "dir:regular") return
+
+				const {currentDepth, stopRecursionRequested} = state.mutable
+
+				if (stopRecursionRequested === true) {
+					context.log.debug(`stopping recursion early due to user's request.`)
+
+					return
+				}
+
+				const nextLevel = currentDepth + 1
+
+				if (isNumber(options.maxDepth)) {
+					if (nextLevel > options.maxDepth) {
+						context.log.debug(`maxDepth '${options.maxDepth}' reached, stopping recursion at level '${currentDepth}'`)
+
+						return
+					}
+				}
+
+				await scandirImplementation(state, relativePath)
+//>				scandirImplementation(state, relativePath)
+			}
+
+			if (options.reverse === true) await recurse()
+//>			if (options.reverse === true) recurse()
+
 			await processEntry(state, entry)
 //>			processEntry(state, entry)
 
@@ -96,6 +125,10 @@ async function scandirImplementation(
 
 				break
 			}
+
+			// written this way so "if statement" has same length as options.reverse === true
+			if (options.reverse !== true) await recurse()
+//>			if (options.reverse !== true) recurse()
 		} catch (e) {
 			handleError(`error while processing item`, e)
 
