@@ -1,7 +1,6 @@
 import {
 	type EnkoreJSRuntimeContextOptions,
-	createContext,
-	type EnkoreJSRuntimeContext
+	createContext
 } from "@anio-software/enkore.js-runtime"
 
 import type {__EnkoreFunctionDependencies as Dependencies} from "#~src/Dependencies.ts"
@@ -22,10 +21,9 @@ import type {ScandirEntry} from "#~export/ScandirEntry.ts"
 import type {ReturnMap} from "#~src/ReturnMap.ts"
 import type {Ret as ScandirExtRet} from "#~src/scandirSyncExt.ts"
 import type {ValidPathType} from "@anio-software/pkg.node-fs-path-type"
-import type {Stop} from "#~src/Stop.ts"
 import {getEmptyReturnValue} from "#~src/getEmptyReturnValue.ts"
 import {parents} from "#~src/parents.ts"
-import {isFunction, isString, isNumber, isBoolean, isUndefined} from "@anio-software/pkg.is"
+import {isString, isNumber, isUndefined} from "@anio-software/pkg.is"
 import {createScandirEntryFromPathFactory} from "#~src/createScandirEntryFromPathFactory.ts"
 import {getOrCreateError} from "@anio-software/pkg.js-utils"
 import path from "node:path"
