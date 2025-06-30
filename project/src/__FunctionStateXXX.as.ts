@@ -32,3 +32,18 @@ export type FunctionState = {
 		result: unknown[]
 	}
 }
+
+export function createInitialMutableState(): FunctionState["mutable"] {
+	return {
+		currentDepth: 0,
+
+		errors: [],
+		errorHasOccurred: false,
+
+		stopLoopRequested: false,
+		stopRecursionRequested: false,
+		userDefinedReturnValue: undefined,
+
+		result: []
+	}
+}

@@ -11,8 +11,8 @@ import {validateInputOptions} from "#~src/validateInputOptions.ts"
 //>import {validateSyncInputOptions as validateInputOptions} from "#~src/validateSyncInputOptions.ts"
 import {openDirectory, realpath} from "@anio-software/pkg-private.node-consistent-fs/async"
 //>import {openDirectory, realpath} from "@anio-software/pkg-private.node-consistent-fs/sync"
-import type {FunctionState} from "#~src/FunctionState.ts"
-//>import type {FunctionState} from "#~src/FunctionStateSync.ts"
+import {type FunctionState, createInitialMutableState} from "#~src/FunctionState.ts"
+//>import {type FunctionState, createInitialMutableState} from "#~src/FunctionStateSync.ts"
 import {processEntry} from "#~src/processEntry.ts"
 //>import {processEntry} from "#~src/processEntrySync.ts"
 
@@ -203,26 +203,11 @@ export async function __XX__<T extends ModeOfOperation>(
 	const state: FunctionState = {
 		context,
 		dependencies,
-
 		modeOfOperation,
-
 		normalizedInputDir,
 		resolvedInputDir,
-
 		userOptions: options,
-
-		mutable: {
-			currentDepth: 0,
-
-			errors: [],
-			errorHasOccurred: false,
-
-			stopLoopRequested: false,
-			stopRecursionRequested: false,
-			userDefinedReturnValue: undefined,
-
-			result: []
-		}
+		mutable: createInitialMutableState()
 	}
 
 	await scandirImplementation(state, ".")
